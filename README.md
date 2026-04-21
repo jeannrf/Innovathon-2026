@@ -36,14 +36,13 @@ Basándonos en la página funcional inicial, el rediseño incluirá las piezas d
 
 ---
 
-## ⚙️ Tecnologías (Propuesta de Stack Core)
+## ⚙️ Tecnologías (Stack Core)
 
-*Garantizando flexibilidad y modernidad en la implementación del frontend:*
+*Garantizando flexibilidad, escalabilidad y una experiencia moderna para el usuario final:*
 
-- **Estructura:** HTML5 Semántico.
-- **Estilos:** Vanilla CSS / Arquitectura BEM / Custom Properties (Alistado para animaciones dinámicas, glassmorphism y dark mode).
-- **Lógica e Interacciones:** Vanilla JavaScript (ES6+).
-*(Nota: Estructuras con frameworks como Astro o Vite son recomendadas si el proyecto requerirá múltiples páginas conectadas más adelante).*
+- **Frontend:** [React](https://react.dev/) para construir interfaces de usuario interactivas, dinámicas y basadas en componentes.
+- **Estilos:** [Tailwind CSS](https://tailwindcss.com/) para un estilizado ágil utility-first, facilitando la implementación de modo oscuro, diseños premium y alta responsividad.
+- **Backend & Base de Datos:** [Supabase](https://supabase.com/) como Backend as a Service (BaaS) brindando autenticación de usuarios y base de datos PostgreSQL.
 
 ---
 
@@ -53,7 +52,7 @@ Sigue estos pasos para levantar el entorno de manera local si eres parte del equ
 
 1. **Clona este repositorio:**
    ```bash
-   git clone https://github.com/[nombre-organizacion]/Innovathon-2026.git
+   git clone https://github.com/jeannrf/Innovathon-2026.git
    cd Innovathon-2026
    ```
 
@@ -62,12 +61,15 @@ Sigue estos pasos para levantar el entorno de manera local si eres parte del equ
    code .
    ```
 
-3. **Ejecuta de manera local:**
-   Si es puro HTML/CSS/JS, puedes utilizar extensiones como *Live Server* en tu editor, o por consola con Node.js:
+3. **Instala las dependencias y ejecuta el entorno local:**
+   Asegúrate de contar con Node.js e instala los paquetes de React y Tailwind:
    ```bash
-   npx serve .
+   npm install
+   npm run dev
    ```
-   *El sitio de prueba se abrirá habitualmente en `http://localhost:3000`.*
+   *El empaquetador indicará el puerto donde el sitio en desarrollo estará activo (habitualmente `http://localhost:5173` ó `http://localhost:3000`).*
+   
+   *(Nota: Asegúrate de tener las variables de entorno de Supabase configuradas en tu archivo `.env` o `.env.local`).*
 
 ---
 
