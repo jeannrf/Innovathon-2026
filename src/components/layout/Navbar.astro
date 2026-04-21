@@ -1,0 +1,21 @@
+---
+// src/components/layout/Navbar.astro
+---
+<nav class="sticky top-0 z-50 glass border-b border-white/5">
+  <div class="container-custom py-4 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      INNOVATHON <span class="text-white/50 font-light">2026</span>
+    </a>
+    
+    <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+      <a href="#inicio" class="hover:text-white transition-colors">Inicio</a>
+      <a href="#como" class="hover:text-white transition-colors">¿Cómo participar?</a>
+      <a href="#beneficios" class="hover:text-white transition-colors">Beneficios</a>
+      <a href="#cronograma" class="hover:text-white transition-colors">Cronograma</a>
+    </div>
+
+    <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all">
+      Inscribirme
+    </button>
+  </div>
+</nav>

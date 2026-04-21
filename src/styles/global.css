@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@theme {
+  /* Acá se ponen variables como fuentes (la cual es Inter), colores, etc. */
+  --font-inter: "Inter", sans-serif;
+  --color-primary: #3b82f6;
+  --color-dark: #0f172a;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-inter);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-50;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+}
