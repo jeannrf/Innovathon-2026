@@ -6,11 +6,11 @@ Bienvenido al repositorio oficial del **Rediseño de la Web del Innovathon "Laun
 
 ---
 
-## 🎯 Visión del Rediseño
+## Visión del Rediseño
 
 El rediseño busca una presencia en línea **premium, dinámica y altamente responsiva**, con la finalidad de atraer a estudiantes multidisciplinarios, mentores y aliados estratégicos. La interfaz y la arquitectura deben comunicar el propósito central: desarrollar soluciones con inteligencia artificial para desafíos alineados a los **Objetivos de Desarrollo Sostenible (ODS)**.
 
-### ✨ Pilares de la Nueva Web
+### Pilares de la Nueva Web
 
 - **UI/UX Vanguardista:** Experiencia de usuario inmersiva con micro-animaciones, colores armoniosos y una jerarquía visual clara.
 - **Rendimiento Optimo:** Tiempos de carga mínimos, asegurando retención de visitantes.
@@ -19,7 +19,7 @@ El rediseño busca una presencia en línea **premium, dinámica y altamente resp
 
 ---
 
-## 📂 Arquitectura de la Información
+## Arquitectura de la Información
 
 Basándonos en la página funcional inicial, el rediseño incluirá las piezas de información críticas del evento:
 
@@ -36,7 +36,7 @@ Basándonos en la página funcional inicial, el rediseño incluirá las piezas d
 
 ---
 
-## ⚙️ Tecnologías (Stack Core)
+## Tecnologías (Stack Core)
 
 *Garantizando un rendimiento espectacular, flexibilidad y una experiencia moderna:*
 
@@ -45,7 +45,7 @@ Basándonos en la página funcional inicial, el rediseño incluirá las piezas d
 
 ---
 
-## 🚀 Guía de Inicio Rápido
+## Guía de Inicio Rápido
 
 Sigue estos pasos para levantar el entorno de manera local si eres parte del equipo de desarrollo:
 
@@ -70,7 +70,7 @@ Sigue estos pasos para levantar el entorno de manera local si eres parte del equ
 
 ---
 
-## 📚 Documentación Técnica (Docs as Code)
+## Documentación Técnica (Docs as Code)
 
 Mantenemos la filosofía de **"Docs as Code"** para un desarrollo transparente. Toda la documentación ampliada del rediseño se planificará dentro de la carpeta `/docs` (por crear), destacando:
 - Modelos de Arquitectura Web (Arquitectura.md).
@@ -79,7 +79,7 @@ Mantenemos la filosofía de **"Docs as Code"** para un desarrollo transparente. 
 
 ---
 
-## 🤝 Flujo de Contribución
+## Flujo de Contribución
 
 1. Haz un **Fork** o crea una nueva rama: `git checkout -b feature/nombredelcambio`
 2. Realiza tus contribuciones y haz commit usando formato convencional: `git commit -m "feat: añade hero banner interactivo"`
@@ -87,4 +87,4 @@ Mantenemos la filosofía de **"Docs as Code"** para un desarrollo transparente. 
 
 ---
 
-✍️ *Proyecto desarrollado por y para estudiantes, potenciando el talento y la innovación.*
+*Proyecto desarrollado por y para estudiantes, potenciando el talento y la innovación.*
