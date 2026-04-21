@@ -1,4 +1,4 @@
-# 🚀 Innovathon "Launch with AI" - Rediseño Web 2026
+# Innovathon "Launch with AI" - Rediseño Web 2026
 
 ![Innovathon Banner](https://innovathon.uni.edu.pe/favicon.ico) <!-- Placeholder para un logo/banner real -->
 
@@ -28,10 +28,10 @@ Basándonos en la página funcional inicial, el rediseño incluirá las piezas d
 3. **Beneficios para Participantes:** Mentorías top, desarrollo de ideas, networking sinérgico, certificación y el fondo de premios (hasta S/2000 en incubación, monitores, periféricos, etc.).
 4. **Cronograma (Roadmap):** Línea de tiempo interactiva desde el lanzamiento en agosto, inscripciones, desarrollo de propuestas, mentorías y gran final en noviembre.
 5. **Desafíos (Alineados a ODS):**
-   - ⛏️ **Minería:** Operaciones sostenibles y competitivas.
-   - 📦 **Ecommerce:** Logística inteligente y economía circular.
-   - 🚦 **Transporte:** Movilidad y logística inteligente en las ciudades.
-   - 📚 **Educación:** Empleo de la IA para fomentar el acceso y calidad equitativa.
+   - **Minería:** Operaciones sostenibles y competitivas.
+   - **Ecommerce:** Logística inteligente y economía circular.
+   - **Transporte:** Movilidad y logística inteligente en las ciudades.
+   - **Educación:** Empleo de la IA para fomentar el acceso y calidad equitativa.
 6. **Organizadores / Aliados Institucionales:** Menciones a TinkuyLabs y la sede UNI.
 
 ---
