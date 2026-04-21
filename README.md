@@ -38,11 +38,10 @@ Basándonos en la página funcional inicial, el rediseño incluirá las piezas d
 
 ## ⚙️ Tecnologías (Stack Core)
 
-*Garantizando flexibilidad, escalabilidad y una experiencia moderna para el usuario final:*
+*Garantizando un rendimiento espectacular, flexibilidad y una experiencia moderna:*
 
-- **Frontend:** [React](https://react.dev/) para construir interfaces de usuario interactivas, dinámicas y basadas en componentes.
-- **Estilos:** [Tailwind CSS](https://tailwindcss.com/) para un estilizado ágil utility-first, facilitando la implementación de modo oscuro, diseños premium y alta responsividad.
-- **Backend & Base de Datos:** [Supabase](https://supabase.com/) como Backend as a Service (BaaS) brindando autenticación de usuarios y base de datos PostgreSQL.
+- **Estructura y Framework:** [Astro](https://astro.build/) para construir un sitio web ultra rápido y optimizado, entregando HTML estático por defecto con la capacidad de hidratar componentes interactivos según se necesite.
+- **Estilos:** [Tailwind CSS](https://tailwindcss.com/) para un estilizado ágil *utility-first*, facilitando la implementación de modo oscuro, diseños premium y alta responsividad.
 
 ---
 
@@ -62,14 +61,12 @@ Sigue estos pasos para levantar el entorno de manera local si eres parte del equ
    ```
 
 3. **Instala las dependencias y ejecuta el entorno local:**
-   Asegúrate de contar con Node.js e instala los paquetes de React y Tailwind:
+   Asegúrate de contar con Node.js y luego procede a instalar los paquetes necesarios:
    ```bash
    npm install
    npm run dev
    ```
-   *El empaquetador indicará el puerto donde el sitio en desarrollo estará activo (habitualmente `http://localhost:5173` ó `http://localhost:3000`).*
-   
-   *(Nota: Asegúrate de tener las variables de entorno de Supabase configuradas en tu archivo `.env` o `.env.local`).*
+   *Astro indicará el puerto donde el servidor de desarrollo estará activo (habitualmente `http://localhost:4321`).*
 
 ---
 
