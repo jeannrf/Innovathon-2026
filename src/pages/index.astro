@@ -1,32 +1,349 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Inicio">
-	<section class="py-24 relative overflow-hidden">
-		<!-- Background Glow -->
-		<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-blue-600/10 blur-[120px] rounded-full -z-10"></div>
-		
-		<div class="container-custom text-center">
-			<span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">
-				Launch with AI 2026
-			</span>
-			<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
-				¡Haz que tu talento <br />
-				<span class="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent">deje huella!</span>
+	<!-- HERO -->
+	<section class="relative overflow-hidden flex items-center justify-center" style="min-height: calc(100vh - 80px);">
+		<!-- Glowing orbs -->
+		<div class="hero-orb hero-orb--purple"></div>
+		<div class="hero-orb hero-orb--blue"></div>
+		<div class="hero-orb hero-orb--pink"></div>
+		<!-- Grid pattern -->
+		<div class="hero-grid"></div>
+
+		<div class="container-custom text-center relative z-10 pb-16">
+			<h1 class="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-tight mb-4 hero-title">
+				Innovathon
 			</h1>
-			<p class="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-				Descubre el evento universitario de innovación donde tus ideas se transforman en impacto real asistido por Inteligencia Artificial.
+			<h2 class="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-10 bg-gradient-to-r from-[#c084fc] via-[#818cf8] to-[#38bdf8] bg-clip-text text-transparent animate-gradient">
+				"Launch with AI"
+			</h2>
+			<p class="text-lg md:text-xl text-slate-300/90 max-w-2xl mx-auto mb-14 leading-relaxed font-light">
+				Descubre el evento de innovación en la UNI donde tus ideas se
+				transforman en impacto real mediante Inteligencia Artificial y
+				metodologías ágiles.
 			</p>
-			
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-900/20">
-					Bases del Concurso
+
+			<div class="flex flex-wrap justify-center gap-5">
+				<a href="#" class="group relative px-8 py-3.5 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(192,132,252,0.3)]">
+					<span class="absolute inset-0 bg-gradient-to-r from-[#c084fc] to-[#818cf8] opacity-80 group-hover:opacity-100 transition-opacity"></span>
+					<span class="relative z-10 flex items-center gap-2">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.764-6.324-2.057l-.44-.33-3.28 1.1 1.1-3.28-.33-.44A9.965 9.965 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+						Canal de Whatsapp
+					</span>
 				</a>
-				<a href="#" class="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold border border-white/10 transition-all">
-					Ver Cronograma
+				<a href="#" class="group relative px-8 py-3.5 rounded-xl font-semibold text-white border border-white/20 hover:border-[#818cf8]/50 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(129,140,248,0.2)] bg-white/5 hover:bg-white/10 backdrop-blur-sm">
+					<span class="flex items-center gap-2">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
+						Canal de Discord
+					</span>
 				</a>
 			</div>
 		</div>
 	</section>
+
+	<!-- HIGHLIGHTS -->
+	<section class="py-16 relative z-10">
+		<div class="container-custom">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="glow-card text-center">
+					<div class="highlight-icon"><svg class="w-7 h-7 mx-auto text-white/70" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">Modalidad</p>
+					<p class="text-xl font-semibold text-white">Presencial / UNI</p>
+				</div>
+				<div class="glow-card text-center">
+					<div class="highlight-icon"><svg class="w-7 h-7 mx-auto text-white/70" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg></div>
+					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">Fechas</p>
+					<p class="text-xl font-semibold text-white">Próximamente</p>
+				</div>
+				<div class="glow-card text-center">
+					<div class="highlight-icon"><svg class="w-7 h-7 mx-auto text-[#c084fc]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228M18.75 4.236V2.721"/></svg></div>
+					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">Premios</p>
+					<p class="text-xl font-semibold bg-gradient-to-r from-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent">Próximamente</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- AUSPICIADORES -->
+	<section class="py-16 relative z-10">
+		<div class="container-custom text-center">
+			<p class="text-xs font-semibold text-slate-500 uppercase tracking-[0.3em] mb-10">Auspiciado por</p>
+			<div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+				<div class="sponsor-logo"><span class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500">Zoom</span></div>
+				<div class="sponsor-logo"><span class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500">Linear</span></div>
+				<div class="sponsor-logo"><span class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500">Wahoo</span></div>
+				<div class="sponsor-logo"><span class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500">Webflow</span></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- INNOVATHON 2025 -->
+	<section class="py-24 relative z-10 overflow-hidden">
+		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#c084fc]/5 to-transparent pointer-events-none"></div>
+		<div class="container-custom relative z-10">
+			<div class="text-center mb-16">
+				<span class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest uppercase bg-[#c084fc]/10 text-[#c084fc] rounded-full border border-[#c084fc]/20">
+					Edición Anterior
+				</span>
+				<h3 class="text-4xl md:text-5xl font-light text-white mb-4">
+					Innovathon <span class="bg-gradient-to-r from-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent font-semibold">2025</span>
+				</h3>
+				<p class="text-slate-400 text-lg max-w-xl mx-auto font-light">
+					Lo que nos dejó la primera edición del evento que unió talento, tecnología e innovación.
+				</p>
+			</div>
+
+			<!-- Stats -->
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+				<div class="glow-card glow-card--stat">
+					<p class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">120+</p>
+					<p class="text-slate-400 text-sm mt-2">Participantes</p>
+				</div>
+				<div class="glow-card glow-card--stat">
+					<p class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">25</p>
+					<p class="text-slate-400 text-sm mt-2">Proyectos</p>
+				</div>
+				<div class="glow-card glow-card--stat">
+					<p class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">10</p>
+					<p class="text-slate-400 text-sm mt-2">Mentores</p>
+				</div>
+				<div class="glow-card glow-card--stat">
+					<p class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">48h</p>
+					<p class="text-slate-400 text-sm mt-2">De innovación</p>
+				</div>
+			</div>
+
+			<!-- Proyectos ganadores -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div class="glow-card glow-card--featured">
+					<div class="absolute top-0 right-0 w-48 h-48 bg-[#c084fc]/10 rounded-full blur-[80px]"></div>
+					<div class="absolute bottom-0 left-0 w-32 h-32 bg-[#818cf8]/10 rounded-full blur-[60px]"></div>
+					<div class="flex items-center gap-2 mb-4 relative z-10">
+						<svg class="w-5 h-5 text-[#c084fc]" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10zm-1 2v3.5l2.5 1.5.75-1.25L12.5 13V10H11z"/></svg>
+						<span class="text-[#c084fc] text-sm font-semibold tracking-wider uppercase">Proyecto Ganador</span>
+					</div>
+					<h4 class="text-3xl font-semibold text-white mb-3 relative z-10">EcoSmart AI</h4>
+					<p class="text-slate-400 leading-relaxed relative z-10">
+						Sistema inteligente de gestión de residuos urbanos que utiliza visión por computadora para clasificar y optimizar la recolección de basura en tiempo real.
+					</p>
+					<div class="mt-6 flex gap-2 relative z-10">
+						<span class="px-3 py-1 text-xs rounded-full bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/20">Computer Vision</span>
+						<span class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20">IoT</span>
+						<span class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">ML</span>
+					</div>
+				</div>
+				<div class="space-y-6">
+					<div class="glow-card">
+						<div class="flex items-center gap-2 mb-2">
+							<svg class="w-4 h-4 text-[#818cf8]" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"/></svg>
+							<span class="text-[#818cf8] text-sm font-semibold tracking-wider uppercase">Segundo Lugar</span>
+						</div>
+						<h4 class="text-xl font-semibold text-white mb-2">MediBot</h4>
+						<p class="text-slate-400 text-sm">Chatbot médico con IA para atención primaria en zonas rurales del Perú.</p>
+						<div class="mt-4 flex gap-2">
+							<span class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20">NLP</span>
+							<span class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">Salud</span>
+						</div>
+					</div>
+					<div class="glow-card">
+						<div class="flex items-center gap-2 mb-2">
+							<svg class="w-4 h-4 text-[#38bdf8]" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"/></svg>
+							<span class="text-[#38bdf8] text-sm font-semibold tracking-wider uppercase">Tercer Lugar</span>
+						</div>
+						<h4 class="text-xl font-semibold text-white mb-2">AgriPredict</h4>
+						<p class="text-slate-400 text-sm">Predicción de cosechas usando modelos de ML y datos satelitales para agricultores.</p>
+						<div class="mt-4 flex gap-2">
+							<span class="px-3 py-1 text-xs rounded-full bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/20">ML</span>
+							<span class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20">AgriTech</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA FINAL -->
+	<section class="py-24 relative z-10">
+		<div class="container-custom">
+			<div class="glow-card glow-card--cta text-center relative">
+				<div class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[#c084fc]/15 rounded-full blur-[100px] animate-float"></div>
+				<div class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[#818cf8]/15 rounded-full blur-[100px] animate-float-delayed"></div>
+				<div class="relative z-10">
+					<h3 class="text-3xl md:text-5xl font-light text-white mb-4">¿Listo para innovar?</h3>
+					<p class="text-slate-300 text-lg mb-8 max-w-lg mx-auto font-light">Sé parte de la 2da edición y transforma tus ideas en soluciones reales con IA.</p>
+					<a href="#" class="inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#c084fc] to-[#818cf8] hover:shadow-[0_0_60px_rgba(192,132,252,0.4)] transition-all duration-500 hover:scale-105 text-lg">
+						Inscríbete Ahora
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	/* ===== HERO ===== */
+	.hero-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		animation: orb-float 8s ease-in-out infinite;
+	}
+	.hero-orb--purple {
+		width: 600px; height: 600px;
+		background: radial-gradient(circle, rgba(192,132,252,0.35), transparent 70%);
+		top: -250px; left: 50%; transform: translateX(-50%);
+	}
+	.hero-orb--blue {
+		width: 400px; height: 400px;
+		background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 70%);
+		bottom: -100px; left: -100px;
+		animation-delay: -3s;
+	}
+	.hero-orb--pink {
+		width: 350px; height: 350px;
+		background: radial-gradient(circle, rgba(129,140,248,0.2), transparent 70%);
+		bottom: 0; right: -50px;
+		animation-delay: -5s;
+	}
+	.hero-grid {
+		position: absolute; inset: 0;
+		background-image:
+			linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+		background-size: 60px 60px;
+		mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+	}
+	.hero-title {
+		color: white;
+		text-shadow: 0 0 80px rgba(192,132,252,0.3), 0 0 160px rgba(192,132,252,0.1);
+	}
+	.animate-gradient {
+		background-size: 200% auto;
+		animation: gradient-shift 4s ease infinite;
+	}
+
+	/* ===== GLOW CARD SYSTEM ===== */
+	.glow-card {
+		position: relative;
+		border-radius: 1.25rem;
+		background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+		border: 1px solid rgba(255,255,255,0.1);
+		padding: 1.75rem;
+		overflow: hidden;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		backdrop-filter: blur(10px);
+	}
+	/* Top shimmer line */
+	.glow-card::before {
+		content: '';
+		position: absolute;
+		top: 0; left: 0; right: 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(192,132,252,0.6), rgba(129,140,248,0.6), rgba(56,189,248,0.6), transparent);
+		opacity: 0.5;
+		transition: opacity 0.5s ease;
+	}
+	/* Inner corner glow */
+	.glow-card::after {
+		content: '';
+		position: absolute;
+		top: -50%; left: -50%;
+		width: 200%; height: 200%;
+		background: radial-gradient(circle at 30% 30%, rgba(192,132,252,0.08), transparent 50%);
+		opacity: 0;
+		transition: opacity 0.5s ease;
+		pointer-events: none;
+	}
+	.glow-card:hover {
+		border-color: rgba(192,132,252,0.3);
+		background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+		transform: translateY(-6px);
+		box-shadow:
+			0 0 30px rgba(192,132,252,0.15),
+			0 0 60px rgba(129,140,248,0.08),
+			0 20px 40px rgba(0,0,0,0.4);
+	}
+	.glow-card:hover::before {
+		opacity: 1;
+	}
+	.glow-card:hover::after {
+		opacity: 1;
+	}
+
+	/* Featured card (larger, more glow) */
+	.glow-card--featured {
+		padding: 2.5rem;
+		border-color: rgba(192,132,252,0.15);
+	}
+	.glow-card--featured::before {
+		height: 2px;
+		background: linear-gradient(90deg, transparent, #c084fc, #818cf8, #38bdf8, transparent);
+		opacity: 0.7;
+	}
+	.glow-card--featured:hover {
+		border-color: rgba(192,132,252,0.4);
+		box-shadow:
+			0 0 40px rgba(192,132,252,0.2),
+			0 0 80px rgba(129,140,248,0.1),
+			0 25px 50px rgba(0,0,0,0.5);
+	}
+
+	/* Stat card */
+	.glow-card--stat {
+		text-align: center;
+		padding: 2rem 1rem;
+	}
+
+	/* CTA card */
+	.glow-card--cta {
+		padding: 4rem 2rem;
+		border-radius: 1.5rem;
+		border-color: rgba(192,132,252,0.2);
+	}
+	.glow-card--cta::before {
+		height: 2px;
+		background: linear-gradient(90deg, transparent, #c084fc, #818cf8, #38bdf8, transparent);
+		opacity: 0.8;
+	}
+	.glow-card--cta::after {
+		opacity: 0.5;
+	}
+
+	.highlight-icon {
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+		text-align: center;
+	}
+
+	/* ===== SPONSORS ===== */
+	.sponsor-logo {
+		display: flex; align-items: center; justify-content: center;
+		padding: 0.5rem 1rem;
+		transition: all 0.4s ease;
+	}
+	.sponsor-logo:hover {
+		transform: scale(1.15);
+		filter: drop-shadow(0 0 20px rgba(192,132,252,0.3));
+	}
+
+	/* ===== ANIMATIONS ===== */
+	@keyframes orb-float {
+		0%, 100% { transform: translateY(0px) translateX(-50%); }
+		50% { transform: translateY(-30px) translateX(-50%); }
+	}
+	@keyframes gradient-shift {
+		0% { background-position: 0% center; }
+		50% { background-position: 200% center; }
+		100% { background-position: 0% center; }
+	}
+
+	.animate-float { animation: float-simple 6s ease-in-out infinite; }
+	.animate-float-delayed { animation: float-simple 6s ease-in-out infinite; animation-delay: -3s; }
+	@keyframes float-simple {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(-20px); }
+	}
+</style>
