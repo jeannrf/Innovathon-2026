@@ -1,30 +1,108 @@
 @import "tailwindcss";
 
-@theme {
-  /* Acá se ponen variables como fuentes (la cual es Inter), colores, etc. */
-  --font-inter: "Inter", sans-serif;
-  --color-primary: #3b82f6;
-  --color-dark: #0f172a;
+/* ============================================
+   DESIGN SYSTEM — Innovathon 2026
+   Using @theme extend to PRESERVE Tailwind defaults
+   ============================================ */
+
+@theme extend {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", sans-serif;
+
+  /* Brand Colors */
+  --color-primary: oklch(0.72 0.19 290);
+  --color-primary-light: oklch(0.80 0.15 290);
+  --color-primary-dark: oklch(0.55 0.22 290);
+  --color-accent: oklch(0.72 0.16 250);
+  --color-accent-light: oklch(0.78 0.12 250);
+  --color-cyan: oklch(0.78 0.14 210);
+  --color-cyan-light: oklch(0.85 0.10 210);
+
+  /* Surfaces */
+  --color-surface: oklch(0.14 0.02 280);
+  --color-surface-elevated: oklch(0.18 0.02 280);
 }
 
 @layer base {
   html {
-    font-family: var(--font-inter);
+    font-family: var(--font-sans);
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-
   body {
     background-color: #141219;
     @apply text-slate-50;
+    overflow-x: hidden;
   }
+  ::selection {
+    background: oklch(0.72 0.19 290 / 0.3);
+    color: white;
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #141219; }
+  ::-webkit-scrollbar-thumb { background: #2a2535; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3a3545; }
 }
 
 @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-
   .glass {
     @apply bg-white/5 backdrop-blur-lg border border-white/10;
   }
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#c084fc] via-[#818cf8] to-[#38bdf8] bg-clip-text text-transparent;
+  }
+  .section-label {
+    @apply inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest uppercase rounded-full;
+    background: oklch(0.72 0.19 290 / 0.1);
+    color: oklch(0.80 0.15 290);
+    border: 1px solid oklch(0.72 0.19 290 / 0.2);
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms; }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 250ms; }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 500ms; }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 750ms; }
+  .reveal-stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, -40px) scale(0.98); }
+  75% { transform: translate(-30px, -10px) scale(1.02); }
 }

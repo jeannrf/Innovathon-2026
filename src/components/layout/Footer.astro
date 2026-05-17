@@ -1,36 +1,286 @@
 ---
 // src/components/layout/Footer.astro
 const year = new Date().getFullYear();
+
+const sectionLinks = [
+  { href: "/bases", label: "Bases" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/como-participar", label: "Cómo participar" },
+  { href: "/cronograma", label: "Cronograma" },
+  { href: "/desafios", label: "Desafíos" },
+];
+
+const legalLinks = [
+  { href: "#", label: "Términos y condiciones" },
+  { href: "#", label: "Políticas de privacidad" },
+  { href: "#", label: "Preguntas Frecuentes" },
+];
+
+const socialLinks = [
+  {
+    href: "#",
+    label: "WhatsApp",
+    icon: `<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.764-6.324-2.057l-.44-.33-3.28 1.1 1.1-3.28-.33-.44A9.965 9.965 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>`,
+  },
+  {
+    href: "#",
+    label: "Discord",
+    icon: `<path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>`,
+  },
+  {
+    href: "#",
+    label: "Instagram",
+    icon: `<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>`,
+  },
+];
 ---
-<footer class="bg-[#141219] border-t border-white/5 py-12">
+
+<footer class="footer">
+  <!-- Top gradient line -->
+  <div class="footer__gradient-line"></div>
+
   <div class="container-custom">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <div class="col-span-1 md:col-span-2">
-        <h3 class="text-lg font-bold mb-4">Innovathon "Launch with AI"</h3>
-        <p class="text-slate-400 max-w-xs text-sm">
+    <!-- Main Grid -->
+    <div class="footer__grid">
+      <!-- Brand Column -->
+      <div class="footer__brand">
+        <div class="footer__brand-header">
+          <span class="footer__brand-name">Innovathon</span>
+          <span class="footer__brand-badge">2026</span>
+        </div>
+        <p class="footer__brand-tagline">"Launch with AI"</p>
+        <p class="footer__description">
           Impulsando el emprendimiento universitario con inteligencia artificial.
           Organizado por la alianza TinkuyLabs (CCAT, CODE, CEIIS y DSC).
         </p>
+
+        <!-- Social Icons -->
+        <div class="footer__social">
+          {socialLinks.map(social => (
+            <a href={social.href} class="footer__social-link" aria-label={social.label} title={social.label}>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" set:html={social.icon} />
+            </a>
+          ))}
+        </div>
       </div>
-      
+
+      <!-- Sections -->
       <div>
-        <h4 class="font-semibold mb-4">Secciones</h4>
-        <ul class="space-y-2 text-sm text-slate-400">
-          <li><a href="#" class="hover:text-blue-400">Términos y condiciones</a></li>
-          <li><a href="#" class="hover:text-blue-400">Políticas de privacidad</a></li>
-          <li><a href="#" class="hover:text-blue-400">Preguntas Frecuentes</a></li>
+        <h4 class="footer__heading">Secciones</h4>
+        <ul class="footer__list">
+          {sectionLinks.map(link => (
+            <li>
+              <a href={link.href} class="footer__link">{link.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
+      <!-- Legal -->
       <div>
-        <h4 class="font-semibold mb-4">Contacto</h4>
-        <p class="text-sm text-slate-400">tinkuylabs@uni.edu.pe</p>
-        <p class="text-sm text-slate-400">+51 980 270 642</p>
+        <h4 class="footer__heading">Legal</h4>
+        <ul class="footer__list">
+          {legalLinks.map(link => (
+            <li>
+              <a href={link.href} class="footer__link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="footer__heading">Contacto</h4>
+        <ul class="footer__list">
+          <li class="footer__contact-item">
+            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <a href="mailto:tinkuylabs@uni.edu.pe" class="footer__link">tinkuylabs@uni.edu.pe</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            <span class="footer__link">+51 980 270 642</span>
+          </li>
+          <li class="footer__contact-item">
+            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <span class="footer__link">UNI, Lima, Perú</span>
+          </li>
+        </ul>
       </div>
     </div>
-    
-    <div class="mt-12 pt-8 border-t border-white/5 text-center text-xs text-slate-500">
-      &copy; {year} Innovathon – TinkuyLabs. Todos los derechos reservados.
+
+    <!-- Bottom Bar -->
+    <div class="footer__bottom">
+      <p>&copy; {year} Innovathon – TinkuyLabs. Todos los derechos reservados.</p>
+      <p class="footer__made-with">
+        Hecho con
+        <svg class="inline w-4 h-4 text-red-400 mx-0.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        </svg>
+        en la UNI
+      </p>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer {
+    position: relative;
+    background: oklch(0.11 0.02 280);
+    padding: 4rem 0 2rem;
+  }
+
+  .footer__gradient-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.72 0.19 290 / 0.5),
+      oklch(0.72 0.16 250 / 0.5),
+      oklch(0.78 0.14 210 / 0.5),
+      transparent
+    );
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .footer__brand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .footer__brand-name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: white;
+  }
+  .footer__brand-badge {
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.2), oklch(0.72 0.16 250 / 0.2));
+    color: oklch(0.80 0.15 290);
+    border: 1px solid oklch(0.72 0.19 290 / 0.2);
+  }
+  .footer__brand-tagline {
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-style: italic;
+    color: oklch(0.65 0.04 250);
+    margin-bottom: 1rem;
+  }
+  .footer__description {
+    font-size: 0.875rem;
+    color: oklch(0.55 0.02 250);
+    line-height: 1.7;
+    max-width: 20rem;
+  }
+
+  .footer__social {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 0.625rem;
+    background: oklch(1 0 0 / 0.05);
+    border: 1px solid oklch(1 0 0 / 0.08);
+    color: oklch(0.65 0.02 250);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .footer__social-link:hover {
+    color: white;
+    background: oklch(0.72 0.19 290 / 0.15);
+    border-color: oklch(0.72 0.19 290 / 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px oklch(0.72 0.19 290 / 0.15);
+  }
+
+  .footer__heading {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  .footer__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer__link {
+    font-size: 0.8125rem;
+    color: oklch(0.55 0.02 250);
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .footer__link:hover {
+    color: oklch(0.80 0.15 290);
+  }
+
+  .footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid oklch(1 0 0 / 0.06);
+    font-size: 0.75rem;
+    color: oklch(0.45 0.02 250);
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .footer__made-with {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+  }
+</style>

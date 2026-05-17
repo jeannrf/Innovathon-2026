@@ -1,24 +1,313 @@
 ---
 // src/components/layout/Navbar.astro
+const navLinks = [
+  { href: "/bases", label: "Bases" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/como-participar", label: "Cómo participar" },
+  { href: "/beneficios", label: "Beneficios" },
+  { href: "/cronograma", label: "Cronograma" },
+  { href: "/organizadores", label: "Organizadores" },
+  { href: "/desafios", label: "Desafíos" },
+];
 ---
-<nav class="sticky top-0 z-50 pt-6 pb-4 bg-[#141219]/80 backdrop-blur-xl border-b border-white/5">
-  <div class="container-custom flex justify-between items-center px-8">
-    <a href="/" class="text-xl font-bold text-white tracking-widest">
-      TINKUYLABS
+
+<nav id="main-navbar" class="navbar">
+  <div class="navbar__inner container-custom">
+    <!-- Brand -->
+    <a href="/" class="navbar__brand" aria-label="Ir al inicio">
+      <span class="navbar__brand-text">TINKUYLABS</span>
+      <span class="navbar__brand-dot"></span>
     </a>
-    
-    <div class="hidden md:flex gap-6 text-sm font-medium text-slate-300">
-      <a href="/bases" class="hover:text-white transition-colors">Bases</a>
-      <a href="/nosotros" class="hover:text-white transition-colors">Nosotros</a>
-      <a href="/como-participar" class="hover:text-white transition-colors">Cómo participar</a>
-      <a href="/beneficios" class="hover:text-white transition-colors">Beneficios</a>
-      <a href="/cronograma" class="hover:text-white transition-colors">Cronograma</a>
-      <a href="/organizadores" class="hover:text-white transition-colors">Organizadores</a>
-      <a href="/desafios" class="hover:text-white transition-colors">Desafíos</a>
+
+    <!-- Desktop Navigation -->
+    <div class="navbar__links">
+      {navLinks.map(link => (
+        <a href={link.href} class="navbar__link">{link.label}</a>
+      ))}
     </div>
 
-    <a href="#inscribete" class="text-white text-sm font-bold tracking-widest uppercase hover:text-slate-300 transition-colors">
-      Inscríbete
-    </a>
+    <!-- CTA + Mobile Toggle -->
+    <div class="flex items-center gap-3">
+      <a href="#inscribete" class="navbar__cta">
+        Inscríbete
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-toggle" class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="navbar__mobile" aria-hidden="true">
+    <div class="navbar__mobile-inner">
+      {navLinks.map(link => (
+        <a href={link.href} class="navbar__mobile-link">{link.label}</a>
+      ))}
+      <div class="mt-4 pt-4 border-t border-white/10">
+        <a href="#inscribete" class="navbar__mobile-cta">
+          Inscríbete ahora
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 </nav>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    padding: 0.75rem 0;
+    background: oklch(0.14 0.02 280 / 0.6);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    border-bottom: 1px solid oklch(1 0 0 / 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar--scrolled {
+    padding: 0.5rem 0;
+    background: oklch(0.14 0.02 280 / 0.85);
+    border-bottom-color: oklch(1 0 0 / 0.1);
+    box-shadow:
+      0 4px 24px oklch(0 0 0 / 0.3),
+      0 0 60px oklch(0.72 0.19 290 / 0.05);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Brand */
+  .navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  .navbar__brand:hover {
+    opacity: 0.8;
+  }
+  .navbar__brand-text {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.15em;
+  }
+  .navbar__brand-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, oklch(0.72 0.19 290), oklch(0.78 0.14 210));
+    box-shadow: 0 0 10px oklch(0.72 0.19 290 / 0.5);
+  }
+
+  /* Desktop Links */
+  .navbar__links {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  @media (min-width: 1024px) {
+    .navbar__links { display: flex; }
+  }
+  .navbar__link {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: oklch(0.75 0.02 250);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.25s ease;
+  }
+  .navbar__link:hover {
+    color: white;
+    background: oklch(1 0 0 / 0.06);
+  }
+  .navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.25rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, oklch(0.72 0.19 290), oklch(0.78 0.14 210));
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  .navbar__link:hover::after {
+    width: 60%;
+  }
+
+  /* CTA Button */
+  .navbar__cta {
+    display: none;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.625rem;
+    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.8), oklch(0.72 0.16 250 / 0.8));
+    border: 1px solid oklch(0.72 0.19 290 / 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    .navbar__cta { display: inline-flex; }
+  }
+  .navbar__cta:hover {
+    background: linear-gradient(135deg, oklch(0.72 0.19 290), oklch(0.72 0.16 250));
+    box-shadow: 0 0 30px oklch(0.72 0.19 290 / 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Hamburger */
+  .navbar__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: none;
+    border: 1px solid oklch(1 0 0 / 0.1);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  @media (min-width: 1024px) {
+    .navbar__hamburger { display: none; }
+  }
+  .navbar__hamburger:hover {
+    background: oklch(1 0 0 / 0.06);
+    border-color: oklch(1 0 0 / 0.2);
+  }
+  .navbar__hamburger-line {
+    width: 100%;
+    height: 2px;
+    background: oklch(0.8 0 0);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  .navbar__hamburger.active .navbar__hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .navbar__hamburger.active .navbar__hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .navbar__hamburger.active .navbar__hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Menu */
+  .navbar__mobile {
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+  @media (max-width: 1023px) {
+    .navbar__mobile { display: block; }
+  }
+  .navbar__mobile.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+  .navbar__mobile-inner {
+    padding: 1rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .navbar__mobile-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: oklch(0.75 0.02 250);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+  .navbar__mobile-link:hover {
+    color: white;
+    background: oklch(1 0 0 / 0.06);
+    padding-left: 1.25rem;
+  }
+  .navbar__mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.8), oklch(0.72 0.16 250 / 0.8));
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .navbar__mobile-cta:hover {
+    background: linear-gradient(135deg, oklch(0.72 0.19 290), oklch(0.72 0.16 250));
+  }
+</style>
+
+<script>
+  // Scroll behavior
+  const navbar = document.getElementById('main-navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      navbar?.classList.add('navbar--scrolled');
+    } else {
+      navbar?.classList.remove('navbar--scrolled');
+    }
+  });
+
+  // Mobile toggle
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('open');
+    toggle.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    menu?.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.remove('open');
+      toggle?.classList.remove('active');
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu?.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
