@@ -50,9 +50,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 								<div class="p-5 rounded-xl border border-white/10 bg-white/5 transition-all duration-200 peer-checked:border-[#c084fc] peer-checked:bg-[#c084fc]/10 hover:border-white/20">
 									<div class="flex items-center justify-between mb-1">
 										<h4 class="text-lg font-semibold text-white">Individual</h4>
-										<div class="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#c084fc] flex items-center justify-center">
-											<div class="w-2.5 h-2.5 rounded-full bg-[#c084fc] scale-0 peer-checked:scale-100 transition-transform"></div>
-										</div>
 									</div>
 									<p class="text-sm text-slate-400">Te asignaremos a un equipo multidisciplinario.</p>
 								</div>
@@ -63,9 +60,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 								<div class="p-5 rounded-xl border border-white/10 bg-white/5 transition-all duration-200 peer-checked:border-[#c084fc] peer-checked:bg-[#c084fc]/10 hover:border-white/20">
 									<div class="flex items-center justify-between mb-1">
 										<h4 class="text-lg font-semibold text-white">Con Equipo</h4>
-										<div class="w-5 h-5 rounded-full border-2 border-white/20 peer-checked:border-[#c084fc] flex items-center justify-center">
-											<div class="w-2.5 h-2.5 rounded-full bg-[#c084fc] scale-0 peer-checked:scale-100 transition-transform"></div>
-										</div>
 									</div>
 									<p class="text-sm text-slate-400">Ya tengo un equipo armado (de 2 a 5 miembros).</p>
 								</div>
@@ -443,6 +437,16 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 		}
 		.form-radio:checked::before {
 			transform: scale(1);
+		}
+
+		/* Ocultar flechas en campos numéricos (como edad) */
+		input[type="number"]::-webkit-outer-spin-button,
+		input[type="number"]::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		input[type="number"] {
+			-moz-appearance: textfield;
 		}
 	</style>
 
