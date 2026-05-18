@@ -9,21 +9,26 @@ const navLinks = [
   { href: "/organizadores", label: "Organizadores" },
   { href: "/desafios", label: "Desafíos" },
 ];
+
+const pathname = Astro.url.pathname;
+const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
 
 <nav id="main-navbar" class="navbar">
   <div class="navbar__inner container-custom">
     <!-- Brand -->
     <a href="/" class="navbar__brand" aria-label="Ir al inicio">
-      <span class="navbar__brand-text">TINKUYLABS</span>
-      <span class="navbar__brand-dot"></span>
+      <img src="/images/logos/innovathon_logo.png" alt="Innovathon" class="h-10 w-auto object-contain drop-shadow-md transition-transform hover:scale-105" />
     </a>
 
     <!-- Desktop Navigation -->
     <div class="navbar__links">
-      {navLinks.map(link => (
-        <a href={link.href} class="navbar__link">{link.label}</a>
-      ))}
+      {navLinks.map(link => {
+        const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
+        return (
+          <a href={link.href} class={`navbar__link ${isActive ? 'active' : ''}`}>{link.label}</a>
+        );
+      })}
     </div>
 
     <!-- CTA + Mobile Toggle -->
@@ -47,9 +52,12 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="navbar__mobile" aria-hidden="true">
     <div class="navbar__mobile-inner">
-      {navLinks.map(link => (
-        <a href={link.href} class="navbar__mobile-link">{link.label}</a>
-      ))}
+      {navLinks.map(link => {
+        const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
+        return (
+          <a href={link.href} class={`navbar__mobile-link ${isActive ? 'active' : ''}`}>{link.label}</a>
+        );
+      })}
       <div class="mt-4 pt-4 border-t border-white/10">
         <a href="#inscribete" class="navbar__mobile-cta">
           Inscríbete ahora
@@ -136,7 +144,8 @@ const navLinks = [
     border-radius: 0.5rem;
     transition: all 0.25s ease;
   }
-  .navbar__link:hover {
+  .navbar__link:hover,
+  .navbar__link.active {
     color: white;
     background: oklch(1 0 0 / 0.06);
   }
@@ -152,7 +161,8 @@ const navLinks = [
     transform: translateX(-50%);
     transition: width 0.3s ease;
   }
-  .navbar__link:hover::after {
+  .navbar__link:hover::after,
+  .navbar__link.active::after {
     width: 60%;
   }
 
@@ -254,7 +264,8 @@ const navLinks = [
     border-radius: 0.5rem;
     transition: all 0.2s ease;
   }
-  .navbar__mobile-link:hover {
+  .navbar__mobile-link:hover,
+  .navbar__mobile-link.active {
     color: white;
     background: oklch(1 0 0 / 0.06);
     padding-left: 1.25rem;

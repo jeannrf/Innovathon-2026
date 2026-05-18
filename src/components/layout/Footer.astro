@@ -44,23 +44,35 @@ const socialLinks = [
     <div class="footer__grid">
       <!-- Brand Column -->
       <div class="footer__brand">
-        <div class="footer__brand-header">
+        <a href="/" class="footer__brand-header" aria-label="Ir al inicio">
           <span class="footer__brand-name">Innovathon</span>
           <span class="footer__brand-badge">2026</span>
-        </div>
+        </a>
         <p class="footer__brand-tagline">"Launch with AI"</p>
         <p class="footer__description">
-          Impulsando el emprendimiento universitario con inteligencia artificial.
-          Organizado por la alianza TinkuyLabs (CCAT, CODE, CEIIS y DSC).
+          Impulsando el emprendimiento universitario con inteligencia
+          artificial. Organizado por la alianza TinkuyLabs - UNICODE
         </p>
 
         <!-- Social Icons -->
         <div class="footer__social">
-          {socialLinks.map(social => (
-            <a href={social.href} class="footer__social-link" aria-label={social.label} title={social.label}>
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" set:html={social.icon} />
-            </a>
-          ))}
+          {
+            socialLinks.map((social) => (
+              <a
+                href={social.href}
+                class="footer__social-link"
+                aria-label={social.label}
+                title={social.label}
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  set:html={social.icon}
+                />
+              </a>
+            ))
+          }
         </div>
       </div>
 
@@ -68,11 +80,15 @@ const socialLinks = [
       <div>
         <h4 class="footer__heading">Secciones</h4>
         <ul class="footer__list">
-          {sectionLinks.map(link => (
-            <li>
-              <a href={link.href} class="footer__link">{link.label}</a>
-            </li>
-          ))}
+          {
+            sectionLinks.map((link) => (
+              <li>
+                <a href={link.href} class="footer__link">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
@@ -80,11 +96,15 @@ const socialLinks = [
       <div>
         <h4 class="footer__heading">Legal</h4>
         <ul class="footer__list">
-          {legalLinks.map(link => (
-            <li>
-              <a href={link.href} class="footer__link">{link.label}</a>
-            </li>
-          ))}
+          {
+            legalLinks.map((link) => (
+              <li>
+                <a href={link.href} class="footer__link">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
@@ -93,21 +113,56 @@ const socialLinks = [
         <h4 class="footer__heading">Contacto</h4>
         <ul class="footer__list">
           <li class="footer__contact-item">
-            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            <svg
+              class="w-4 h-4 text-[--color-primary-light] shrink-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              ></path>
             </svg>
-            <a href="mailto:tinkuylabs@uni.edu.pe" class="footer__link">tinkuylabs@uni.edu.pe</a>
+            <a href="mailto:tinkuylabs@uni.edu.pe" class="footer__link"
+              >tinkuylabs@uni.edu.pe</a
+            >
           </li>
           <li class="footer__contact-item">
-            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            <svg
+              class="w-4 h-4 text-[--color-primary-light] shrink-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+              ></path>
             </svg>
             <span class="footer__link">+51 980 270 642</span>
           </li>
           <li class="footer__contact-item">
-            <svg class="w-4 h-4 text-[--color-primary-light] shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            <svg
+              class="w-4 h-4 text-[--color-primary-light] shrink-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              ></path>
             </svg>
             <span class="footer__link">UNI, Lima, Perú</span>
           </li>
@@ -117,11 +172,19 @@ const socialLinks = [
 
     <!-- Bottom Bar -->
     <div class="footer__bottom">
-      <p>&copy; {year} Innovathon – TinkuyLabs. Todos los derechos reservados.</p>
+      <p>
+        &copy; {year} Innovathon – TinkuyLabs. Todos los derechos reservados.
+      </p>
       <p class="footer__made-with">
         Hecho con
-        <svg class="inline w-4 h-4 text-red-400 mx-0.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+        <svg
+          class="inline w-4 h-4 text-red-400 mx-0.5"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"
+          ></path>
         </svg>
         en la UNI
       </p>
@@ -181,8 +244,12 @@ const socialLinks = [
     font-size: 0.6875rem;
     font-weight: 700;
     border-radius: 9999px;
-    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.2), oklch(0.72 0.16 250 / 0.2));
-    color: oklch(0.80 0.15 290);
+    background: linear-gradient(
+      135deg,
+      oklch(0.72 0.19 290 / 0.2),
+      oklch(0.72 0.16 250 / 0.2)
+    );
+    color: oklch(0.8 0.15 290);
     border: 1px solid oklch(0.72 0.19 290 / 0.2);
   }
   .footer__brand-tagline {
@@ -250,7 +317,7 @@ const socialLinks = [
     transition: all 0.25s ease;
   }
   .footer__link:hover {
-    color: oklch(0.80 0.15 290);
+    color: oklch(0.8 0.15 290);
   }
 
   .footer__contact-item {
