@@ -23,6 +23,54 @@
   --color-surface-elevated: oklch(0.18 0.02 280);
 }
 
+@property --theme-color-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ef4444;
+}
+
+@property --theme-color-secondary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f97316;
+}
+
+@property --theme-color-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(239, 68, 68, 0.15);
+}
+
+:root {
+  --theme-color-primary: #ef4444;
+  --theme-color-secondary: #f97316;
+  --theme-color-glow: rgba(239, 68, 68, 0.15);
+  animation: global-theme-cycle 24s linear infinite;
+}
+
+@keyframes global-theme-cycle {
+  0%, 100% {
+    --theme-color-primary: #ef4444; /* Rojo */
+    --theme-color-secondary: #991b1b; /* Rojo oscuro */
+    --theme-color-glow: rgba(239, 68, 68, 0.15);
+  }
+  25% {
+    --theme-color-primary: #f97316; /* Naranja */
+    --theme-color-secondary: #9a3412; /* Naranja oscuro */
+    --theme-color-glow: rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    --theme-color-primary: #22c55e; /* Verde */
+    --theme-color-secondary: #166534; /* Verde oscuro */
+    --theme-color-glow: rgba(34, 197, 94, 0.15);
+  }
+  75% {
+    --theme-color-primary: #3b82f6; /* Azul */
+    --theme-color-secondary: #1e40af; /* Azul oscuro */
+    --theme-color-glow: rgba(59, 130, 246, 0.15);
+  }
+}
+
 @layer base {
   html {
     font-family: var(--font-sans);

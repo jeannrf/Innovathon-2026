@@ -25,7 +25,7 @@ import Layout from "../layouts/Layout.astro";
 				Innovathon
 			</h1>
 			<h2
-				class="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-10 bg-gradient-to-r from-[#c084fc] via-[#818cf8] to-[#38bdf8] bg-clip-text text-transparent animate-gradient"
+				class="text-3xl md:text-5xl lg:text-6xl font-light tracking-tight mb-10 bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent transition-all duration-500"
 				style="font-family: var(--font-display);"
 			>
 				"Launch with AI"
@@ -41,11 +41,8 @@ import Layout from "../layouts/Layout.astro";
 			<div class="flex flex-wrap justify-center gap-5">
 				<a
 					href="#"
-					class="group relative px-8 py-3.5 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(192,132,252,0.3)] cursor-pointer"
+					class="btn-animate-rgb px-8 py-3.5 rounded-xl font-semibold text-white cursor-pointer"
 				>
-					<span
-						class="absolute inset-0 bg-gradient-to-r from-[#c084fc] to-[#818cf8] opacity-80 group-hover:opacity-100 transition-opacity"
-					></span>
 					<span class="relative z-10 flex items-center gap-2">
 						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
 							><path
@@ -124,7 +121,7 @@ import Layout from "../layouts/Layout.astro";
 				<div class="glow-card text-center">
 					<div class="highlight-icon">
 						<svg
-							class="w-7 h-7 mx-auto text-[#c084fc]"
+							class="w-7 h-7 mx-auto text-[var(--theme-color-primary)]"
 							fill="none"
 							stroke="currentColor"
 							stroke-width="1.5"
@@ -140,7 +137,7 @@ import Layout from "../layouts/Layout.astro";
 						Premios
 					</p>
 					<p
-						class="text-xl font-semibold bg-gradient-to-r from-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent"
+						class="text-xl font-semibold bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent"
 					>
 						Próximamente
 					</p>
@@ -150,8 +147,11 @@ import Layout from "../layouts/Layout.astro";
 	</section>
 
 	<!-- QUÉ ES LA INNOVATHON -->
-	<section class="py-24 relative z-10">
-		<div class="container-custom">
+	<section class="py-24 relative z-10 overflow-hidden">
+		<!-- Dynamic Ambient Glows for Mid Section -->
+		<div class="absolute -left-[10%] top-1/4 w-[400px] h-[400px] rounded-full bg-[var(--theme-color-glow)] blur-[100px] pointer-events-none opacity-40 z-0"></div>
+		<div class="absolute -right-[10%] bottom-1/4 w-[350px] h-[350px] rounded-full bg-[var(--theme-color-glow)] blur-[90px] pointer-events-none opacity-30 z-0"></div>
+		<div class="container-custom relative z-10">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 				<!-- Text Content -->
 				<div class="reveal">
@@ -160,7 +160,7 @@ import Layout from "../layouts/Layout.astro";
 						style="font-family: var(--font-display);"
 					>
 						¿Qué es la <br/>
-						<span class="font-semibold bg-gradient-to-r from-[#c084fc] via-[#818cf8] to-[#38bdf8] bg-clip-text text-transparent">Innovathon?</span>
+						<span class="font-semibold bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Innovathon?</span>
 					</h3>
 					<div class="space-y-6 text-slate-300/80 text-lg font-light leading-relaxed">
 						<p>
@@ -172,15 +172,15 @@ import Layout from "../layouts/Layout.astro";
 					</div>
 					<div class="mt-8 flex flex-wrap gap-4">
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[#c084fc]"></div>
+							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"></div>
 							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Tecnología</span>
 						</div>
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></div>
+							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"></div>
 							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Desarrollo</span>
 						</div>
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></div>
+							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-secondary)]"></div>
 							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Emprendimiento</span>
 						</div>
 					</div>
@@ -188,19 +188,23 @@ import Layout from "../layouts/Layout.astro";
 
 				<!-- Visual Box -->
 				<div class="relative reveal reveal-delayed">
-					<!-- Glow effects behind the image -->
-					<div class="absolute -inset-4 bg-gradient-to-tr from-[#c084fc]/10 to-[#818cf8]/10 rounded-[2.5rem] blur-2xl animate-float"></div>
-					<div class="absolute -inset-1 bg-gradient-to-tr from-[#c084fc]/30 to-[#818cf8]/30 rounded-[2rem] blur-sm"></div>
+					<!-- Ambient Glow behind the photo (deep, very soft, no harsh borders) -->
+					<div class="absolute -inset-10 bg-[var(--theme-color-glow)] rounded-[3rem] blur-[80px] pointer-events-none opacity-45"></div>
 					
-					<!-- Main Visual Container -->
-					<div class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 p-2">
-						<div class="w-full h-full rounded-[1.5rem] bg-slate-800 overflow-hidden relative group">
-							<img 
-								src="/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp" 
-								alt="Innovathon 2025" 
-								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" 
-							/>
-							<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+					<!-- Main Visual Container with Razor-Thin Dynamic Gradient Marco -->
+					<div 
+						class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden p-[1.5px] transition-all duration-500"
+						style="background: linear-gradient(135deg, var(--theme-color-primary), var(--theme-color-secondary));"
+					>
+						<div class="w-full h-full rounded-[1.9rem] bg-slate-950 p-2">
+							<div class="w-full h-full rounded-[1.4rem] bg-slate-900 overflow-hidden relative group">
+								<img 
+									src="/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp" 
+									alt="Innovathon 2025" 
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" 
+								/>
+								<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -247,8 +251,11 @@ import Layout from "../layouts/Layout.astro";
 
 	<!-- INNOVATHON 2025 -->
 	<section class="py-24 relative z-10 overflow-hidden">
+		<!-- Dynamic Ambient Glows for Lower Section -->
+		<div class="absolute right-[5%] top-1/3 w-[500px] h-[500px] rounded-full bg-[var(--theme-color-glow)] blur-[120px] pointer-events-none opacity-30 z-0"></div>
+		<div class="absolute left-[5%] bottom-1/3 w-[450px] h-[450px] rounded-full bg-[var(--theme-color-glow)] blur-[110px] pointer-events-none opacity-25 z-0"></div>
 		<div
-			class="absolute inset-0 bg-gradient-to-b from-transparent via-[#c084fc]/5 to-transparent pointer-events-none"
+			class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-color-glow)] to-transparent pointer-events-none z-0"
 		>
 		</div>
 		<div class="container-custom relative z-10">
@@ -258,7 +265,7 @@ import Layout from "../layouts/Layout.astro";
 					style="font-family: var(--font-display);"
 				>
 					Innovathon <span
-						class="bg-gradient-to-r from-[#c084fc] to-[#38bdf8] bg-clip-text text-transparent font-semibold"
+						class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent font-semibold"
 						>2025</span
 					>
 				</h3>
@@ -310,7 +317,7 @@ import Layout from "../layouts/Layout.astro";
 				<div class="glow-card order-2 md:order-1 flex flex-col justify-center h-full min-h-[220px]">
 					<div class="flex items-center gap-2 mb-2">
 						<svg
-							class="w-4 h-4 text-[#818cf8]"
+							class="w-4 h-4 text-[var(--theme-color-primary)]"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							><path
@@ -318,7 +325,7 @@ import Layout from "../layouts/Layout.astro";
 							></path></svg
 						>
 						<span
-							class="text-[#818cf8] text-sm font-semibold tracking-wider uppercase"
+							class="text-[var(--theme-color-primary)] text-sm font-semibold tracking-wider uppercase"
 							>Segundo Lugar</span
 						>
 					</div>
@@ -329,11 +336,11 @@ import Layout from "../layouts/Layout.astro";
 					</p>
 					<div class="mt-4 flex gap-2">
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
 							>Edtech</span
 						>
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
 							>IA</span
 						>
 					</div>
@@ -342,16 +349,16 @@ import Layout from "../layouts/Layout.astro";
 				<!-- Primer Lugar (Centro, Más grande) -->
 				<div class="glow-card glow-card--featured order-1 md:order-2 md:scale-110 z-10 shadow-2xl relative min-h-[300px]">
 					<div
-						class="absolute top-0 right-0 w-48 h-48 bg-[#c084fc]/15 rounded-full blur-[80px] pointer-events-none"
+						class="absolute top-0 right-0 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"
 					>
 					</div>
 					<div
-						class="absolute bottom-0 left-0 w-32 h-32 bg-[#818cf8]/15 rounded-full blur-[60px] pointer-events-none"
+						class="absolute bottom-0 left-0 w-32 h-32 bg-[var(--theme-color-glow)] rounded-full blur-[60px] pointer-events-none"
 					>
 					</div>
 					<div class="flex items-center gap-2 mb-4 relative z-10">
 						<svg
-							class="w-6 h-6 text-[#c084fc]"
+							class="w-6 h-6 text-[var(--theme-color-primary)]"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							><path
@@ -359,7 +366,7 @@ import Layout from "../layouts/Layout.astro";
 							></path></svg
 						>
 						<span
-							class="text-[#c084fc] text-sm font-semibold tracking-wider uppercase"
+							class="text-[var(--theme-color-primary)] text-sm font-semibold tracking-wider uppercase"
 							>Proyecto Ganador</span
 						>
 					</div>
@@ -375,15 +382,15 @@ import Layout from "../layouts/Layout.astro";
 					</p>
 					<div class="mt-6 flex flex-wrap gap-2 relative z-10">
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
 							>Educación</span
 						>
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
 							>IA</span
 						>
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
 							>Computer Vision</span
 						>
 					</div>
@@ -393,7 +400,7 @@ import Layout from "../layouts/Layout.astro";
 				<div class="glow-card order-3 flex flex-col justify-center h-full min-h-[220px]">
 					<div class="flex items-center gap-2 mb-2">
 						<svg
-							class="w-4 h-4 text-[#38bdf8]"
+							class="w-4 h-4 text-[var(--theme-color-secondary)]"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							><path
@@ -401,7 +408,7 @@ import Layout from "../layouts/Layout.astro";
 							></path></svg
 						>
 						<span
-							class="text-[#38bdf8] text-sm font-semibold tracking-wider uppercase"
+							class="text-[var(--theme-color-secondary)] text-sm font-semibold tracking-wider uppercase"
 							>Tercer Lugar</span
 						>
 					</div>
@@ -414,7 +421,7 @@ import Layout from "../layouts/Layout.astro";
 					</p>
 					<div class="mt-4 flex gap-2">
 						<span
-							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
+							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
 							>Fintech</span
 						>
 					</div>
@@ -427,11 +434,11 @@ import Layout from "../layouts/Layout.astro";
 			<div class="container-custom reveal">
 				<div class="glow-card glow-card--cta text-center relative">
 					<div
-						class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[#c084fc]/15 rounded-full blur-[100px] animate-float"
+						class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"
 					>
 					</div>
 					<div
-						class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[#818cf8]/15 rounded-full blur-[100px] animate-float-delayed"
+						class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"
 					>
 					</div>
 					<div class="relative z-10">
@@ -447,7 +454,7 @@ import Layout from "../layouts/Layout.astro";
 						</p>
 						<a
 							href="/inscripcion"
-							class="inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#c084fc] to-[#818cf8] hover:shadow-[0_0_60px_rgba(192,132,252,0.4)] transition-all duration-500 hover:scale-105 text-lg cursor-pointer"
+							class="btn-animate-rgb inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white text-lg cursor-pointer"
 						>
 							Inscríbete Ahora
 							<svg
@@ -474,43 +481,39 @@ import Layout from "../layouts/Layout.astro";
 			position: absolute;
 			border-radius: 50%;
 			filter: blur(120px);
-			animation: orb-float 24s ease-in-out infinite;
 		}
 		.hero-orb--purple {
 			width: 700px;
 			height: 700px;
-			background: radial-gradient(
-				circle,
-				rgba(192, 132, 252, 0.4),
-				transparent 65%
-			);
 			top: -300px;
 			left: 50%;
 			transform: translateX(-50%);
+			background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+			opacity: 0.25;
+			animation: orb-float 24s ease-in-out infinite;
+			transition: background 0.5s ease;
 		}
 		.hero-orb--blue {
 			width: 500px;
 			height: 500px;
-			background: radial-gradient(
-				circle,
-				rgba(56, 189, 248, 0.2),
-				transparent 65%
-			);
 			bottom: -150px;
 			left: -150px;
+			background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+			opacity: 0.15;
+			animation: orb-float 24s ease-in-out infinite;
 			animation-delay: -3s;
+			transition: background 0.5s ease;
 		}
 		.hero-orb--pink {
 			width: 400px;
 			height: 400px;
-			background: radial-gradient(
-				circle,
-				rgba(129, 140, 248, 0.25),
-				transparent 65%
-			);
 			bottom: -50px;
 			right: -80px;
+			background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+			opacity: 0.18;
+			animation: orb-float 24s ease-in-out infinite;
 			animation-delay: -5s;
+			transition: background 0.5s ease;
 		}
 		/* Rotating ring decoration */
 		.hero-ring {
@@ -560,15 +563,15 @@ import Layout from "../layouts/Layout.astro";
 		.hero-title {
 			color: white;
 			text-shadow:
-				0 0 80px rgba(192, 132, 252, 0.3),
-				0 0 160px rgba(192, 132, 252, 0.1);
+				0 0 80px var(--theme-color-glow),
+				0 0 160px rgba(255, 255, 255, 0.05);
 		}
 		.animate-gradient {
 			background-size: 200% auto;
 			animation: gradient-shift 20s ease-in-out infinite;
 		}
 
-		/* ===== GLOW CARD SYSTEM ===== */
+				/* ===== GLOW CARD SYSTEM ===== */
 		.glow-card {
 			position: relative;
 			border-radius: 1.25rem;
@@ -577,7 +580,7 @@ import Layout from "../layouts/Layout.astro";
 				rgba(255, 255, 255, 0.06),
 				rgba(255, 255, 255, 0.02)
 			);
-			border: 1px solid rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.08);
 			padding: 1.75rem;
 			overflow: hidden;
 			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -594,9 +597,8 @@ import Layout from "../layouts/Layout.astro";
 			background: linear-gradient(
 				90deg,
 				transparent,
-				rgba(192, 132, 252, 0.6),
-				rgba(129, 140, 248, 0.6),
-				rgba(56, 189, 248, 0.6),
+				var(--theme-color-primary),
+				var(--theme-color-secondary),
 				transparent
 			);
 			opacity: 0.5;
@@ -612,7 +614,7 @@ import Layout from "../layouts/Layout.astro";
 			height: 200%;
 			background: radial-gradient(
 				circle at 30% 30%,
-				rgba(192, 132, 252, 0.08),
+				var(--theme-color-glow),
 				transparent 50%
 			);
 			opacity: 0;
@@ -620,7 +622,7 @@ import Layout from "../layouts/Layout.astro";
 			pointer-events: none;
 		}
 		.glow-card:hover {
-			border-color: rgba(192, 132, 252, 0.3);
+			border-color: var(--theme-color-primary);
 			background: linear-gradient(
 				135deg,
 				rgba(255, 255, 255, 0.1),
@@ -628,8 +630,7 @@ import Layout from "../layouts/Layout.astro";
 			);
 			transform: translateY(-6px);
 			box-shadow:
-				0 0 30px rgba(192, 132, 252, 0.15),
-				0 0 60px rgba(129, 140, 248, 0.08),
+				0 0 30px var(--theme-color-glow),
 				0 20px 40px rgba(0, 0, 0, 0.4);
 		}
 		.glow-card:hover::before {
@@ -639,28 +640,26 @@ import Layout from "../layouts/Layout.astro";
 			opacity: 1;
 		}
 
-		/* Featured card (larger, more glow) */
+				/* Featured card (larger, more glow) */
 		.glow-card--featured {
 			padding: 2.5rem;
-			border-color: rgba(192, 132, 252, 0.15);
+			border-color: rgba(255, 255, 255, 0.12);
 		}
 		.glow-card--featured::before {
 			height: 2px;
 			background: linear-gradient(
 				90deg,
 				transparent,
-				#c084fc,
-				#818cf8,
-				#38bdf8,
+				var(--theme-color-primary),
+				var(--theme-color-secondary),
 				transparent
 			);
 			opacity: 0.7;
 		}
 		.glow-card--featured:hover {
-			border-color: rgba(192, 132, 252, 0.4);
+			border-color: var(--theme-color-primary);
 			box-shadow:
-				0 0 40px rgba(192, 132, 252, 0.2),
-				0 0 80px rgba(129, 140, 248, 0.1),
+				0 0 45px var(--theme-color-glow),
 				0 25px 50px rgba(0, 0, 0, 0.5);
 		}
 
@@ -674,16 +673,15 @@ import Layout from "../layouts/Layout.astro";
 		.glow-card--cta {
 			padding: 4rem 2rem;
 			border-radius: 1.5rem;
-			border-color: rgba(192, 132, 252, 0.2);
+			border-color: rgba(255, 255, 255, 0.12);
 		}
 		.glow-card--cta::before {
 			height: 2px;
 			background: linear-gradient(
 				90deg,
 				transparent,
-				#c084fc,
-				#818cf8,
-				#38bdf8,
+				var(--theme-color-primary),
+				var(--theme-color-secondary),
 				transparent
 			);
 			opacity: 0.8;
@@ -748,6 +746,38 @@ import Layout from "../layouts/Layout.astro";
 			50% {
 				transform: translateY(-30px);
 			}
+		}
+
+		/* Premium RGB Animated Buttons */
+		.btn-animate-rgb {
+			position: relative;
+			background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+			transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			z-index: 1;
+		}
+		
+		/* Volumetric dynamic shadow glow */
+		.btn-animate-rgb::before {
+			content: '';
+			position: absolute;
+			inset: -2px;
+			background: inherit;
+			background-size: inherit;
+			animation: inherit;
+			border-radius: inherit;
+			filter: blur(15px);
+			opacity: 0;
+			z-index: -1;
+			transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+		
+		.btn-animate-rgb:hover {
+			transform: scale(1.04);
+		}
+		
+		.btn-animate-rgb:hover::before {
+			opacity: 0.7;
+			transform: scale(1.02);
 		}
 	</style>
 </Layout>
