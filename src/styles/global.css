@@ -75,6 +75,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+  .reveal-delayed {
+    transition-delay: 250ms !important;
+  }
   .reveal-stagger > * {
     opacity: 0;
     transform: translateY(30px);
