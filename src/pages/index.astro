@@ -149,6 +149,65 @@ import Layout from "../layouts/Layout.astro";
 		</div>
 	</section>
 
+	<!-- QUÉ ES LA INNOVATHON -->
+	<section class="py-24 relative z-10">
+		<div class="container-custom">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+				<!-- Text Content -->
+				<div class="reveal">
+					<h3 
+						class="text-4xl md:text-5xl font-light text-white mb-6"
+						style="font-family: var(--font-display);"
+					>
+						¿Qué es la <br/>
+						<span class="font-semibold bg-gradient-to-r from-[#c084fc] via-[#818cf8] to-[#38bdf8] bg-clip-text text-transparent">Innovathon?</span>
+					</h3>
+					<div class="space-y-6 text-slate-300/80 text-lg font-light leading-relaxed">
+						<p>
+							La Innovathon es el punto de encuentro donde el talento universitario peruano converge con la tecnología de vanguardia. Durante semanas intensivas de trabajo, equipos multidisciplinarios transforman ideas disruptivas en soluciones funcionales.
+						</p>
+						<p>
+							No es solo una competencia, es una <strong>incubadora acelerada</strong>. Guiados por mentores expertos y potenciados por Inteligencia Artificial, los participantes aprenden a construir productos reales que respondan a los desafíos del mañana.
+						</p>
+					</div>
+					<div class="mt-8 flex flex-wrap gap-4">
+						<div class="flex items-center gap-2">
+							<div class="w-1.5 h-1.5 rounded-full bg-[#c084fc]"></div>
+							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Tecnología</span>
+						</div>
+						<div class="flex items-center gap-2">
+							<div class="w-1.5 h-1.5 rounded-full bg-[#818cf8]"></div>
+							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Desarrollo</span>
+						</div>
+						<div class="flex items-center gap-2">
+							<div class="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></div>
+							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Emprendimiento</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Visual Box -->
+				<div class="relative reveal-delayed">
+					<!-- Glow effects behind the image -->
+					<div class="absolute -inset-4 bg-gradient-to-tr from-[#c084fc]/10 to-[#38bdf8]/10 rounded-[2.5rem] blur-2xl animate-float"></div>
+					<div class="absolute -inset-1 bg-gradient-to-tr from-[#c084fc]/30 to-[#38bdf8]/30 rounded-[2rem] blur-sm"></div>
+					
+					<!-- Main Visual Container -->
+					<div class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-900 border border-white/10 p-2">
+						<div class="w-full h-full rounded-[1.5rem] bg-slate-800 overflow-hidden relative group">
+							<img 
+								src="/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp" 
+								alt="Innovathon 2025" 
+								class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+							/>
+							<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<!-- AUSPICIADORES -->
 	<section class="py-16 relative z-10">
 		<div class="container-custom text-center">
@@ -215,7 +274,7 @@ import Layout from "../layouts/Layout.astro";
 					<p
 						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
 					>
-						120+
+						+50
 					</p>
 					<p class="text-slate-400 text-sm mt-2">Participantes</p>
 				</div>
@@ -223,7 +282,7 @@ import Layout from "../layouts/Layout.astro";
 					<p
 						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
 					>
-						25
+						+12
 					</p>
 					<p class="text-slate-400 text-sm mt-2">Proyectos</p>
 				</div>
@@ -231,7 +290,7 @@ import Layout from "../layouts/Layout.astro";
 					<p
 						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
 					>
-						10
+						+10
 					</p>
 					<p class="text-slate-400 text-sm mt-2">Mentores</p>
 				</div>
@@ -239,26 +298,60 @@ import Layout from "../layouts/Layout.astro";
 					<p
 						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
 					>
-						48h
+						+4
 					</p>
-					<p class="text-slate-400 text-sm mt-2">De innovación</p>
+					<p class="text-slate-400 text-sm mt-2">Semanas de trabajo</p>
 				</div>
 			</div>
 
-			<!-- Proyectos ganadores -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
-				<div class="glow-card glow-card--featured">
+			<!-- Proyectos ganadores (Podium Layout) -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center reveal mt-28 mb-16 px-4 md:px-8">
+				<!-- Segundo Lugar (Izquierda) -->
+				<div class="glow-card order-2 md:order-1 flex flex-col justify-center h-full min-h-[220px]">
+					<div class="flex items-center gap-2 mb-2">
+						<svg
+							class="w-4 h-4 text-[#818cf8]"
+							fill="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
+							></path></svg
+						>
+						<span
+							class="text-[#818cf8] text-sm font-semibold tracking-wider uppercase"
+							>Segundo Lugar</span
+						>
+					</div>
+					<h4 class="text-xl font-semibold text-white mb-2">LlaMasabIA</h4>
+					<p class="text-slate-400 text-sm">
+						Plataforma eduactiva impulsada con Inteligencia Artificial para
+						las zonas rurales del Perú.
+					</p>
+					<div class="mt-4 flex gap-2">
+						<span
+							class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20"
+							>Edtech</span
+						>
+						<span
+							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
+							>IA</span
+						>
+					</div>
+				</div>
+
+				<!-- Primer Lugar (Centro, Más grande) -->
+				<div class="glow-card glow-card--featured order-1 md:order-2 md:scale-110 z-10 shadow-2xl relative min-h-[300px]">
 					<div
-						class="absolute top-0 right-0 w-48 h-48 bg-[#c084fc]/10 rounded-full blur-[80px]"
+						class="absolute top-0 right-0 w-48 h-48 bg-[#c084fc]/15 rounded-full blur-[80px] pointer-events-none"
 					>
 					</div>
 					<div
-						class="absolute bottom-0 left-0 w-32 h-32 bg-[#818cf8]/10 rounded-full blur-[60px]"
+						class="absolute bottom-0 left-0 w-32 h-32 bg-[#818cf8]/15 rounded-full blur-[60px] pointer-events-none"
 					>
 					</div>
 					<div class="flex items-center gap-2 mb-4 relative z-10">
 						<svg
-							class="w-5 h-5 text-[#c084fc]"
+							class="w-6 h-6 text-[#c084fc]"
 							fill="currentColor"
 							viewBox="0 0 24 24"
 							><path
@@ -271,417 +364,390 @@ import Layout from "../layouts/Layout.astro";
 						>
 					</div>
 					<h4 class="text-3xl font-semibold text-white mb-3 relative z-10">
-						EcoSmart AI
+						SocIAleye
 					</h4>
-					<p class="text-slate-400 leading-relaxed relative z-10">
-						Sistema inteligente de gestión de residuos urbanos que utiliza
-						visión por computadora para clasificar y optimizar la recolección de
-						basura en tiempo real.
+					<p class="text-slate-300 leading-relaxed relative z-10 text-sm">
+						Proyecto que busca fortalecer la convivencia y el bienestar en las
+						aulas mediante inteligencia artificial. Su enfoque permite
+						identificar dinámicas sociales, detectar señales de riesgo y apoyar
+						a docentes en la creación de entornos educativos más seguros e
+						inclusivos.
 					</p>
-					<div class="mt-6 flex gap-2 relative z-10">
+					<div class="mt-6 flex flex-wrap gap-2 relative z-10">
 						<span
 							class="px-3 py-1 text-xs rounded-full bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/20"
-							>Computer Vision</span
+							>Educación</span
 						>
 						<span
 							class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20"
-							>IoT</span
+							>IA</span
 						>
 						<span
 							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
-							>ML</span
+							>Computer Vision</span
 						>
 					</div>
 				</div>
-				<div class="space-y-6">
-					<div class="glow-card">
-						<div class="flex items-center gap-2 mb-2">
-							<svg
-								class="w-4 h-4 text-[#818cf8]"
-								fill="currentColor"
-								viewBox="0 0 24 24"
-								><path
-									d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
-								></path></svg
-							>
-							<span
-								class="text-[#818cf8] text-sm font-semibold tracking-wider uppercase"
-								>Segundo Lugar</span
-							>
-						</div>
-						<h4 class="text-xl font-semibold text-white mb-2">MediBot</h4>
-						<p class="text-slate-400 text-sm">
-							Chatbot médico con IA para atención primaria en zonas rurales del
-							Perú.
-						</p>
-						<div class="mt-4 flex gap-2">
-							<span
-								class="px-3 py-1 text-xs rounded-full bg-[#818cf8]/10 text-[#818cf8] border border-[#818cf8]/20"
-								>NLP</span
-							>
-							<span
-								class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
-								>Salud</span
-							>
-						</div>
-					</div>
-					<div class="glow-card">
-						<div class="flex items-center gap-2 mb-2">
-							<svg
-								class="w-4 h-4 text-[#38bdf8]"
-								fill="currentColor"
-								viewBox="0 0 24 24"
-								><path
-									d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
-								></path></svg
-							>
-							<span
-								class="text-[#38bdf8] text-sm font-semibold tracking-wider uppercase"
-								>Tercer Lugar</span
-							>
-						</div>
-						<h4 class="text-xl font-semibold text-white mb-2">AgriPredict</h4>
-						<p class="text-slate-400 text-sm">
-							Predicción de cosechas usando modelos de ML y datos satelitales
-							para agricultores.
-						</p>
-						<div class="mt-4 flex gap-2">
-							<span
-								class="px-3 py-1 text-xs rounded-full bg-[#c084fc]/10 text-[#c084fc] border border-[#c084fc]/20"
-								>ML</span
-							>
-							<span
-								class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
-								>AgriTech</span
-							>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- CTA FINAL -->
-	<section class="py-24 relative z-10">
-		<div class="container-custom reveal">
-			<div class="glow-card glow-card--cta text-center relative">
-				<div
-					class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[#c084fc]/15 rounded-full blur-[100px] animate-float"
-				>
-				</div>
-				<div
-					class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[#818cf8]/15 rounded-full blur-[100px] animate-float-delayed"
-				>
-				</div>
-				<div class="relative z-10">
-					<h3
-						class="text-3xl md:text-5xl font-light text-white mb-4"
-						style="font-family: var(--font-display);"
-					>
-						¿Listo para innovar?
-					</h3>
-					<p class="text-slate-300 text-lg mb-8 max-w-lg mx-auto font-light">
-						Sé parte de la 2da edición y transforma tus ideas en soluciones
-						reales con IA.
-					</p>
-					<a
-						href="#"
-						class="inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#c084fc] to-[#818cf8] hover:shadow-[0_0_60px_rgba(192,132,252,0.4)] transition-all duration-500 hover:scale-105 text-lg cursor-pointer"
-					>
-						Inscríbete Ahora
+				<!-- Tercer Lugar (Derecha) -->
+				<div class="glow-card order-3 flex flex-col justify-center h-full min-h-[220px]">
+					<div class="flex items-center gap-2 mb-2">
 						<svg
-							class="w-5 h-5"
-							fill="none"
-							stroke="currentColor"
+							class="w-4 h-4 text-[#38bdf8]"
+							fill="currentColor"
 							viewBox="0 0 24 24"
 							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+								d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
+							></path></svg
 						>
-					</a>
+						<span
+							class="text-[#38bdf8] text-sm font-semibold tracking-wider uppercase"
+							>Tercer Lugar</span
+						>
+					</div>
+					<h4 class="text-xl font-semibold text-white mb-2">
+						RiqchariyFinanzas
+					</h4>
+					<p class="text-slate-400 text-sm">
+						Finanzas educativas para escolares y personas iniciando en el
+						ecosistema financiero.
+					</p>
+					<div class="mt-4 flex gap-2">
+						<span
+							class="px-3 py-1 text-xs rounded-full bg-[#38bdf8]/10 text-[#38bdf8] border border-[#38bdf8]/20"
+							>Fintech</span
+						>
+					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- CTA FINAL -->
+		<section class="py-24 relative z-10">
+			<div class="container-custom reveal">
+				<div class="glow-card glow-card--cta text-center relative">
+					<div
+						class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[#c084fc]/15 rounded-full blur-[100px] animate-float"
+					>
+					</div>
+					<div
+						class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[#818cf8]/15 rounded-full blur-[100px] animate-float-delayed"
+					>
+					</div>
+					<div class="relative z-10">
+						<h3
+							class="text-3xl md:text-5xl font-light text-white mb-4"
+							style="font-family: var(--font-display);"
+						>
+							¿Listo para innovar?
+						</h3>
+						<p class="text-slate-300 text-lg mb-8 max-w-lg mx-auto font-light">
+							Sé parte de la 2da edición y transforma tus ideas en soluciones
+							reales con IA.
+						</p>
+						<a
+							href="#"
+							class="inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#c084fc] to-[#818cf8] hover:shadow-[0_0_60px_rgba(192,132,252,0.4)] transition-all duration-500 hover:scale-105 text-lg cursor-pointer"
+						>
+							Inscríbete Ahora
+							<svg
+								class="w-5 h-5"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+							>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
 	</section>
+
+	<style>
+		/* ===== HERO ===== */
+		.hero-orb {
+			position: absolute;
+			border-radius: 50%;
+			filter: blur(120px);
+			animation: orb-float 24s ease-in-out infinite;
+		}
+		.hero-orb--purple {
+			width: 700px;
+			height: 700px;
+			background: radial-gradient(
+				circle,
+				rgba(192, 132, 252, 0.4),
+				transparent 65%
+			);
+			top: -300px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.hero-orb--blue {
+			width: 500px;
+			height: 500px;
+			background: radial-gradient(
+				circle,
+				rgba(56, 189, 248, 0.2),
+				transparent 65%
+			);
+			bottom: -150px;
+			left: -150px;
+			animation-delay: -3s;
+		}
+		.hero-orb--pink {
+			width: 400px;
+			height: 400px;
+			background: radial-gradient(
+				circle,
+				rgba(129, 140, 248, 0.25),
+				transparent 65%
+			);
+			bottom: -50px;
+			right: -80px;
+			animation-delay: -5s;
+		}
+		/* Rotating ring decoration */
+		.hero-ring {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 600px;
+			height: 600px;
+			border-radius: 50%;
+			border: 1px solid rgba(192, 132, 252, 0.08);
+			animation: spin-ring 90s linear infinite;
+			pointer-events: none;
+		}
+		.hero-ring::before {
+			content: "";
+			position: absolute;
+			top: -2px;
+			left: 50%;
+			width: 4px;
+			height: 4px;
+			border-radius: 50%;
+			background: #c084fc;
+			box-shadow: 0 0 12px rgba(192, 132, 252, 0.6);
+		}
+		@keyframes spin-ring {
+			from {
+				transform: translate(-50%, -50%) rotate(0deg);
+			}
+			to {
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+		.hero-grid {
+			position: absolute;
+			inset: 0;
+			background-image:
+				linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+			background-size: 60px 60px;
+			mask-image: radial-gradient(
+				ellipse at center,
+				black 30%,
+				transparent 70%
+			);
+		}
+		.hero-title {
+			color: white;
+			text-shadow:
+				0 0 80px rgba(192, 132, 252, 0.3),
+				0 0 160px rgba(192, 132, 252, 0.1);
+		}
+		.animate-gradient {
+			background-size: 200% auto;
+			animation: gradient-shift 20s ease-in-out infinite;
+		}
+
+		/* ===== GLOW CARD SYSTEM ===== */
+		.glow-card {
+			position: relative;
+			border-radius: 1.25rem;
+			background: linear-gradient(
+				135deg,
+				rgba(255, 255, 255, 0.06),
+				rgba(255, 255, 255, 0.02)
+			);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			padding: 1.75rem;
+			overflow: hidden;
+			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+			backdrop-filter: blur(10px);
+		}
+		/* Top shimmer line */
+		.glow-card::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background: linear-gradient(
+				90deg,
+				transparent,
+				rgba(192, 132, 252, 0.6),
+				rgba(129, 140, 248, 0.6),
+				rgba(56, 189, 248, 0.6),
+				transparent
+			);
+			opacity: 0.5;
+			transition: opacity 0.5s ease;
+		}
+		/* Inner corner glow */
+		.glow-card::after {
+			content: "";
+			position: absolute;
+			top: -50%;
+			left: -50%;
+			width: 200%;
+			height: 200%;
+			background: radial-gradient(
+				circle at 30% 30%,
+				rgba(192, 132, 252, 0.08),
+				transparent 50%
+			);
+			opacity: 0;
+			transition: opacity 0.5s ease;
+			pointer-events: none;
+		}
+		.glow-card:hover {
+			border-color: rgba(192, 132, 252, 0.3);
+			background: linear-gradient(
+				135deg,
+				rgba(255, 255, 255, 0.1),
+				rgba(255, 255, 255, 0.04)
+			);
+			transform: translateY(-6px);
+			box-shadow:
+				0 0 30px rgba(192, 132, 252, 0.15),
+				0 0 60px rgba(129, 140, 248, 0.08),
+				0 20px 40px rgba(0, 0, 0, 0.4);
+		}
+		.glow-card:hover::before {
+			opacity: 1;
+		}
+		.glow-card:hover::after {
+			opacity: 1;
+		}
+
+		/* Featured card (larger, more glow) */
+		.glow-card--featured {
+			padding: 2.5rem;
+			border-color: rgba(192, 132, 252, 0.15);
+		}
+		.glow-card--featured::before {
+			height: 2px;
+			background: linear-gradient(
+				90deg,
+				transparent,
+				#c084fc,
+				#818cf8,
+				#38bdf8,
+				transparent
+			);
+			opacity: 0.7;
+		}
+		.glow-card--featured:hover {
+			border-color: rgba(192, 132, 252, 0.4);
+			box-shadow:
+				0 0 40px rgba(192, 132, 252, 0.2),
+				0 0 80px rgba(129, 140, 248, 0.1),
+				0 25px 50px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Stat card */
+		.glow-card--stat {
+			text-align: center;
+			padding: 2rem 1rem;
+		}
+
+		/* CTA card */
+		.glow-card--cta {
+			padding: 4rem 2rem;
+			border-radius: 1.5rem;
+			border-color: rgba(192, 132, 252, 0.2);
+		}
+		.glow-card--cta::before {
+			height: 2px;
+			background: linear-gradient(
+				90deg,
+				transparent,
+				#c084fc,
+				#818cf8,
+				#38bdf8,
+				transparent
+			);
+			opacity: 0.8;
+		}
+		.glow-card--cta::after {
+			opacity: 0.5;
+		}
+
+		.highlight-icon {
+			font-size: 1.75rem;
+			margin-bottom: 0.5rem;
+			text-align: center;
+		}
+
+		/* ===== SPONSORS ===== */
+		.sponsor-logo {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.5rem 1rem;
+			transition: all 0.4s ease;
+		}
+		.sponsor-logo:hover {
+			transform: scale(1.15);
+			filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.3));
+		}
+
+		/* ===== ANIMATIONS ===== */
+		@keyframes orb-float {
+			0%,
+			100% {
+				transform: translateY(0px) translateX(-50%);
+			}
+			50% {
+				transform: translateY(-30px) translateX(-50%);
+			}
+		}
+		@keyframes gradient-shift {
+			0% {
+				background-position: 0% center;
+			}
+			50% {
+				background-position: 200% center;
+			}
+			100% {
+				background-position: 0% center;
+			}
+		}
+
+		.animate-float {
+			animation: float-simple 12s ease-in-out infinite;
+		}
+		.animate-float-delayed {
+			animation: float-simple 12s ease-in-out infinite;
+			animation-delay: -6s;
+		}
+		@keyframes float-simple {
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-30px);
+			}
+		}
+	</style>
 </Layout>
-
-<style>
-	/* ===== HERO ===== */
-	.hero-orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(120px);
-		animation: orb-float 24s ease-in-out infinite;
-	}
-	.hero-orb--purple {
-		width: 700px;
-		height: 700px;
-		background: radial-gradient(
-			circle,
-			rgba(192, 132, 252, 0.4),
-			transparent 65%
-		);
-		top: -300px;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-	.hero-orb--blue {
-		width: 500px;
-		height: 500px;
-		background: radial-gradient(
-			circle,
-			rgba(56, 189, 248, 0.2),
-			transparent 65%
-		);
-		bottom: -150px;
-		left: -150px;
-		animation-delay: -3s;
-	}
-	.hero-orb--pink {
-		width: 400px;
-		height: 400px;
-		background: radial-gradient(
-			circle,
-			rgba(129, 140, 248, 0.25),
-			transparent 65%
-		);
-		bottom: -50px;
-		right: -80px;
-		animation-delay: -5s;
-	}
-	/* Rotating ring decoration */
-	.hero-ring {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 600px;
-		height: 600px;
-		border-radius: 50%;
-		border: 1px solid rgba(192, 132, 252, 0.08);
-		animation: spin-ring 90s linear infinite;
-		pointer-events: none;
-	}
-	.hero-ring::before {
-		content: "";
-		position: absolute;
-		top: -2px;
-		left: 50%;
-		width: 4px;
-		height: 4px;
-		border-radius: 50%;
-		background: #c084fc;
-		box-shadow: 0 0 12px rgba(192, 132, 252, 0.6);
-	}
-	@keyframes spin-ring {
-		from {
-			transform: translate(-50%, -50%) rotate(0deg);
-		}
-		to {
-			transform: translate(-50%, -50%) rotate(360deg);
-		}
-	}
-	.hero-grid {
-		position: absolute;
-		inset: 0;
-		background-image:
-			linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-		background-size: 60px 60px;
-		mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
-	}
-	.hero-title {
-		color: white;
-		text-shadow:
-			0 0 80px rgba(192, 132, 252, 0.3),
-			0 0 160px rgba(192, 132, 252, 0.1);
-	}
-	.animate-gradient {
-		background-size: 200% auto;
-		animation: gradient-shift 20s ease-in-out infinite;
-	}
-
-	/* ===== GLOW CARD SYSTEM ===== */
-	.glow-card {
-		position: relative;
-		border-radius: 1.25rem;
-		background: linear-gradient(
-			135deg,
-			rgba(255, 255, 255, 0.06),
-			rgba(255, 255, 255, 0.02)
-		);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		padding: 1.75rem;
-		overflow: hidden;
-		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		backdrop-filter: blur(10px);
-	}
-	/* Top shimmer line */
-	.glow-card::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 1px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(192, 132, 252, 0.6),
-			rgba(129, 140, 248, 0.6),
-			rgba(56, 189, 248, 0.6),
-			transparent
-		);
-		opacity: 0.5;
-		transition: opacity 0.5s ease;
-	}
-	/* Inner corner glow */
-	.glow-card::after {
-		content: "";
-		position: absolute;
-		top: -50%;
-		left: -50%;
-		width: 200%;
-		height: 200%;
-		background: radial-gradient(
-			circle at 30% 30%,
-			rgba(192, 132, 252, 0.08),
-			transparent 50%
-		);
-		opacity: 0;
-		transition: opacity 0.5s ease;
-		pointer-events: none;
-	}
-	.glow-card:hover {
-		border-color: rgba(192, 132, 252, 0.3);
-		background: linear-gradient(
-			135deg,
-			rgba(255, 255, 255, 0.1),
-			rgba(255, 255, 255, 0.04)
-		);
-		transform: translateY(-6px);
-		box-shadow:
-			0 0 30px rgba(192, 132, 252, 0.15),
-			0 0 60px rgba(129, 140, 248, 0.08),
-			0 20px 40px rgba(0, 0, 0, 0.4);
-	}
-	.glow-card:hover::before {
-		opacity: 1;
-	}
-	.glow-card:hover::after {
-		opacity: 1;
-	}
-
-	/* Featured card (larger, more glow) */
-	.glow-card--featured {
-		padding: 2.5rem;
-		border-color: rgba(192, 132, 252, 0.15);
-	}
-	.glow-card--featured::before {
-		height: 2px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			#c084fc,
-			#818cf8,
-			#38bdf8,
-			transparent
-		);
-		opacity: 0.7;
-	}
-	.glow-card--featured:hover {
-		border-color: rgba(192, 132, 252, 0.4);
-		box-shadow:
-			0 0 40px rgba(192, 132, 252, 0.2),
-			0 0 80px rgba(129, 140, 248, 0.1),
-			0 25px 50px rgba(0, 0, 0, 0.5);
-	}
-
-	/* Stat card */
-	.glow-card--stat {
-		text-align: center;
-		padding: 2rem 1rem;
-	}
-
-	/* CTA card */
-	.glow-card--cta {
-		padding: 4rem 2rem;
-		border-radius: 1.5rem;
-		border-color: rgba(192, 132, 252, 0.2);
-	}
-	.glow-card--cta::before {
-		height: 2px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			#c084fc,
-			#818cf8,
-			#38bdf8,
-			transparent
-		);
-		opacity: 0.8;
-	}
-	.glow-card--cta::after {
-		opacity: 0.5;
-	}
-
-	.highlight-icon {
-		font-size: 1.75rem;
-		margin-bottom: 0.5rem;
-		text-align: center;
-	}
-
-	/* ===== SPONSORS ===== */
-	.sponsor-logo {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.5rem 1rem;
-		transition: all 0.4s ease;
-	}
-	.sponsor-logo:hover {
-		transform: scale(1.15);
-		filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.3));
-	}
-
-	/* ===== ANIMATIONS ===== */
-	@keyframes orb-float {
-		0%,
-		100% {
-			transform: translateY(0px) translateX(-50%);
-		}
-		50% {
-			transform: translateY(-30px) translateX(-50%);
-		}
-	}
-	@keyframes gradient-shift {
-		0% {
-			background-position: 0% center;
-		}
-		50% {
-			background-position: 200% center;
-		}
-		100% {
-			background-position: 0% center;
-		}
-	}
-
-	.animate-float {
-		animation: float-simple 12s ease-in-out infinite;
-	}
-	.animate-float-delayed {
-		animation: float-simple 12s ease-in-out infinite;
-		animation-delay: -6s;
-	}
-	@keyframes float-simple {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-30px);
-		}
-	}
-</style>
