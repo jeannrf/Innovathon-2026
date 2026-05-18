@@ -177,8 +177,8 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     color: white;
     text-decoration: none;
     border-radius: 0.625rem;
-    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.8), oklch(0.72 0.16 250 / 0.8));
-    border: 1px solid oklch(0.72 0.19 290 / 0.3);
+    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
   }
@@ -186,8 +186,8 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     .navbar__cta { display: inline-flex; }
   }
   .navbar__cta:hover {
-    background: linear-gradient(135deg, oklch(0.72 0.19 290), oklch(0.72 0.16 250));
-    box-shadow: 0 0 30px oklch(0.72 0.19 290 / 0.3);
+    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+    box-shadow: 0 0 25px var(--theme-color-primary);
     transform: translateY(-1px);
   }
 
@@ -282,12 +282,12 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     color: white;
     text-decoration: none;
     border-radius: 0.75rem;
-    background: linear-gradient(135deg, oklch(0.72 0.19 290 / 0.8), oklch(0.72 0.16 250 / 0.8));
+    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
     transition: all 0.3s ease;
     cursor: pointer;
   }
   .navbar__mobile-cta:hover {
-    background: linear-gradient(135deg, oklch(0.72 0.19 290), oklch(0.72 0.16 250));
+    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
   }
 </style>
 

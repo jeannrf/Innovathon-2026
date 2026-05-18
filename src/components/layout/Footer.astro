@@ -194,9 +194,8 @@ const socialLinks = [
     background: linear-gradient(
       90deg,
       transparent,
-      oklch(0.72 0.19 290 / 0.5),
-      oklch(0.72 0.16 250 / 0.5),
-      oklch(0.78 0.14 210 / 0.5),
+      var(--theme-color-primary),
+      var(--theme-color-secondary),
       transparent
     );
   }
@@ -272,10 +271,10 @@ const socialLinks = [
   }
   .footer__social-link:hover {
     color: white;
-    background: oklch(0.72 0.19 290 / 0.15);
-    border-color: oklch(0.72 0.19 290 / 0.3);
+    background: var(--theme-color-glow);
+    border-color: var(--theme-color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px oklch(0.72 0.19 290 / 0.15);
+    box-shadow: 0 4px 16px var(--theme-color-glow);
   }
 
   .footer__heading {
@@ -303,7 +302,7 @@ const socialLinks = [
     transition: all 0.25s ease;
   }
   .footer__link:hover {
-    color: oklch(0.8 0.15 290);
+    color: var(--theme-color-primary);
   }
 
   .footer__contact-item {
