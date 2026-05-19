@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="hero-grid"></div>
 		
 		<div class="container-custom relative z-10 max-w-4xl">
-			<h1 class="text-5xl md:text-6xl font-black text-center mb-16 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" style="font-family: var(--font-display);">
+			<h1 class="text-4xl md:text-5xl font-black text-center mb-16 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
 				Beneficios
 			</h1>
 			
@@ -36,7 +36,7 @@ import Layout from '../layouts/Layout.astro';
 					<h3 class="text-lg text-slate-200 mb-3 font-semibold">Desarrollo de Ideas y Validación de MVPs</h3>
 					<div class="glow-card flex flex-col md:flex-row items-center gap-6 p-6 md:p-8">
 						<div class="flex-1 md:border-r border-white/10 md:pr-8 text-center md:text-left mb-6 md:mb-0">
-							<p class="text-slate-300 font-light italic">
+							<p class="text-slate-300 font-light">
 								Diseña y valida soluciones a problemas reales. Estructura tu proyecto desde cero trabajando en equipo y utilizando metodologías ágiles
 							</p>
 						</div>
@@ -78,7 +78,7 @@ import Layout from '../layouts/Layout.astro';
 							<span class="text-sm font-semibold text-white leading-tight">Certificación oficial</span>
 						</div>
 						<div class="flex-1 text-center md:text-left">
-							<p class="text-slate-300 font-light italic">
+							<p class="text-slate-300 font-light">
 								Potencia tu perfil profesional. Obtén un certificado oficial respaldado por la universidad que valida tus horas y competencias técnicas.
 							</p>
 						</div>
@@ -90,7 +90,7 @@ import Layout from '../layouts/Layout.astro';
 					<h3 class="text-lg text-slate-200 mb-3 font-semibold">Mentorías Reales y Acceso a Expertos (Networking)</h3>
 					<div class="glow-card flex flex-col md:flex-row items-center gap-6 p-6 md:p-8">
 						<div class="flex-1 md:border-r border-white/10 md:pr-8 text-center md:text-left mb-6 md:mb-0">
-							<p class="text-slate-300 font-light italic">
+							<p class="text-slate-300 font-light">
 								Conéctate con expertos de la industria. Recibe feedback estratégico en sesiones exclusivas de IA, emprendimiento y diseño de soluciones.
 							</p>
 						</div>
@@ -131,13 +131,173 @@ import Layout from '../layouts/Layout.astro';
 							<span class="text-sm font-semibold text-white leading-tight">Premios y visibilidad</span>
 						</div>
 						<div class="flex-1 text-center md:text-left">
-							<p class="text-slate-300 font-light italic">
+							<p class="text-slate-300 font-light">
 								Impulsa tu proyecto al siguiente nivel. Compite por premios en efectivo, herramientas tecnológicas y el interés de incubadoras clave.
 							</p>
 						</div>
 					</div>
 				</div>
 
+			</div>
+
+			<!-- Premios Section -->
+			<div class="mt-24 reveal-stagger">
+				<h2 class="text-3xl md:text-4xl font-black text-center mb-24 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 10px var(--theme-color-glow));">
+					¡Premiamos el logro de cada ganador del equipo!
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- 3.er Puesto -->
+					<div class="glow-card flex flex-col items-center text-center p-8 relative overflow-hidden group">
+						<div class="absolute top-10 left-1/2 -translate-x-1/2 w-24 h-24 bg-[#d97706] opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity duration-500"></div>
+						
+						<svg class="w-20 h-20 mb-6 text-[#d97706] relative z-10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+							<circle cx="12" cy="15" r="7" />
+							<path d="M8.5 9L4 2h4l4 5" />
+							<path d="M15.5 9L20 2h-4l-4 5" />
+							<text x="12" y="17.5" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="currentColor" stroke="none">3</text>
+						</svg>
+
+						<h3 class="text-2xl font-bold text-[#d97706] mb-2">3.er Puesto</h3>
+						<p class="text-slate-300 font-medium mb-6 leading-tight">Reconocimiento especial<br>y premio menor</p>
+						
+						<div class="w-full h-px bg-white/10 mb-6"></div>
+						
+						<div class="space-y-2 mb-10">
+							<p class="text-slate-200 font-semibold text-lg">S/500</p>
+							<p class="text-slate-400 font-light text-sm">Mochilas (4)</p>
+							<p class="text-slate-400 font-light text-sm">Audífonos (4)</p>
+						</div>
+						
+						<!-- Backpack & Headphones SVG -->
+						<svg class="w-14 h-14 text-slate-500 mt-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<mask id="backpack-mask">
+									<rect width="24" height="24" fill="white" />
+									<!-- Earpad Cutouts (0.75px padding around earpads & joints) -->
+									<rect x="2.25" y="9.25" width="4.5" height="8.5" rx="2.25" fill="black" />
+									<rect x="17.25" y="9.25" width="4.5" height="8.5" rx="2.25" fill="black" />
+									
+									<!-- Front pocket border cutout (thinner lines) -->
+									<rect x="8.5" y="16.5" width="7" height="5.5" rx="1.5" fill="none" stroke="black" stroke-width="0.75" />
+									<!-- Front pocket horizontal zipper track -->
+									<line x1="8.5" y1="19" x2="15.5" y2="19" stroke="black" stroke-width="0.75" stroke-linecap="round" />
+									<!-- Zipper tab -->
+									<rect x="13.5" y="19" width="0.75" height="2.5" rx="0.25" fill="black" />
+								</mask>
+							</defs>
+
+							<!-- Headphones Headband -->
+							<path d="M 4.5 9 A 7.5 7.5 0 0 1 19.5 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+							<!-- Headphones Joints -->
+							<rect x="3.75" y="8.5" width="1.5" height="2" rx="0.5" fill="currentColor" />
+							<rect x="18.75" y="8.5" width="1.5" height="2" rx="0.5" fill="currentColor" />
+
+							<!-- Headphones Earpads -->
+							<rect x="3" y="10" width="3" height="7" rx="1.5" fill="currentColor"/>
+							<rect x="18" y="10" width="3" height="7" rx="1.5" fill="currentColor"/>
+
+							<!-- Backpack Group with Mask -->
+							<g mask="url(#backpack-mask)">
+								<!-- Backpack Side Pockets -->
+								<rect x="3.25" y="18.5" width="2" height="4.5" rx="0.75" fill="currentColor"/>
+								<rect x="18.75" y="18.5" width="2" height="4.5" rx="0.75" fill="currentColor"/>
+								
+								<!-- Backpack Main Body -->
+								<path d="M 6 14 A 6 5 0 0 1 18 14 V 22 A 1 1 0 0 1 17 23 H 7 A 1 1 0 0 1 6 22 Z" fill="currentColor"/>
+								
+								<!-- Backpack Handle -->
+								<path d="M 10.5 8.4 A 1.5 1.5 0 0 1 13.5 8.4" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+							</g>
+						</svg>
+					</div>
+
+					<!-- 2.do Puesto -->
+					<div class="glow-card flex flex-col items-center text-center p-8 relative overflow-hidden group">
+						<div class="absolute top-10 left-1/2 -translate-x-1/2 w-24 h-24 bg-[#94a3b8] opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity duration-500"></div>
+						
+						<svg class="w-20 h-20 mb-6 text-[#94a3b8] relative z-10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+							<circle cx="12" cy="15" r="7" />
+							<path d="M8.5 9L4 2h4l4 5" />
+							<path d="M15.5 9L20 2h-4l-4 5" />
+							<text x="12" y="17.5" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="currentColor" stroke="none">2</text>
+						</svg>
+
+						<h3 class="text-2xl font-bold text-[#94a3b8] mb-2">2.do Puesto</h3>
+						<p class="text-slate-300 font-medium mb-6 leading-tight">Reconocimiento especial<br>y premio menor</p>
+						
+						<div class="w-full h-px bg-white/10 mb-6"></div>
+						
+						<div class="space-y-2 mb-10">
+							<p class="text-slate-200 font-semibold text-lg">S/1000</p>
+							<p class="text-slate-400 font-light text-sm">Monitores (4)</p>
+						</div>
+						
+						<!-- Solid Monitor SVG -->
+						<svg class="w-14 h-14 text-slate-500 mt-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<!-- Monitor Frame and Inner Screen with Button Hole -->
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 3C2.67157 3 2 3.67157 2 4.5V14.5C2 15.3284 2.67157 16 3.5 16H20.5C21.3284 16 22 15.3284 22 14.5V4.5C22 3.67157 21.3284 3 20.5 3H3.5ZM3 4H21V13H3V4Z M 12 13.75 A 0.75 0.75 0 0 0 12 15.25 A 0.75 0.75 0 0 0 12 13.75" fill="currentColor"/>
+							<!-- Curved Stand Base -->
+							<path d="M 10.5 16 C 10.5 18.5, 9.5 19.5, 7.5 19.5 A 1.5 1.5 0 0 0 7.5 22.5 H 16.5 A 1.5 1.5 0 0 0 16.5 19.5 C 14.5 19.5, 13.5 18.5, 13.5 16 Z" fill="currentColor"/>
+						</svg>
+					</div>
+
+					<!-- 1.er Puesto -->
+					<div class="glow-card flex flex-col items-center text-center p-8 relative overflow-hidden group">
+						<div class="absolute top-10 left-1/2 -translate-x-1/2 w-24 h-24 bg-[#fbbf24] opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity duration-500"></div>
+						
+						<!-- Medal SVG -->
+						<svg class="w-20 h-20 mb-6 text-[#fbbf24] relative z-10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+							<circle cx="12" cy="15" r="7" />
+							<path d="M8.5 9L4 2h4l4 5" />
+							<path d="M15.5 9L20 2h-4l-4 5" />
+							<text x="12" y="17.5" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="currentColor" stroke="none">1</text>
+						</svg>
+                        
+						<h3 class="text-2xl font-bold text-[#fbbf24] mb-2">1.er Puesto</h3>
+						<p class="text-slate-300 font-medium mb-6">Premio principal</p>
+						
+						<div class="w-full h-px bg-white/10 mb-6"></div>
+						
+						<div class="space-y-2 mb-10">
+							<p class="text-slate-200 font-semibold text-lg">S/2000</p>
+							<p class="text-slate-400 font-light text-sm">Incubación del proyecto</p>
+							<p class="text-slate-400 font-light text-sm">Cooler (4)</p>
+						</div>
+						
+						<!-- Solid Frame PC Cooler Fan SVG -->
+						<svg class="w-14 h-14 text-slate-500 mt-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<!-- Outer Frame with Cutouts -->
+							<path fill-rule="evenodd" clip-rule="evenodd" d="
+								M 3 1 h 18 a 2 2 0 0 1 2 2 v 18 a 2 2 0 0 1 -2 2 h -18 a 2 2 0 0 1 -2 -2 v -18 a 2 2 0 0 1 2 -2 z 
+								M 12 2.5 A 9.5 9.5 0 1 0 12 21.5 A 9.5 9.5 0 1 0 12 2.5 z
+								M 4.5 3.5 a 1 1 0 1 0 0 2 a 1 1 0 1 0 0 -2 z
+								M 19.5 3.5 a 1 1 0 1 0 0 2 a 1 1 0 1 0 0 -2 z
+								M 4.5 18.5 a 1 1 0 1 0 0 2 a 1 1 0 1 0 0 -2 z
+								M 19.5 18.5 a 1 1 0 1 0 0 2 a 1 1 0 1 0 0 -2 z
+							" fill="currentColor" />
+							
+							<!-- Connector Tab -->
+							<rect x="22.5" y="17" width="1.5" height="2.5" rx="0.5" fill="currentColor"/>
+
+							<!-- Central Hub -->
+							<circle cx="12" cy="12" r="3.5" fill="currentColor"/>
+
+							<!-- 8 Fat Slanted Fan Blades -->
+							<g fill="currentColor">
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(45 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(90 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(135 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(180 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(225 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(270 12 12)" />
+								<path d="M 11.5 8.6 C 12 5.5, 13.5 4.5, 13 3.0 A 9 9 0 0 1 17.5 5.0 C 16 6.5, 14.5 8, 13.5 9.0 Z" transform="rotate(315 12 12)" />
+							</g>
+						</svg>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
