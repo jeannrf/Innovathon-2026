@@ -242,28 +242,34 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 			</div>
 
-			<!-- Flujo Vertical: Video/GIF Tutorial Simulators -->
+			<!-- Flujo Vertical: Video/GIF Tutorial Simulator -->
 			<div class="space-y-12 max-w-3xl mx-auto pt-8">
 				<div class="text-center mb-6">
-					<p class="text-slate-400 text-base font-light">Mira estos videos tutoriales rápidos para guiarte en el proceso:</p>
+					<p class="text-slate-400 text-base font-light">Mira nuestro videotutorial para guiarte paso a paso en el proceso de registro:</p>
 				</div>
 
-				<!-- Video/GIF Slot 1 -->
+				<!-- Video/GIF Slot -->
 				<div class="space-y-4">
 					<div class="flex items-center justify-between px-2">
 						<span class="text-slate-300 text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
-							<span class="w-2.5 h-2.5 rounded-full bg-[var(--theme-color-primary)]"></span>
-							Paso 1: Registro Individual y Creación de Cuenta
+							<span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]"></span>
+							Tutorial de Inscripción: Guía Completa Paso a Paso
 						</span>
-						<span class="text-xs text-slate-500 font-mono">01:45</span>
+						<span class="text-xs text-slate-500 font-mono">03:30</span>
 					</div>
 					
-					<div class="tutorial-card group relative aspect-video w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_20px_var(--theme-color-primary)]">
-						<!-- Skeleton Lines -->
-						<div class="absolute inset-0 flex flex-col justify-between p-6 opacity-20">
-							<div class="flex items-center gap-3">
-								<div class="w-8 h-8 rounded-full bg-white/20 animate-pulse"></div>
-								<div class="w-32 h-4 rounded bg-white/20 animate-pulse"></div>
+					<div class="tutorial-card group relative aspect-video w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_25px_var(--theme-color-glow)]">
+						<!-- Skeleton Lines / Mock UI -->
+						<div class="absolute inset-0 flex flex-col justify-between p-6 opacity-25">
+							<div class="flex justify-between items-center">
+								<div class="flex items-center gap-3">
+									<div class="w-8 h-8 rounded-full bg-white/20 animate-pulse"></div>
+									<div class="w-32 h-4 rounded bg-white/20 animate-pulse"></div>
+								</div>
+								<div class="flex gap-2">
+									<div class="w-4 h-4 rounded bg-white/20"></div>
+									<div class="w-4 h-4 rounded bg-white/20"></div>
+								</div>
 							</div>
 							<div class="space-y-3">
 								<div class="w-3/4 h-3 rounded bg-white/20 animate-pulse"></div>
@@ -271,45 +277,11 @@ import Layout from '../layouts/Layout.astro';
 							</div>
 						</div>
 						<!-- Radial overlay -->
-						<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+						<div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
 						
 						<!-- Play Button -->
-						<div class="relative z-10 w-16 h-16 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_var(--theme-color-glow)]">
-							<svg class="w-6 h-6 text-[var(--theme-color-primary)] ml-1" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M8 5v14l11-7z" />
-							</svg>
-						</div>
-					</div>
-				</div>
-
-				<!-- Video/GIF Slot 2 -->
-				<div class="space-y-4">
-					<div class="flex items-center justify-between px-2">
-						<span class="text-slate-300 text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
-							<span class="w-2.5 h-2.5 rounded-full bg-[var(--theme-color-secondary)]"></span>
-							Paso 2: Registro del Equipo y Selección de Retos
-						</span>
-						<span class="text-xs text-slate-500 font-mono">02:15</span>
-					</div>
-					
-					<div class="tutorial-card group relative aspect-video w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_20px_var(--theme-color-primary)]">
-						<!-- Skeleton Lines -->
-						<div class="absolute inset-0 flex flex-col justify-between p-6 opacity-20">
-							<div class="flex items-center gap-3">
-								<div class="w-8 h-8 rounded-full bg-white/20 animate-pulse"></div>
-								<div class="w-32 h-4 rounded bg-white/20 animate-pulse"></div>
-							</div>
-							<div class="space-y-3">
-								<div class="w-3/4 h-3 rounded bg-white/20 animate-pulse"></div>
-								<div class="w-1/2 h-3 rounded bg-white/20 animate-pulse"></div>
-							</div>
-						</div>
-						<!-- Radial overlay -->
-						<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-						
-						<!-- Play Button -->
-						<div class="relative z-10 w-16 h-16 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-secondary)]/30 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_var(--theme-color-glow)]">
-							<svg class="w-6 h-6 text-[var(--theme-color-secondary)] ml-1" fill="currentColor" viewBox="0 0 24 24">
+						<div class="relative z-10 w-20 h-20 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_35px_var(--theme-color-glow)]">
+							<svg class="w-8 h-8 text-[var(--theme-color-primary)] ml-1 transition-colors group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
 								<path d="M8 5v14l11-7z" />
 							</svg>
 						</div>
