@@ -2,11 +2,433 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Cómo Participar">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">¿Cómo Participar?</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irá la guía paso a paso.</p>
+<Layout title="Cómo Participar | Innovathon 2026">
+	<!-- Hero Section -->
+	<section class="relative pt-24 pb-12 overflow-hidden min-h-[40vh] flex items-center justify-center">
+		<!-- Background Orbs and Grid (Consistent with main template) -->
+		<div class="hero-orb hero-orb--primary"></div>
+		<div class="hero-orb hero-orb--secondary"></div>
+		<div class="hero-grid"></div>
+
+		<div class="container-custom relative z-10 max-w-5xl text-center reveal">
+			<span class="section-label">Proceso y Requisitos</span>
+			<h1 
+				class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+				style="font-family: var(--font-display);"
+			>
+				¿Cómo <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent transition-all duration-500">Participar?</span>
+			</h1>
+			<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+				Sigue esta guía paso a paso y asegura tu lugar en la Innovathon.
+			</p>
 		</div>
 	</section>
+
+	<div class="container-custom max-w-5xl pb-32 relative z-10 space-y-24">
+		
+		<!-- Requisitos Section -->
+		<section class="reveal">
+			<div class="text-center mb-10">
+				<h2 
+					class="text-3xl md:text-4xl font-light text-white"
+					style="font-family: var(--font-display);"
+				>
+					Requisitos
+				</h2>
+				<p class="text-slate-400 text-sm mt-2">Asegúrate de cumplir con los siguientes puntos antes de iniciar el registro.</p>
+			</div>
+
+			<!-- Glassmorphism Card -->
+			<div class="glow-card p-8 md:p-12 relative overflow-hidden">
+				<div class="absolute -top-24 -right-24 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"></div>
+				
+				<ul class="space-y-6 md:space-y-8 font-light text-slate-300 text-base md:text-lg">
+					<li class="flex items-start gap-4">
+						<span class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center mt-1 text-[var(--theme-color-primary)]">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</span>
+						<div>
+							<strong class="text-white font-semibold block mb-0.5">Estudiantes de Pregrado</strong>
+							Estudiantes de pregrado matriculados en el periodo académico vigente (universidad, instituto o educación superior del Perú, pública o privada).
+						</div>
+					</li>
+					
+					<li class="flex items-start gap-4">
+						<span class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center mt-1 text-[var(--theme-color-primary)]">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</span>
+						<div>
+							<strong class="text-white font-semibold block mb-0.5">Equipos de exactamente 4 integrantes</strong>
+							El grupo debe estar constituido por exactamente 4 participantes para las dinámicas y entregables grupales.
+						</div>
+					</li>
+
+					<li class="flex items-start gap-4">
+						<span class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center mt-1 text-[var(--theme-color-primary)]">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</span>
+						<div>
+							<strong class="text-white font-semibold block mb-0.5">Perfil TI Obligatorio</strong>
+							Al menos un integrante del equipo debe pertenecer a una carrera relacionada a Tecnologías de la Información, Ciencias de la Computación o afines.
+						</div>
+					</li>
+
+					<li class="flex items-start gap-4">
+						<span class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center mt-1 text-[var(--theme-color-primary)]">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</span>
+						<div>
+							<strong class="text-white font-semibold block mb-0.5">Diversidad Multidisciplinaria</strong>
+							El equipo debe incluir participantes de al menos dos carreras distintas para asegurar diferentes perspectivas en la solución.
+						</div>
+					</li>
+
+					<li class="flex items-start gap-4">
+						<span class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center mt-1 text-[var(--theme-color-primary)]">
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</span>
+						<div>
+							<strong class="text-white font-semibold block mb-0.5">Idea preliminar con IA</strong>
+							Se debe presentar una idea preliminar indicando herramientas y tecnologías de IA a utilizar para resolver uno de los desafíos.
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Reglas Section -->
+		<section class="reveal">
+			<div class="text-center mb-10">
+				<h2 
+					class="text-3xl md:text-4xl font-light text-white"
+					style="font-family: var(--font-display);"
+				>
+					Reglas
+				</h2>
+				<p class="text-slate-400 text-sm mt-2">Normas fundamentales para garantizar un proceso justo y transparente.</p>
+			</div>
+
+			<!-- Reglas Card Destacada -->
+			<div class="glow-card relative border-[var(--theme-color-secondary)]/30 shadow-[0_0_50px_rgba(249,115,22,0.05)] p-8 md:p-12 text-center overflow-hidden">
+				<div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"></div>
+				
+				<div class="max-w-3xl mx-auto space-y-8 relative z-10">
+					<p class="text-gray-300 text-base md:text-lg font-light leading-relaxed">
+						Toda la información en el proceso de inscripción tiene carácter de declaración jurada. Los proyectos deben ser de creación original, no infringir propiedad intelectual, estar enfocados en IA aplicada a la sostenibilidad y alineados a los Objetivos de Desarrollo Sostenible (ODS).
+					</p>
+					
+					<div class="pt-4 flex justify-center">
+						<a 
+							href="/docs/bases.pdf" 
+							target="_blank"
+							class="btn-animate-rgb inline-flex items-center gap-3 px-10 py-4 rounded-2xl font-semibold text-white text-lg cursor-pointer"
+						>
+							Ver Bases Completas
+							<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Guía de Registro Section -->
+		<section class="space-y-16 reveal">
+			<div class="text-center">
+				<h2 
+					class="text-3xl md:text-4xl font-light text-white text-center"
+					style="font-family: var(--font-display);"
+				>
+					Guía de Registro
+				</h2>
+				<p class="text-slate-400 text-sm mt-2">Conoce la estructura del flujo de inscripción y cómo preparar tus datos.</p>
+			</div>
+
+			<!-- Tres Pilares Mini-Cards -->
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
+				<!-- Card 1 -->
+				<div class="glow-card text-center p-6 flex flex-col items-center">
+					<div class="w-12 h-12 rounded-xl bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] flex items-center justify-center mb-4 border border-[var(--theme-color-primary)]/10">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.109A11.386 11.386 0 0110.089 20M3 11.627a1.125 1.125 0 011.083-1.083h1.084c.621 0 1.125.504 1.125 1.125v1.083m-3.292 0a1.125 1.125 0 00-1.083 1.083v1.084c0 .621.504 1.125 1.125 1.125h1.083m3.292 0a1.125 1.125 0 011.083 1.083v1.084c0 .621-.504 1.125-1.125 1.125H4.083m4.917-9.375a3 3 0 11-6 0 3 3 0 016 0zm10.5 0a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+					</div>
+					<h3 class="text-white font-semibold mb-2">4 integrantes</h3>
+					<p class="text-slate-400 text-sm font-light">Equipos conformados por el número exacto para asegurar una distribución equitativa de tareas.</p>
+				</div>
+
+				<!-- Card 2 -->
+				<div class="glow-card text-center p-6 flex flex-col items-center">
+					<div class="w-12 h-12 rounded-xl bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] flex items-center justify-center mb-4 border border-[var(--theme-color-primary)]/10">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A5.905 5.905 0 018 3.443m12 0a5.905 5.905 0 018 5.89c-.852.17-1.733.298-2.658.813m-15.482 0A50.697 50.697 0 0112 11.25c1.884 0 3.724-.103 5.532-.303m-15.482 0a48.484 48.484 0 00-2.452-4.14C3.874 5.16 5.08 4.25 6.453 4.25h11.094c1.373 0 2.579.91 3.033 2.56a48.485 48.485 0 00-2.453 4.14M9 20.904v-1.077c0-2.316 2-4.423 3-5.077M15 20.904v-1.077c0-2.316-2-4.423-3-5.077" />
+						</svg>
+					</div>
+					<h3 class="text-white font-semibold mb-2">Pregrado</h3>
+					<p class="text-slate-400 text-sm font-light">Abierto a estudiantes de universidades, institutos o educación superior técnica en el país.</p>
+				</div>
+
+				<!-- Card 3 -->
+				<div class="glow-card text-center p-6 flex flex-col items-center">
+					<div class="w-12 h-12 rounded-xl bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] flex items-center justify-center mb-4 border border-[var(--theme-color-primary)]/10">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+						</svg>
+					</div>
+					<h3 class="text-white font-semibold mb-2">Múltiples carreras</h3>
+					<p class="text-slate-400 text-sm font-light">Enfoque multidisciplinario obligatorio para enriquecer el desarrollo de la idea.</p>
+				</div>
+			</div>
+
+			<!-- Flujo Vertical: Video/GIF Tutorial Simulators -->
+			<div class="space-y-12 max-w-3xl mx-auto pt-8">
+				<div class="text-center mb-6">
+					<p class="text-slate-400 text-base font-light">Mira estos videos tutoriales rápidos para guiarte en el proceso:</p>
+				</div>
+
+				<!-- Video/GIF Slot 1 -->
+				<div class="space-y-4">
+					<div class="flex items-center justify-between px-2">
+						<span class="text-slate-300 text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
+							<span class="w-2.5 h-2.5 rounded-full bg-[var(--theme-color-primary)]"></span>
+							Paso 1: Registro Individual y Creación de Cuenta
+						</span>
+						<span class="text-xs text-slate-500 font-mono">01:45</span>
+					</div>
+					
+					<div class="tutorial-card group relative aspect-video w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer transition-all duration-500 hover:border-[var(--theme-color-primary)]/40">
+						<!-- Skeleton Lines -->
+						<div class="absolute inset-0 flex flex-col justify-between p-6 opacity-20">
+							<div class="flex items-center gap-3">
+								<div class="w-8 h-8 rounded-full bg-white/20 animate-pulse"></div>
+								<div class="w-32 h-4 rounded bg-white/20 animate-pulse"></div>
+							</div>
+							<div class="space-y-3">
+								<div class="w-3/4 h-3 rounded bg-white/20 animate-pulse"></div>
+								<div class="w-1/2 h-3 rounded bg-white/20 animate-pulse"></div>
+							</div>
+						</div>
+						<!-- Radial overlay -->
+						<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+						
+						<!-- Play Button -->
+						<div class="relative z-10 w-16 h-16 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-primary)]/30 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_var(--theme-color-glow)]">
+							<svg class="w-6 h-6 text-[var(--theme-color-primary)] ml-1" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5v14l11-7z" />
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<!-- Connector Arrow -->
+				<div class="flex justify-center py-2">
+					<div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 animate-bounce">
+						<svg class="w-5 h-5 text-[var(--theme-color-primary)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7-7m7 7V3" />
+						</svg>
+					</div>
+				</div>
+
+				<!-- Video/GIF Slot 2 -->
+				<div class="space-y-4">
+					<div class="flex items-center justify-between px-2">
+						<span class="text-slate-300 text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
+							<span class="w-2.5 h-2.5 rounded-full bg-[var(--theme-color-secondary)]"></span>
+							Paso 2: Registro del Equipo y Selección de Retos
+						</span>
+						<span class="text-xs text-slate-500 font-mono">02:15</span>
+					</div>
+					
+					<div class="tutorial-card group relative aspect-video w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer transition-all duration-500 hover:border-[var(--theme-color-secondary)]/40">
+						<!-- Skeleton Lines -->
+						<div class="absolute inset-0 flex flex-col justify-between p-6 opacity-20">
+							<div class="flex items-center gap-3">
+								<div class="w-8 h-8 rounded-full bg-white/20 animate-pulse"></div>
+								<div class="w-32 h-4 rounded bg-white/20 animate-pulse"></div>
+							</div>
+							<div class="space-y-3">
+								<div class="w-3/4 h-3 rounded bg-white/20 animate-pulse"></div>
+								<div class="w-1/2 h-3 rounded bg-white/20 animate-pulse"></div>
+							</div>
+						</div>
+						<!-- Radial overlay -->
+						<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+						
+						<!-- Play Button -->
+						<div class="relative z-10 w-16 h-16 rounded-full bg-[var(--theme-color-glow)] border border-[var(--theme-color-secondary)]/30 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_30px_var(--theme-color-glow)]">
+							<svg class="w-6 h-6 text-[var(--theme-color-secondary)] ml-1" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M8 5v14l11-7z" />
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<!-- Official link -->
+				<div class="text-center pt-8">
+					<p class="text-slate-400 text-sm font-light">
+						Para resolver dudas y encontrar material de soporte oficial, visita la página oficial del evento: 
+						<a 
+							href="https://innovathon.uni.edu.pe/" 
+							target="_blank" 
+							class="text-[var(--theme-color-primary)] hover:underline font-semibold transition-colors inline-flex items-center gap-1.5"
+						>
+							innovathon.uni.edu.pe
+							<svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+							</svg>
+						</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+	</div>
 </Layout>
+
+<style>
+	/* ===== CSS LOCAL STYLES ===== */
+	
+	/* Hero Orbs (consistent with index.astro) */
+	.hero-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		pointer-events: none;
+	}
+	.hero-orb--primary {
+		width: 600px;
+		height: 600px;
+		top: -250px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+		opacity: 0.2;
+		animation: orb-float 20s ease-in-out infinite;
+	}
+	.hero-orb--secondary {
+		width: 400px;
+		height: 400px;
+		bottom: -100px;
+		left: 10%;
+		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+		opacity: 0.12;
+		animation: orb-float 24s ease-in-out infinite;
+		animation-delay: -5s;
+	}
+	
+	@keyframes orb-float {
+		0%, 100% { transform: translateY(0px) translateX(0px); }
+		50% { transform: translateY(-20px) translateX(15px); }
+	}
+
+	.hero-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 60px 60px;
+		mask-image: radial-gradient(
+			ellipse at center,
+			black 20%,
+			transparent 75%
+		);
+		pointer-events: none;
+	}
+
+	/* Glow Card System */
+	.glow-card {
+		position: relative;
+		border-radius: 1.5rem;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.04),
+			rgba(255, 255, 255, 0.01)
+		);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		overflow: hidden;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+	}
+	.glow-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--theme-color-primary),
+			var(--theme-color-secondary),
+			transparent
+		);
+		opacity: 0.4;
+		transition: opacity 0.5s ease;
+	}
+	.glow-card:hover {
+		border-color: rgba(255, 255, 255, 0.15);
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.07),
+			rgba(255, 255, 255, 0.02)
+		);
+		transform: translateY(-4px);
+		box-shadow: 
+			0 0 30px var(--theme-color-glow),
+			0 20px 40px rgba(0, 0, 0, 0.3);
+	}
+	.glow-card:hover::before {
+		opacity: 0.8;
+	}
+
+	/* Buttons styling */
+	.btn-animate-rgb {
+		position: relative;
+		background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		z-index: 1;
+	}
+	.btn-animate-rgb::before {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		background: inherit;
+		background-size: inherit;
+		border-radius: inherit;
+		filter: blur(12px);
+		opacity: 0;
+		z-index: -1;
+		transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.btn-animate-rgb:hover {
+		transform: scale(1.03);
+	}
+	.btn-animate-rgb:hover::before {
+		opacity: 0.6;
+		transform: scale(1.02);
+	}
+
+	/* Tutorial Cards (simulated videos) */
+	.tutorial-card {
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	}
+	.tutorial-card:hover {
+		box-shadow: 
+			0 0 25px var(--theme-color-glow),
+			0 15px 30px rgba(0, 0, 0, 0.4);
+	}
+</style>
