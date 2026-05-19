@@ -3,12 +3,16 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Cómo Participar | Innovathon 2026">
+	<div class="relative min-h-screen w-full overflow-hidden">
+		<!-- Background Orbs and Grid (Visible on Scroll) -->
+		<div class="absolute inset-0 pointer-events-none z-0">
+			<div class="hero-orb hero-orb--primary"></div>
+			<div class="hero-orb hero-orb--secondary"></div>
+			<div class="page-grid"></div>
+		</div>
+
 	<!-- Hero Section -->
 	<section class="relative pt-24 pb-12 overflow-hidden min-h-[40vh] flex items-center justify-center">
-		<!-- Background Orbs and Grid (Consistent with main template) -->
-		<div class="hero-orb hero-orb--primary"></div>
-		<div class="hero-orb hero-orb--secondary"></div>
-		<div class="hero-grid"></div>
 
 		<div class="container-custom relative z-10 max-w-5xl text-center reveal">
 			<span class="section-label">Proceso y Requisitos</span>
@@ -332,6 +336,7 @@ import Layout from '../layouts/Layout.astro';
 		</section>
 
 	</div>
+	</div>
 </Layout>
 
 <style>
@@ -370,18 +375,13 @@ import Layout from '../layouts/Layout.astro';
 		50% { transform: translateY(-20px) translateX(15px); }
 	}
 
-	.hero-grid {
+	.page-grid {
 		position: absolute;
 		inset: 0;
 		background-image:
 			linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
 			linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 		background-size: 60px 60px;
-		mask-image: radial-gradient(
-			ellipse at center,
-			black 20%,
-			transparent 75%
-		);
 		pointer-events: none;
 	}
 
