@@ -1,12 +1,382 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const desafios = [
+  {
+    icon: "pickaxe",
+    ods: "ODS 9, 12, 15",
+    title: "Minería: operaciones sostenibles y competitivas",
+    description: "Transformar la minería hacia operaciones más sostenibles y competitivas mediante innovación tecnológica. El reto es gestionar los riesgos ambientales y sociales promoviendo prácticas responsables que reduzcan el impacto negativo en el entorno."
+  },
+  {
+    icon: "shopping-cart",
+    ods: "ODS 9, 12",
+    title: "Ecommerce: logística inteligente y circular",
+    description: "Desarrollar una logística inteligente y resiliente que impulse una economía circular. Se busca minimizar residuos y garantizar cadenas de suministro responsables que contribuyan a preservar los ecosistemas."
+  },
+  {
+    icon: "truck",
+    ods: "ODS 9",
+    title: "Logística y transporte inteligente",
+    description: "Mejora la eficiencia del transporte y reduce su impacto ambiental. Desarrolla soluciones de IA que optimicen rutas y gestionen flotas para disminuir consumo de combustible, emisiones de carbono y tráfico en las ciudades."
+  },
+  {
+    icon: "book-open",
+    ods: "ODS 4, 9",
+    title: "Educación: IA para calidad y acceso",
+    description: "Mejorar la calidad y el acceso a la educación utilizando inteligencia artificial para personalizar el aprendizaje, reducir brechas y garantizar una educación inclusiva y equitativa."
+  }
+];
 ---
 
-<Layout title="Desafíos">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Desafíos</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irán los tracks del Innovathon.</p>
+<Layout title="Desafíos | Innovathon 2026">
+	<!-- Hero Section -->
+	<section class="relative pt-24 pb-12 overflow-hidden min-h-[35vh] flex items-center justify-center">
+		<!-- Background Orbs and Grid -->
+		<div class="hero-orb hero-orb--primary"></div>
+		<div class="hero-orb hero-orb--secondary"></div>
+		<div class="hero-grid"></div>
+
+		<div class="container-custom relative z-10 max-w-5xl text-center reveal">
+			<span class="section-label">Tracks del Evento</span>
+			<h1 
+				class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 uppercase"
+				style="font-family: var(--font-display);"
+			>
+				<span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">DESAFÍOS</span>
+			</h1>
+			<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+				Elige el reto que más te apasione y propón soluciones innovadoras basadas en Inteligencia Artificial.
+			</p>
 		</div>
 	</section>
+
+	<!-- Grid de Desafíos -->
+	<div class="container-custom max-w-5xl pb-32 relative z-10">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 reveal-stagger">
+			{desafios.map((desafio) => (
+				<div class="glow-card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group">
+					<!-- Ambient background glow inside cards -->
+					<div class="absolute -top-24 -right-24 w-40 h-40 bg-[var(--theme-color-glow)] rounded-full blur-[80px] opacity-30 pointer-events-none group-hover:opacity-60 transition-opacity duration-500"></div>
+					
+					<div class="relative z-10 mb-6">
+						<div class="flex justify-between items-start mb-6">
+							<div class="w-12 h-12 rounded-xl bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] flex items-center justify-center border border-[var(--theme-color-primary)]/20 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+								{desafio.icon === 'pickaxe' && (
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+										<path d="M14.5 12.5 6 21H3v-3l8.5-8.5" />
+										<path d="M16 9c.7-1.4.3-3.2-1-4.5s-3.1-1.7-4.5-1c-1.2.7-1.3 2.1-1.3 2.1S8 7 7 8c-.6.6-1 1.4-1 2.2V12h1.8c.8 0 1.6-.4 2.2-1 1-1 2.4-2.2 2.4-2.2s1.4-.1 2.1-1.3z" />
+									</svg>
+								)}
+								{desafio.icon === 'shopping-cart' && (
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+										<circle cx="8" cy="21" r="1" />
+										<circle cx="19" cy="21" r="1" />
+										<path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+									</svg>
+								)}
+								{desafio.icon === 'truck' && (
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+										<path d="M14 18H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8z" />
+										<path d="M14 9h5l4 4v5a2 2 0 0 1-2 2h-2" />
+										<circle cx="7.5" cy="18.5" r="2.5" />
+										<circle cx="18.5" cy="18.5" r="2.5" />
+									</svg>
+								)}
+								{desafio.icon === 'book-open' && (
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+										<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+										<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+									</svg>
+								)}
+							</div>
+							<span class="text-xs font-semibold uppercase tracking-wider bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">
+								{desafio.ods}
+							</span>
+						</div>
+						
+						<h3 
+							class="text-xl md:text-2xl font-bold text-white mb-3 leading-snug group-hover:text-[var(--theme-color-primary)] transition-colors duration-300"
+							style="font-family: var(--font-display);"
+						>
+							{desafio.title}
+						</h3>
+						
+						<p class="text-slate-400 text-sm md:text-base leading-relaxed font-light">
+							{desafio.description}
+						</p>
+					</div>
+					
+					<button 
+						class="btn-ver-mas mt-auto w-full py-3 px-4 rounded-xl border border-[var(--theme-color-primary)]/40 hover:border-[var(--theme-color-primary)] text-[var(--theme-color-primary)] hover:bg-[var(--theme-color-primary)]/10 text-sm font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer relative z-20"
+						data-title={desafio.title}
+						data-ods={desafio.ods}
+						data-description={desafio.description}
+					>
+						Ver más
+						<svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+						</svg>
+					</button>
+				</div>
+			))}
+		</div>
+	</div>
+
+	<!-- Modal Global -->
+	<dialog id="desafio-modal" class="bg-transparent border-0 outline-none p-4 max-w-2xl w-full">
+		<div class="glow-card relative border-[var(--theme-color-primary)]/30 shadow-[0_0_50px_rgba(255,255,255,0.05)] p-8 md:p-10 overflow-hidden bg-[#0c101d]/95 backdrop-blur-xl">
+			<!-- Background Glow inside Modal -->
+			<div class="absolute -top-24 -right-24 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"></div>
+			
+			<!-- Close Button -->
+			<button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors cursor-pointer p-2 rounded-lg hover:bg-white/5 z-30">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+
+			<!-- Modal Content -->
+			<div class="space-y-6 relative z-10">
+				<div>
+					<span id="modal-ods" class="text-xs font-semibold uppercase tracking-wider bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] px-3 py-1 rounded-full border border-[var(--theme-color-primary)]/20">ODS</span>
+				</div>
+				
+				<h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight" style="font-family: var(--font-display);">
+					Título del Desafío
+				</h2>
+				
+				<div class="h-px bg-white/10 w-full"></div>
+				
+				<div class="space-y-4 text-slate-300 text-sm md:text-base font-light leading-relaxed">
+					<p id="modal-description-brief" class="font-normal text-white">
+						Descripción breve del reto...
+					</p>
+					<p>
+						Este desafío invita a los equipos a desarrollar prototipos funcionales y propuestas tecnológicas viables utilizando Inteligencia Artificial (por ejemplo, Machine Learning para predicción de fallas, modelos generativos para optimización de recursos, o visión artificial para monitoreo en tiempo real) orientadas a mitigar los impactos negativos y potenciar la productividad verde.
+					</p>
+					<p>
+						Los proyectos presentados en esta categoría deben alinearse con las metas específicas de los ODS indicados, demostrando un caso de negocio sostenible, viabilidad técnica y un impacto medible sobre la reducción de huella de carbono o el cuidado de la biodiversidad en las zonas operativas.
+					</p>
+				</div>
+				
+				<!-- Action Buttons -->
+				<div class="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-white/5">
+					<a 
+						id="modal-download" 
+						href="/docs/desafio_detalle.pdf" 
+						download
+						class="w-full sm:w-auto btn-animate-rgb inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white cursor-pointer text-sm"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+						</svg>
+						Descargar Documento PDF
+					</a>
+					<span class="text-xs text-slate-500 font-light italic">Tamaño: 1.8 MB • Formato: PDF</span>
+				</div>
+			</div>
+		</div>
+	</dialog>
 </Layout>
+
+<style>
+	/* ===== CSS LOCAL STYLES ===== */
+	
+	/* Hero Orbs (consistent with index.astro) */
+	.hero-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		pointer-events: none;
+	}
+	.hero-orb--primary {
+		width: 600px;
+		height: 600px;
+		top: -250px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+		opacity: 0.15;
+		animation: orb-float 20s ease-in-out infinite;
+	}
+	.hero-orb--secondary {
+		width: 400px;
+		height: 400px;
+		bottom: -100px;
+		left: 10%;
+		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+		opacity: 0.1;
+		animation: orb-float 24s ease-in-out infinite;
+		animation-delay: -5s;
+	}
+	
+	@keyframes orb-float {
+		0%, 100% { transform: translateY(0px) translateX(0px); }
+		50% { transform: translateY(-20px) translateX(15px); }
+	}
+
+	.hero-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 60px 60px;
+		mask-image: radial-gradient(
+			ellipse at center,
+			black 20%,
+			transparent 75%
+		);
+		pointer-events: none;
+	}
+
+	/* Glow Card System */
+	.glow-card {
+		position: relative;
+		border-radius: 1.5rem;
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.04),
+			rgba(255, 255, 255, 0.01)
+		);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		overflow: hidden;
+		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+	}
+	.glow-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--theme-color-primary),
+			var(--theme-color-secondary),
+			transparent
+		);
+		opacity: 0.4;
+		transition: opacity 0.5s ease;
+	}
+	.glow-card:hover {
+		border-color: rgba(255, 255, 255, 0.15);
+		background: linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.07),
+			rgba(255, 255, 255, 0.02)
+		);
+		transform: translateY(-4px);
+		box-shadow: 
+			0 0 30px var(--theme-color-glow),
+			0 20px 40px rgba(0, 0, 0, 0.3);
+	}
+	.glow-card:hover::before {
+		opacity: 0.8;
+	}
+
+	/* Buttons styling */
+	.btn-animate-rgb {
+		position: relative;
+		background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		z-index: 1;
+	}
+	.btn-animate-rgb::before {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		background: inherit;
+		background-size: inherit;
+		border-radius: inherit;
+		filter: blur(12px);
+		opacity: 0;
+		z-index: -1;
+		transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.btn-animate-rgb:hover {
+		transform: scale(1.03);
+	}
+	.btn-animate-rgb:hover::before {
+		opacity: 0.6;
+		transform: scale(1.02);
+	}
+
+	/* Dialog Centered Styling */
+	dialog {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+		background: transparent;
+		border: none;
+		outline: none;
+	}
+
+	/* Modal Backdrop Styling */
+	dialog::backdrop {
+		background: rgba(11, 15, 25, 0.8);
+		backdrop-filter: blur(12px);
+		animation: backdrop-fade-in 0.3s ease forwards;
+	}
+
+	@keyframes backdrop-fade-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+</style>
+
+<script>
+	// Client-side Javascript logic
+	document.addEventListener('DOMContentLoaded', () => {
+		const modal = document.getElementById('desafio-modal') as HTMLDialogElement;
+		const closeButton = document.getElementById('close-modal');
+		const modalTitle = document.getElementById('modal-title');
+		const modalOds = document.getElementById('modal-ods');
+		const modalDescBrief = document.getElementById('modal-description-brief');
+		const triggerButtons = document.querySelectorAll('.btn-ver-mas');
+
+		if (!modal || !closeButton) return;
+
+		// 1. Capture click on "Ver más" buttons
+		triggerButtons.forEach(button => {
+			button.addEventListener('click', (e) => {
+				const btn = e.currentTarget as HTMLButtonElement;
+				const title = btn.getAttribute('data-title') || '';
+				const ods = btn.getAttribute('data-ods') || '';
+				const description = btn.getAttribute('data-description') || '';
+
+				// 2. Inject title, ODS, and description in the modal
+				if (modalTitle) modalTitle.textContent = title;
+				if (modalOds) modalOds.textContent = ods;
+				if (modalDescBrief) modalDescBrief.textContent = description;
+
+				// 3. Show the modal
+				modal.showModal();
+			});
+		});
+
+		// 4. Close modal on close button click
+		closeButton.addEventListener('click', () => {
+			modal.close();
+		});
+
+		// 5. Close modal on click outside content
+		modal.addEventListener('click', (e) => {
+			const dialogDimensions = modal.getBoundingClientRect();
+			if (
+				e.clientX < dialogDimensions.left ||
+				e.clientX > dialogDimensions.right ||
+				e.clientY < dialogDimensions.top ||
+				e.clientY > dialogDimensions.bottom
+			) {
+				modal.close();
+			}
+		});
+	});
+</script>
