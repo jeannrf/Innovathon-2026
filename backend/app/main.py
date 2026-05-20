@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes.health import router as health_router
 from app.api.routes.chat import router as chat_router
+from app.agent.agent import handle_message
+from app.api.schemas.chat_schema import ChatRequest, ChatResponse
 
 app = FastAPI(
     title="API Innovathon 2026",
@@ -29,3 +31,7 @@ def root():
     return {
         "message": "Innovathon AI Backend está corriendo."
     }
+
+@app.post("/chat", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    return handle_message(request)
