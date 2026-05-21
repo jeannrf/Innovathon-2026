@@ -1,12 +1,147 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CardBeneficio from '../components/CardBeneficio.astro';
+import CardPremio from '../components/CardPremio.astro';
+
+
+import IconIdea from '../components/icons/IconIdea.astro';
+import IconCertificado from '../components/icons/IconCertificado.astro';
+import IconMentoria from '../components/icons/IconMentoria.astro';
+import IconPremio from '../components/icons/IconPremio.astro';
+import IconTercerPuesto from '../components/icons/IconTercerPuesto.astro';
+import IconSegundoPuesto from '../components/icons/IconSegundoPuesto.astro';
+import IconPrimerPuesto from '../components/icons/IconPrimerPuesto.astro';
+
+
+const beneficiosData = [
+	{
+		title: "Desarrollo de Ideas y Validación de MVPs",
+		description: "Diseña y valida soluciones a problemas reales. Estructura tu proyecto desde cero trabajando en equipo y utilizando metodologías ágiles",
+		iconLabel: "Desarrollo de ideas",
+		reversed: false,
+		Icon: IconIdea
+	},
+	{
+		title: "Certificación Oficial con Respaldo Institucional",
+		description: "Potencia tu perfil profesional. Obtén un certificado oficial respaldado por la universidad que valida tus horas y competencias técnicas.",
+		iconLabel: "Certificación oficial",
+		reversed: true,
+		Icon: IconCertificado
+	},
+	{
+		title: "Mentorías Reales y Acceso a Expertos (Networking)",
+		description: "Conéctate con expertos de la industria. Recibe feedback estratégico en sesiones exclusivas de IA, emprendimiento y diseño de soluciones.",
+		iconLabel: "Mentorías reales",
+		reversed: false,
+		Icon: IconMentoria
+	},
+	{
+		title: "Premios Financieros y Visibilidad",
+		description: "Impulsa tu proyecto al siguiente nivel. Compite por premios en efectivo, herramientas tecnológicas y el interés de incubadoras clave.",
+		iconLabel: "Premios y visibilidad",
+		reversed: true,
+		Icon: IconPremio
+	}
+];
+
+const premiosData = [
+	{
+		puestoNum: "3",
+		title: "3.er Puesto",
+		description: "Reconocimiento especial<br>y premio menor",
+		cashAmount: "S/500",
+		items: ["Mochilas (4)", "Audífonos (4)"],
+		color: "#d97706",
+		Icon: IconTercerPuesto
+	},
+	{
+		puestoNum: "2",
+		title: "2.do Puesto",
+		description: "Reconocimiento especial<br>y premio menor",
+		cashAmount: "S/1000",
+		items: ["Monitores (4)"],
+		color: "#94a3b8",
+		Icon: IconSegundoPuesto
+	},
+	{
+		puestoNum: "1",
+		title: "1.er Puesto",
+		description: "Premio principal",
+		cashAmount: "S/2000",
+		items: ["Incubación del proyecto", "Cooler (4)"],
+		color: "#fbbf24",
+		Icon: IconPrimerPuesto
+	}
+];
 ---
 
 <Layout title="Beneficios">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Beneficios</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irán los premios y recompensas.</p>
+	<section class="py-32 relative z-10 min-h-screen overflow-hidden">
+		<!-- Ambient orbs -->
+		<div class="hero-orb hero-orb--purple"></div>
+		<div class="hero-orb hero-orb--blue"></div>
+		<div class="hero-orb hero-orb--pink"></div>
+		<!-- Radial ring decoration -->
+		<div class="hero-ring"></div>
+		<!-- Grid pattern -->
+		<div class="hero-grid"></div>
+		
+		<div class="container-custom relative z-10 max-w-4xl">
+			<h1 class="text-4xl md:text-5xl font-normal text-center mb-16 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+				Beneficios
+			</h1>
+			
+			<!-- Propuesta de Valor -->
+			<div class="mb-20 reveal">
+				<p class="text-2xl md:text-3xl text-slate-300 leading-relaxed font-light max-w-4xl mx-auto text-center text-balance">
+					Más allá de la competencia, la Innovathon te ofrece un entorno de <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] font-semibold drop-shadow-sm">aceleración técnica y profesional</span> diseñado para llevar tus habilidades al siguiente nivel.
+				</p>
+			</div>
+
+			<!-- Qué Ganas -->
+			<div class="space-y-12 reveal-stagger">
+				<h2 class="text-3xl md:text-4xl font-black text-center mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+					¿Por qué deberías unirte?
+				</h2>
+
+				
+				{beneficiosData.map((b) => (
+					<CardBeneficio
+						title={b.title}
+						description={b.description}
+						iconLabel={b.iconLabel}
+						reversed={b.reversed}
+					>
+						<b.Icon slot="icon" />
+					</CardBeneficio>
+				))}
+			</div>
+
+			<!-- Premios Section -->
+			<div class="mt-24 reveal-stagger">
+				<h2 class="text-3xl md:text-4xl font-black text-center mb-24 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+					¡Premiamos el logro de cada ganador del equipo!
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					
+					{premiosData.map((p) => (
+						<CardPremio
+							puestoNum={p.puestoNum}
+							title={p.title}
+							description={p.description}
+							cashAmount={p.cashAmount}
+							items={p.items}
+							color={p.color}
+						>
+							<p.Icon slot="prize-icon" />
+						</CardPremio>
+					))}
+				</div>
+			</div>
+		</div>
 		</div>
 	</section>
+
+	
 </Layout>
