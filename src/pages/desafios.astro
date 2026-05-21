@@ -17,12 +17,11 @@ import { desafios } from '../data/desafios';
 		<section class="relative pt-24 pb-12 overflow-hidden min-h-[35vh] flex items-center justify-center z-10">
 
 		<div class="container-custom relative z-10 max-w-5xl text-center reveal">
-			<span class="section-label">Tracks del Evento</span>
 			<h1 
-				class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 uppercase"
+				class="text-5xl md:text-7xl font-extralight tracking-tight mb-6"
 				style="font-family: var(--font-display);"
 			>
-				<span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">DESAFÍOS</span>
+				<span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Desafíos</span>
 			</h1>
 			<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
 				Elige el reto que más te apasione y propón soluciones innovadoras basadas en Inteligencia Artificial.
@@ -54,9 +53,6 @@ import { desafios } from '../data/desafios';
 
 			<!-- Modal Content -->
 			<div class="space-y-6 relative z-10">
-				<div>
-					<span id="modal-ods" class="text-xs font-semibold uppercase tracking-wider bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] px-3 py-1 rounded-full border border-[var(--theme-color-primary)]/20">ODS</span>
-				</div>
 				
 				<h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight" style="font-family: var(--font-display);">
 					Título del Desafío
@@ -203,7 +199,6 @@ import { desafios } from '../data/desafios';
 		const modal = document.getElementById('desafio-modal') as HTMLDialogElement;
 		const closeButton = document.getElementById('close-modal');
 		const modalTitle = document.getElementById('modal-title');
-		const modalOds = document.getElementById('modal-ods');
 		const modalDescBrief = document.getElementById('modal-description-brief');
 		const triggerButtons = document.querySelectorAll('.btn-ver-mas');
 
@@ -217,9 +212,8 @@ import { desafios } from '../data/desafios';
 				const ods = btn.getAttribute('data-ods') || '';
 				const description = btn.getAttribute('data-description') || '';
 
-				// 2. Inject title, ODS, and description in the modal
+				// 2. Inject title and description in the modal
 				if (modalTitle) modalTitle.textContent = title;
-				if (modalOds) modalOds.textContent = ods;
 				if (modalDescBrief) modalDescBrief.textContent = description;
 
 				// 3. Show the modal
