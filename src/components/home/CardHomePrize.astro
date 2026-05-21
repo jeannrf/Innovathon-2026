@@ -1,0 +1,111 @@
+---
+interface BadgeObject {
+  label: string;
+  color?: 'primary' | 'secondary';
+}
+
+interface Props {
+  place: 'first' | 'second' | 'third' | string;
+  placeLabel: string;
+  title: string;
+  description: string;
+  badges?: (string | BadgeObject)[];
+  color?: 'primary' | 'secondary';
+  orderClass?: string;
+  className?: string;
+}
+
+const {
+  place,
+  placeLabel,
+  title,
+  description,
+  badges = [],
+  color = place === 'third' ? 'secondary' : 'primary',
+  orderClass = '',
+  className = '',
+} = Astro.props;
+
+const isFeatured = place === 'first';
+
+const parsedBadges = badges.map((badge, index) => {
+  if (typeof badge === 'string') {
+    return {
+      label: badge,
+      color: (index % 2 === 0 ? color : (color === 'primary' ? 'secondary' : 'primary')) as 'primary' | 'secondary'
+    };
+  }
+  return {
+    label: badge.label,
+    color: badge.color || color
+  };
+});
+---
+
+<div
+  class={`glow-card ${
+    isFeatured
+      ? 'glow-card--featured md:scale-110 z-10 shadow-2xl relative min-h-[300px]'
+      : 'flex flex-col justify-center h-full min-h-[220px]'
+  } ${orderClass} ${className}`}
+>
+  {isFeatured && (
+    <>
+      <div class="absolute top-0 right-0 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none" />
+      <div class="absolute bottom-0 left-0 w-32 h-32 bg-[var(--theme-color-glow)] rounded-full blur-[60px] pointer-events-none" />
+    </>
+  )}
+
+  <div class={`flex items-center gap-2 mb-2 ${isFeatured ? 'mb-4 relative z-10' : ''}`}>
+    {isFeatured ? (
+      <svg
+        class={`w-6 h-6 text-[var(--theme-color-${color})]`}
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10zm-1 2v3.5l2.5 1.5.75-1.25L12.5 13V10H11z" />
+      </svg>
+    ) : (
+      <svg
+        class={`w-4 h-4 text-[var(--theme-color-${color})]`}
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z" />
+      </svg>
+    )}
+    <span
+      class={`text-[var(--theme-color-${color})] text-sm font-semibold tracking-wider uppercase`}
+    >
+      {placeLabel}
+    </span>
+  </div>
+
+  <h4
+    class={`${
+      isFeatured ? 'text-3xl mb-3 relative z-10' : 'text-xl mb-2'
+    } font-semibold text-white`}
+  >
+    {title}
+  </h4>
+
+  <p
+    class={`${
+      isFeatured ? 'text-slate-300 leading-relaxed relative z-10 text-sm' : 'text-slate-400 text-sm'
+    }`}
+  >
+    {description}
+  </p>
+
+  {parsedBadges.length > 0 && (
+    <div class={`mt-4 flex flex-wrap gap-2 ${isFeatured ? 'mt-6 relative z-10' : ''}`}>
+      {parsedBadges.map((badge) => (
+        <span
+          class={`px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-${badge.color})] border border-[var(--theme-color-${badge.color})]/20`}
+        >
+          {badge.label}
+        </span>
+      ))}
+    </div>
+  )}
+</div>

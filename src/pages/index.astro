@@ -1,19 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CardHomeMain from "../components/home/CardHomeMain.astro";
+import CardHomeStat from "../components/home/CardHomeStat.astro";
+import CardHomePrize from "../components/home/CardHomePrize.astro";
 ---
 
 <Layout title="Inicio">
 	<!-- HERO -->
 	<section
-		class="relative overflow-hidden flex items-center justify-center"
+		class="relative flex items-center justify-center"
 		style="min-height: calc(100vh - 64px);"
 	>
-		<!-- Ambient orbs -->
-		<div class="hero-orb hero-orb--purple"></div>
-		<div class="hero-orb hero-orb--blue"></div>
-		<div class="hero-orb hero-orb--pink"></div>
-		<!-- Radial ring decoration -->
-		<div class="hero-ring"></div>
+		<!-- Ambient orbs / Dynamic Gradient Mesh -->
+		<div class="hero-bg-glow hero-bg-glow--1"></div>
+		<div class="hero-bg-glow hero-bg-glow--2"></div>
+		<div class="hero-bg-glow hero-bg-glow--3"></div>
+		<div class="hero-bg-glow hero-bg-glow--4"></div>
+		<!-- Noise Overlay for Cinematic Texture & Banding elimination -->
+		<div class="hero-noise"></div>
 		<!-- Grid pattern -->
 		<div class="hero-grid"></div>
 
@@ -72,116 +76,100 @@ import Layout from "../layouts/Layout.astro";
 	</section>
 
 	<!-- HIGHLIGHTS -->
-	<section class="py-16 relative z-10">
+	<section class="py-20 md:py-28 relative z-20">
 		<div class="container-custom">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
-				<div class="glow-card text-center cursor-pointer">
-					<div class="highlight-icon">
-						<svg
-							class="w-7 h-7 mx-auto text-white/70"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							viewBox="0 0 24 24"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-							></path></svg
-						>
-					</div>
-					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">
-						Modalidad
-					</p>
-					<p class="text-xl font-semibold text-white">Presencial / UNI</p>
-				</div>
-				<div class="glow-card text-center">
-					<div class="highlight-icon">
-						<svg
-							class="w-7 h-7 mx-auto text-white/70"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							viewBox="0 0 24 24"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-							></path></svg
-						>
-					</div>
-					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">
-						Fechas
-					</p>
-					<p class="text-xl font-semibold text-white">Próximamente</p>
-				</div>
-				<div class="glow-card text-center">
-					<div class="highlight-icon">
-						<svg
-							class="w-7 h-7 mx-auto text-[var(--theme-color-primary)]"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="1.5"
-							viewBox="0 0 24 24"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228M18.75 4.236V2.721"
-							></path></svg
-						>
-					</div>
-					<p class="text-slate-400 text-xs uppercase tracking-widest mb-1">
-						Premios
-					</p>
-					<p
-						class="text-xl font-semibold bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent"
-					>
-						Próximamente
-					</p>
-				</div>
+				<CardHomeMain
+					title="Modalidad"
+					value="Presencial / UNI"
+					icon="map-pin"
+				/>
+				<CardHomeMain title="Fechas" value="Próximamente" icon="calendar" />
+				<CardHomeMain
+					title="Premios"
+					value="Próximamente"
+					icon="trophy"
+					valueClass="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent font-semibold"
+					iconClass="text-[var(--theme-color-primary)]"
+				/>
 			</div>
 		</div>
 	</section>
 
 	<!-- QUÉ ES LA INNOVATHON -->
-	<section class="py-24 relative z-10 overflow-hidden">
+	<section class="py-24 relative z-10">
 		<!-- Dynamic Ambient Glows for Mid Section -->
-		<div class="absolute -left-[10%] top-1/4 w-[400px] h-[400px] rounded-full bg-[var(--theme-color-glow)] blur-[100px] pointer-events-none opacity-40 z-0"></div>
-		<div class="absolute -right-[10%] bottom-1/4 w-[350px] h-[350px] rounded-full bg-[var(--theme-color-glow)] blur-[90px] pointer-events-none opacity-30 z-0"></div>
+		<div
+			class="absolute -left-[10%] top-1/4 w-[400px] h-[400px] rounded-full bg-[var(--theme-color-glow)] blur-[100px] pointer-events-none opacity-40 z-0"
+		>
+		</div>
+		<div
+			class="absolute -right-[10%] bottom-1/4 w-[350px] h-[350px] rounded-full bg-[var(--theme-color-glow)] blur-[90px] pointer-events-none opacity-30 z-0"
+		>
+		</div>
 		<div class="container-custom relative z-10">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+			<div
+				class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+			>
 				<!-- Text Content -->
 				<div class="reveal">
-					<h3 
+					<h3
 						class="text-4xl md:text-5xl font-light text-white mb-6"
 						style="font-family: var(--font-display);"
 					>
-						¿Qué es la <br/>
-						<span class="font-semibold bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Innovathon?</span>
+						¿Qué es la <br />
+						<span
+							class="font-semibold bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent"
+							>Innovathon?</span
+						>
 					</h3>
-					<div class="space-y-6 text-slate-300/80 text-lg font-light leading-relaxed">
+					<div
+						class="space-y-6 text-slate-300/80 text-lg font-light leading-relaxed"
+					>
 						<p>
-							La Innovathon es el punto de encuentro donde el talento universitario peruano converge con la tecnología de vanguardia. Durante semanas intensivas de trabajo, equipos multidisciplinarios transforman ideas disruptivas en soluciones funcionales.
+							La Innovathon es el punto de encuentro donde el talento
+							universitario peruano converge con la tecnología de vanguardia.
+							Durante semanas intensivas de trabajo, equipos multidisciplinarios
+							transforman ideas disruptivas en soluciones funcionales.
 						</p>
 						<p>
-							No es solo una competencia, es una <strong>incubadora acelerada</strong>. Guiados por mentores expertos y potenciados por Inteligencia Artificial, los participantes aprenden a construir productos reales que respondan a los desafíos del mañana.
+							No es solo una competencia, es una <strong
+								>incubadora acelerada</strong
+							>. Guiados por mentores expertos y potenciados por Inteligencia
+							Artificial, los participantes aprenden a construir productos
+							reales que respondan a los desafíos del mañana.
 						</p>
 					</div>
 					<div class="mt-8 flex flex-wrap gap-4">
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"></div>
-							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Tecnología</span>
+							<div
+								class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"
+							>
+							</div>
+							<span
+								class="text-sm text-slate-400 uppercase tracking-widest font-semibold"
+								>Tecnología</span
+							>
 						</div>
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"></div>
-							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Desarrollo</span>
+							<div
+								class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-primary)]"
+							>
+							</div>
+							<span
+								class="text-sm text-slate-400 uppercase tracking-widest font-semibold"
+								>Desarrollo</span
+							>
 						</div>
 						<div class="flex items-center gap-2">
-							<div class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-secondary)]"></div>
-							<span class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Emprendimiento</span>
+							<div
+								class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color-secondary)]"
+							>
+							</div>
+							<span
+								class="text-sm text-slate-400 uppercase tracking-widest font-semibold"
+								>Emprendimiento</span
+							>
 						</div>
 					</div>
 				</div>
@@ -189,21 +177,29 @@ import Layout from "../layouts/Layout.astro";
 				<!-- Visual Box -->
 				<div class="relative reveal reveal-delayed">
 					<!-- Ambient Glow behind the photo (deep, very soft, no harsh borders) -->
-					<div class="absolute -inset-10 bg-[var(--theme-color-glow)] rounded-[3rem] blur-[80px] pointer-events-none opacity-45"></div>
-					
+					<div
+						class="absolute -inset-10 bg-[var(--theme-color-glow)] rounded-[3rem] blur-[80px] pointer-events-none opacity-45"
+					>
+					</div>
+
 					<!-- Main Visual Container with Razor-Thin Dynamic Gradient Marco -->
-					<div 
+					<div
 						class="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden p-[1.5px] transition-all duration-500"
 						style="background: linear-gradient(135deg, var(--theme-color-primary), var(--theme-color-secondary));"
 					>
 						<div class="w-full h-full rounded-[1.9rem] bg-slate-950 p-2">
-							<div class="w-full h-full rounded-[1.4rem] bg-slate-900 overflow-hidden relative group">
-								<img 
-									src="/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp" 
-									alt="Innovathon 2025" 
-									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" 
+							<div
+								class="w-full h-full rounded-[1.4rem] bg-slate-900 overflow-hidden relative group"
+							>
+								<img
+									src="/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp"
+									alt="Innovathon 2025"
+									class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
 								/>
-								<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+								<div
+									class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+								>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -250,10 +246,16 @@ import Layout from "../layouts/Layout.astro";
 	</section>
 
 	<!-- INNOVATHON 2025 -->
-	<section class="py-24 relative z-10 overflow-hidden">
+	<section class="py-24 relative z-10">
 		<!-- Dynamic Ambient Glows for Lower Section -->
-		<div class="absolute right-[5%] top-1/3 w-[500px] h-[500px] rounded-full bg-[var(--theme-color-glow)] blur-[120px] pointer-events-none opacity-30 z-0"></div>
-		<div class="absolute left-[5%] bottom-1/3 w-[450px] h-[450px] rounded-full bg-[var(--theme-color-glow)] blur-[110px] pointer-events-none opacity-25 z-0"></div>
+		<div
+			class="absolute right-[5%] top-1/3 w-[500px] h-[500px] rounded-full bg-[var(--theme-color-glow)] blur-[120px] pointer-events-none opacity-30 z-0"
+		>
+		</div>
+		<div
+			class="absolute left-[5%] bottom-1/3 w-[450px] h-[450px] rounded-full bg-[var(--theme-color-glow)] blur-[110px] pointer-events-none opacity-25 z-0"
+		>
+		</div>
 		<div
 			class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-color-glow)] to-transparent pointer-events-none z-0"
 		>
@@ -277,155 +279,42 @@ import Layout from "../layouts/Layout.astro";
 
 			<!-- Stats -->
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 reveal-stagger">
-				<div class="glow-card glow-card--stat">
-					<p
-						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
-					>
-						+50
-					</p>
-					<p class="text-slate-400 text-sm mt-2">Participantes</p>
-				</div>
-				<div class="glow-card glow-card--stat">
-					<p
-						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
-					>
-						+12
-					</p>
-					<p class="text-slate-400 text-sm mt-2">Proyectos</p>
-				</div>
-				<div class="glow-card glow-card--stat">
-					<p
-						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
-					>
-						+10
-					</p>
-					<p class="text-slate-400 text-sm mt-2">Mentores</p>
-				</div>
-				<div class="glow-card glow-card--stat">
-					<p
-						class="text-4xl md:text-5xl font-extralight bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
-					>
-						+4
-					</p>
-					<p class="text-slate-400 text-sm mt-2">Semanas de trabajo</p>
-				</div>
+				<CardHomeStat value="+50" label="Participantes" />
+				<CardHomeStat value="+12" label="Proyectos" />
+				<CardHomeStat value="+10" label="Mentores" />
+				<CardHomeStat value="+4" label="Semanas de trabajo" />
 			</div>
 
 			<!-- Proyectos ganadores (Podium Layout) -->
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center reveal mt-28 mb-16 px-4 md:px-8">
-				<!-- Segundo Lugar (Izquierda) -->
-				<div class="glow-card order-2 md:order-1 flex flex-col justify-center h-full min-h-[220px]">
-					<div class="flex items-center gap-2 mb-2">
-						<svg
-							class="w-4 h-4 text-[var(--theme-color-primary)]"
-							fill="currentColor"
-							viewBox="0 0 24 24"
-							><path
-								d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
-							></path></svg
-						>
-						<span
-							class="text-[var(--theme-color-primary)] text-sm font-semibold tracking-wider uppercase"
-							>Segundo Lugar</span
-						>
-					</div>
-					<h4 class="text-xl font-semibold text-white mb-2">LlaMasabIA</h4>
-					<p class="text-slate-400 text-sm">
-						Plataforma eduactiva impulsada con Inteligencia Artificial para
-						las zonas rurales del Perú.
-					</p>
-					<div class="mt-4 flex gap-2">
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
-							>Edtech</span
-						>
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
-							>IA</span
-						>
-					</div>
-				</div>
+			<div
+				class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center reveal mt-28 mb-16 px-4 md:px-8"
+			>
+				<CardHomePrize
+					place="second"
+					placeLabel="Segundo Lugar"
+					title="LlaMasabIA"
+					description="Plataforma eduactiva impulsada con Inteligencia Artificial para las zonas rurales del Perú."
+					badges={["Edtech", "IA"]}
+					orderClass="order-2 md:order-1"
+				/>
 
-				<!-- Primer Lugar (Centro, Más grande) -->
-				<div class="glow-card glow-card--featured order-1 md:order-2 md:scale-110 z-10 shadow-2xl relative min-h-[300px]">
-					<div
-						class="absolute top-0 right-0 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"
-					>
-					</div>
-					<div
-						class="absolute bottom-0 left-0 w-32 h-32 bg-[var(--theme-color-glow)] rounded-full blur-[60px] pointer-events-none"
-					>
-					</div>
-					<div class="flex items-center gap-2 mb-4 relative z-10">
-						<svg
-							class="w-6 h-6 text-[var(--theme-color-primary)]"
-							fill="currentColor"
-							viewBox="0 0 24 24"
-							><path
-								d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10zm-1 2v3.5l2.5 1.5.75-1.25L12.5 13V10H11z"
-							></path></svg
-						>
-						<span
-							class="text-[var(--theme-color-primary)] text-sm font-semibold tracking-wider uppercase"
-							>Proyecto Ganador</span
-						>
-					</div>
-					<h4 class="text-3xl font-semibold text-white mb-3 relative z-10">
-						SocIAleye
-					</h4>
-					<p class="text-slate-300 leading-relaxed relative z-10 text-sm">
-						Proyecto que busca fortalecer la convivencia y el bienestar en las
-						aulas mediante inteligencia artificial. Su enfoque permite
-						identificar dinámicas sociales, detectar señales de riesgo y apoyar
-						a docentes en la creación de entornos educativos más seguros e
-						inclusivos.
-					</p>
-					<div class="mt-6 flex flex-wrap gap-2 relative z-10">
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
-							>Educación</span
-						>
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] border border-[var(--theme-color-primary)]/20"
-							>IA</span
-						>
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
-							>Computer Vision</span
-						>
-					</div>
-				</div>
+				<CardHomePrize
+					place="first"
+					placeLabel="Proyecto Ganador"
+					title="SocIAleye"
+					description="Proyecto que busca fortalecer la convivencia y el bienestar en las aulas mediante inteligencia artificial. Su enfoque permite identificar dinámicas sociales, detectar señales de riesgo y apoyar a docentes en la creación de entornos educativos más seguros e inclusivos."
+					badges={["Educación", "IA", "Computer Vision"]}
+					orderClass="order-1 md:order-2"
+				/>
 
-				<!-- Tercer Lugar (Derecha) -->
-				<div class="glow-card order-3 flex flex-col justify-center h-full min-h-[220px]">
-					<div class="flex items-center gap-2 mb-2">
-						<svg
-							class="w-4 h-4 text-[var(--theme-color-secondary)]"
-							fill="currentColor"
-							viewBox="0 0 24 24"
-							><path
-								d="M5 3h14l-1.5 2h-11L5 3zm7 3a7 7 0 100 14 7 7 0 000-14zm0 2a5 5 0 110 10 5 5 0 010-10z"
-							></path></svg
-						>
-						<span
-							class="text-[var(--theme-color-secondary)] text-sm font-semibold tracking-wider uppercase"
-							>Tercer Lugar</span
-						>
-					</div>
-					<h4 class="text-xl font-semibold text-white mb-2">
-						RiqchariyFinanzas
-					</h4>
-					<p class="text-slate-400 text-sm">
-						Finanzas educativas para escolares y personas iniciando en el
-						ecosistema financiero.
-					</p>
-					<div class="mt-4 flex gap-2">
-						<span
-							class="px-3 py-1 text-xs rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-secondary)] border border-[var(--theme-color-secondary)]/20"
-							>Fintech</span
-						>
-					</div>
-				</div>
+				<CardHomePrize
+					place="third"
+					placeLabel="Tercer Lugar"
+					title="RiqchariyFinanzas"
+					description="Finanzas educativas para escolares y personas iniciando en el ecosistema financiero."
+					badges={["Fintech"]}
+					orderClass="order-3"
+				/>
 			</div>
 		</div>
 
@@ -457,17 +346,6 @@ import Layout from "../layouts/Layout.astro";
 							class="btn-animate-rgb inline-flex items-center gap-2 px-10 py-4 rounded-2xl font-bold text-white text-lg cursor-pointer"
 						>
 							Inscríbete Ahora
-							<svg
-								class="w-5 h-5"
-								fill="none"
-								stroke="currentColor"
-								viewBox="0 0 24 24"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
-							>
 						</a>
 					</div>
 				</div>
@@ -475,90 +353,108 @@ import Layout from "../layouts/Layout.astro";
 		</section>
 	</section>
 
-	<style>
+	<style is:global>
 		/* ===== HERO ===== */
-		.hero-orb {
+		.hero-bg-glow {
 			position: absolute;
 			border-radius: 50%;
-			filter: blur(120px);
+			filter: blur(100px);
+			pointer-events: none;
+			mix-blend-mode: screen;
+			will-change: transform;
+			transition:
+				background 0.8s ease,
+				opacity 0.8s ease;
 		}
-		.hero-orb--purple {
+		.hero-bg-glow--1 {
+			width: 800px;
+			height: 800px;
+			top: -300px;
+			left: 10%;
+			background: radial-gradient(
+				circle at center,
+				color-mix(in srgb, var(--theme-color-primary) 22%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 14%, transparent) 30%,
+				color-mix(in srgb, var(--theme-color-primary) 6%, transparent) 60%,
+				color-mix(in srgb, var(--theme-color-primary) 1%, transparent) 85%,
+				transparent 100%
+			);
+			opacity: 0.35;
+			animation: glow-drift-1 30s ease-in-out infinite alternate;
+		}
+		.hero-bg-glow--2 {
 			width: 700px;
 			height: 700px;
-			top: -300px;
-			left: 50%;
-			transform: translateX(-50%);
-			background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+			bottom: -200px;
+			right: 10%;
+			background: radial-gradient(
+				circle at center,
+				color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 11%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 5%, transparent) 65%,
+				color-mix(in srgb, var(--theme-color-secondary) 1%, transparent) 85%,
+				transparent 100%
+			);
 			opacity: 0.25;
-			animation: orb-float 24s ease-in-out infinite;
-			transition: background 0.5s ease;
+			animation: glow-drift-2 35s ease-in-out infinite alternate;
 		}
-		.hero-orb--blue {
-			width: 500px;
-			height: 500px;
-			bottom: -150px;
-			left: -150px;
-			background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
-			opacity: 0.15;
-			animation: orb-float 24s ease-in-out infinite;
-			animation-delay: -3s;
-			transition: background 0.5s ease;
-		}
-		.hero-orb--pink {
-			width: 400px;
-			height: 400px;
-			bottom: -50px;
-			right: -80px;
-			background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
-			opacity: 0.18;
-			animation: orb-float 24s ease-in-out infinite;
-			animation-delay: -5s;
-			transition: background 0.5s ease;
-		}
-		/* Rotating ring decoration */
-		.hero-ring {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
+		.hero-bg-glow--3 {
 			width: 600px;
 			height: 600px;
-			border-radius: 50%;
-			border: 1px solid rgba(192, 132, 252, 0.08);
-			animation: spin-ring 90s linear infinite;
-			pointer-events: none;
+			top: 20%;
+			right: 20%;
+			background: radial-gradient(
+				circle at center,
+				rgba(168, 85, 247, 0.18) 0%,
+				rgba(168, 85, 247, 0.11) 30%,
+				rgba(168, 85, 247, 0.05) 60%,
+				rgba(168, 85, 247, 0.01) 85%,
+				transparent 100%
+			);
+			opacity: 0.3;
+			animation: glow-drift-3 24s ease-in-out infinite alternate;
 		}
-		.hero-ring::before {
-			content: "";
+		.hero-bg-glow--4 {
+			width: 550px;
+			height: 550px;
+			bottom: 5%;
+			left: 5%;
+			background: radial-gradient(
+				circle at center,
+				rgba(6, 182, 212, 0.18) 0%,
+				rgba(6, 182, 212, 0.11) 30%,
+				rgba(6, 182, 212, 0.05) 60%,
+				rgba(6, 182, 212, 0.01) 85%,
+				transparent 100%
+			);
+			opacity: 0.25;
+			animation: glow-drift-4 32s ease-in-out infinite alternate;
+		}
+		.hero-noise {
 			position: absolute;
-			top: -2px;
-			left: 50%;
-			width: 4px;
-			height: 4px;
-			border-radius: 50%;
-			background: #c084fc;
-			box-shadow: 0 0 12px rgba(192, 132, 252, 0.6);
-		}
-		@keyframes spin-ring {
-			from {
-				transform: translate(-50%, -50%) rotate(0deg);
-			}
-			to {
-				transform: translate(-50%, -50%) rotate(360deg);
-			}
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.022;
+			pointer-events: none;
+			z-index: 1;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+			mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		}
 		.hero-grid {
 			position: absolute;
 			inset: 0;
+			z-index: 2;
 			background-image:
 				linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
 				linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 			background-size: 60px 60px;
 			mask-image: radial-gradient(
-				ellipse at center,
-				black 30%,
-				transparent 70%
+				ellipse at 50% 35%,
+				black 10%,
+				transparent 60%
 			);
+			animation: grid-pulse 12s ease-in-out infinite alternate;
 		}
 		.hero-title {
 			color: white;
@@ -571,7 +467,7 @@ import Layout from "../layouts/Layout.astro";
 			animation: gradient-shift 20s ease-in-out infinite;
 		}
 
-				/* ===== GLOW CARD SYSTEM ===== */
+		/* ===== GLOW CARD SYSTEM ===== */
 		.glow-card {
 			position: relative;
 			border-radius: 1.25rem;
@@ -640,7 +536,7 @@ import Layout from "../layouts/Layout.astro";
 			opacity: 1;
 		}
 
-				/* Featured card (larger, more glow) */
+		/* Featured card (larger, more glow) */
 		.glow-card--featured {
 			padding: 2.5rem;
 			border-color: rgba(255, 255, 255, 0.12);
@@ -710,13 +606,56 @@ import Layout from "../layouts/Layout.astro";
 		}
 
 		/* ===== ANIMATIONS ===== */
-		@keyframes orb-float {
-			0%,
-			100% {
-				transform: translateY(0px) translateX(-50%);
+		@keyframes glow-drift-1 {
+			0% {
+				transform: translate(0, 0) scale(1);
 			}
 			50% {
-				transform: translateY(-30px) translateX(-50%);
+				transform: translate(80px, 50px) scale(1.1);
+			}
+			100% {
+				transform: translate(-40px, 90px) scale(0.95);
+			}
+		}
+		@keyframes glow-drift-2 {
+			0% {
+				transform: translate(0, 0) scale(1);
+			}
+			50% {
+				transform: translate(-100px, -60px) scale(0.9);
+			}
+			100% {
+				transform: translate(60px, -110px) scale(1.15);
+			}
+		}
+		@keyframes glow-drift-3 {
+			0% {
+				transform: translate(0, 0) scale(1);
+			}
+			50% {
+				transform: translate(50px, -90px) scale(1.15);
+			}
+			100% {
+				transform: translate(-80px, 40px) scale(0.85);
+			}
+		}
+		@keyframes glow-drift-4 {
+			0% {
+				transform: translate(0, 0) scale(1);
+			}
+			50% {
+				transform: translate(70px, 80px) scale(0.85);
+			}
+			100% {
+				transform: translate(-50px, -50px) scale(1.1);
+			}
+		}
+		@keyframes grid-pulse {
+			0% {
+				opacity: 0.55;
+			}
+			100% {
+				opacity: 0.95;
 			}
 		}
 		@keyframes gradient-shift {
@@ -751,14 +690,18 @@ import Layout from "../layouts/Layout.astro";
 		/* Premium RGB Animated Buttons */
 		.btn-animate-rgb {
 			position: relative;
-			background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+			background: linear-gradient(
+				to right,
+				var(--theme-color-primary),
+				var(--theme-color-secondary)
+			);
 			transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 			z-index: 1;
 		}
-		
+
 		/* Volumetric dynamic shadow glow */
 		.btn-animate-rgb::before {
-			content: '';
+			content: "";
 			position: absolute;
 			inset: -2px;
 			background: inherit;
@@ -768,13 +711,15 @@ import Layout from "../layouts/Layout.astro";
 			filter: blur(15px);
 			opacity: 0;
 			z-index: -1;
-			transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			transition:
+				opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+				transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 		}
-		
+
 		.btn-animate-rgb:hover {
 			transform: scale(1.04);
 		}
-		
+
 		.btn-animate-rgb:hover::before {
 			opacity: 0.7;
 			transform: scale(1.02);
