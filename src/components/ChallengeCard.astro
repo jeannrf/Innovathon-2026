@@ -1,0 +1,107 @@
+---
+// src/components/ChallengeCard.astro
+import IconPickaxe from "./icons/IconPickaxe.astro";
+import IconShoppingCart from "./icons/IconShoppingCart.astro";
+import IconTruck from "./icons/IconTruck.astro";
+import IconBookOpen from "./icons/IconBookOpen.astro";
+
+interface Props {
+  icon: string;
+  ods: string;
+  title: string;
+  description: string;
+}
+
+const { icon, ods, title, description } = Astro.props;
+---
+
+<div class="glow-card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group">
+  <!-- Ambient background glow inside cards -->
+  <div class="absolute -top-24 -right-24 w-40 h-40 bg-[var(--theme-color-glow)] rounded-full blur-[80px] opacity-30 pointer-events-none group-hover:opacity-60 transition-opacity duration-500"></div>
+  
+  <div class="relative z-10 mb-6">
+    <div class="flex justify-between items-start mb-6">
+      <div class="w-12 h-12 rounded-xl bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] flex items-center justify-center border border-[var(--theme-color-primary)]/20 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+        {icon === 'pickaxe' && <IconPickaxe class="w-6 h-6" />}
+        {icon === 'shopping-cart' && <IconShoppingCart class="w-6 h-6" />}
+        {icon === 'truck' && <IconTruck class="w-6 h-6" />}
+        {icon === 'book-open' && <IconBookOpen class="w-6 h-6" />}
+      </div>
+      <span class="text-xs font-semibold uppercase tracking-wider bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">
+        {ods}
+      </span>
+    </div>
+    
+    <h3 
+      class="text-xl md:text-2xl font-bold text-white mb-3 leading-snug group-hover:text-[var(--theme-color-primary)] transition-colors duration-300"
+      style="font-family: var(--font-display);"
+    >
+      {title}
+    </h3>
+    
+    <p class="text-slate-400 text-sm md:text-base leading-relaxed font-light">
+      {description}
+    </p>
+  </div>
+  
+  <button 
+    class="btn-ver-mas mt-auto w-full py-3 px-4 rounded-xl border border-[var(--theme-color-primary)]/40 hover:border-[var(--theme-color-primary)] text-[var(--theme-color-primary)] hover:bg-[var(--theme-color-primary)]/10 text-sm font-semibold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer relative z-20"
+    data-title={title}
+    data-ods={ods}
+    data-description={description}
+  >
+    Ver más
+    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .glow-card {
+    position: relative;
+    border-radius: 1.5rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--theme-color-primary),
+      var(--theme-color-secondary),
+      transparent
+    );
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+  }
+  .glow-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.02)
+    );
+    transform: translateY(-4px);
+    box-shadow: 
+      0 0 30px var(--theme-color-glow),
+      0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .glow-card:hover::before {
+    opacity: 0.8;
+  }
+</style>
