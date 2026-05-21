@@ -1,5 +1,10 @@
 ---
 // src/components/ChallengeCard.astro
+import IconPickaxe from "./icons/IconPickaxe.astro";
+import IconShoppingCart from "./icons/IconShoppingCart.astro";
+import IconTruck from "./icons/IconTruck.astro";
+import IconBookOpen from "./icons/IconBookOpen.astro";
+
 interface Props {
   icon: string;
   ods: string;
@@ -17,33 +22,10 @@ const { icon, ods, title, description } = Astro.props;
   <div class="relative z-10 mb-6">
     <div class="flex justify-between items-start mb-6">
       <div class="w-12 h-12 rounded-xl bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] flex items-center justify-center border border-[var(--theme-color-primary)]/20 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
-        {icon === 'pickaxe' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M14.5 12.5 6 21H3v-3l8.5-8.5" />
-            <path d="M16 9c.7-1.4.3-3.2-1-4.5s-3.1-1.7-4.5-1c-1.2.7-1.3 2.1-1.3 2.1S8 7 7 8c-.6.6-1 1.4-1 2.2V12h1.8c.8 0 1.6-.4 2.2-1 1-1 2.4-2.2 2.4-2.2s1.4-.1 2.1-1.3z" />
-          </svg>
-        )}
-        {icon === 'shopping-cart' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="8" cy="21" r="1" />
-            <circle cx="19" cy="21" r="1" />
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-          </svg>
-        )}
-        {icon === 'truck' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M14 18H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8z" />
-            <path d="M14 9h5l4 4v5a2 2 0 0 1-2 2h-2" />
-            <circle cx="7.5" cy="18.5" r="2.5" />
-            <circle cx="18.5" cy="18.5" r="2.5" />
-          </svg>
-        )}
-        {icon === 'book-open' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-          </svg>
-        )}
+        {icon === 'pickaxe' && <IconPickaxe class="w-6 h-6" />}
+        {icon === 'shopping-cart' && <IconShoppingCart class="w-6 h-6" />}
+        {icon === 'truck' && <IconTruck class="w-6 h-6" />}
+        {icon === 'book-open' && <IconBookOpen class="w-6 h-6" />}
       </div>
       <span class="text-xs font-semibold uppercase tracking-wider bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">
         {ods}
