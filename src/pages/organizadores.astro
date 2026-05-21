@@ -1,12 +1,212 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import OrgCard from '../components/OrgCard.astro';
+
+const organizadores = [
+  { 
+    name: "CEIIS", 
+    logo: "", 
+    linkedin: "https://linkedin.com", 
+    description: "Comunidad de Estudiantes de Ingeniería de Sistemas de la Universidad Nacional de Ingeniería, impulsando la innovación tecnológica." 
+  },
+  { 
+    name: "CCAT", 
+    logo: "", 
+    linkedin: "https://linkedin.com", 
+    description: "Centro Cultural de Avanzada Tecnológica, promoviendo la investigación y el desarrollo de software científico y aplicado." 
+  },
+  { 
+    name: "CODE", 
+    logo: "", 
+    linkedin: "https://linkedin.com", 
+    description: "Comunidad de desarrollo y programación competitiva FIIS-UNI, formando talentos para resolver retos reales." 
+  },
+];
+
+const coorganizadores = [
+  { 
+    name: "Proyecta UNI", 
+    logo: "", 
+    linkedin: "https://linkedin.com", 
+    description: "Organización líder en dirección estratégica y formulación de proyectos multidisciplinarios en la UNI." 
+  },
+  { 
+    name: "Coorganizador 2", 
+    logo: "", 
+    linkedin: "#" 
+  },
+  { 
+    name: "Coorganizador 3", 
+    logo: "", 
+    linkedin: "#" 
+  },
+  { 
+    name: "DSC UTP", 
+    logo: "", 
+    linkedin: "https://linkedin.com", 
+    description: "Google Developer Student Club UTP, conectando estudiantes con herramientas y mentores de Google." 
+  },
+];
+
+const aliados = [
+  { name: "Startup UNI", logo: "", linkedin: "https://linkedin.com" },
+  { name: "OTI UNI", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Aliado 3", logo: "", linkedin: "#" },
+  { name: "Aliado 4", logo: "", linkedin: "#" },
+  { name: "Equipu", logo: "", linkedin: "https://linkedin.com" },
+];
+
+const auspiciadores = [
+  { name: "Datux", logo: "", linkedin: "https://linkedin.com" },
+  { name: "CCL", logo: "", linkedin: "https://linkedin.com" },
+  { name: "ASEP", logo: "", linkedin: "https://linkedin.com" },
+  { name: "scale", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Auspiciador 5", logo: "", linkedin: "#" },
+  { name: "Fundación WE", logo: "", linkedin: "https://linkedin.com" },
+];
+
+const patrocinadores = [
+  { name: "Tai Loy", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Minsun", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Deltron", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Patrocinador 4", logo: "", linkedin: "#" },
+  { name: "ProUNI", logo: "", linkedin: "https://linkedin.com" },
+  { name: "Patrocinador 6", logo: "", linkedin: "#" },
+];
 ---
 
 <Layout title="Organizadores">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Organizadores</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Sponsors y comunidades que organizan.</p>
-		</div>
-	</section>
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 overflow-hidden min-h-[50vh] flex items-center">
+    <!-- Ambient Glows (matching index.astro aesthetic) -->
+    <div class="absolute left-1/2 -top-[20%] -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[var(--theme-color-glow)] blur-[130px] pointer-events-none opacity-25 z-0"></div>
+    <div class="absolute -left-[10%] top-1/3 w-[350px] h-[350px] rounded-full bg-[var(--theme-color-glow)] blur-[100px] pointer-events-none opacity-20 z-0"></div>
+
+    <div class="container-custom relative z-10 text-center">
+      <h1 
+        class="text-5xl md:text-7xl font-extralight tracking-tight mb-8 text-white reveal" 
+        style="font-family: var(--font-display);"
+      >
+        Organizadores
+      </h1>
+      
+      <div class="max-w-3xl mx-auto reveal reveal-delayed">
+        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest uppercase rounded-full bg-[oklch(0.72_0.19_290_/_0.1)] text-[oklch(0.80_0.15_290)] border border-[oklch(0.72_0.19_290_/_0.2)]">
+          Gobernanza del evento
+        </div>
+        <p class="text-lg md:text-xl text-slate-300/80 leading-relaxed font-light max-w-2xl mx-auto">
+          Esta hackatón es una iniciativa multidisciplinaria impulsada por las comunidades tecnológicas y organizaciones de diferentes lados para liderar el ecosistema de innovación y desarrollo con Inteligencia Artificial.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTIONS GRID -->
+  <section class="py-12 pb-32 relative z-10">
+    <div class="container-custom space-y-24">
+      
+      <!-- 1. ORGANIZADORES CORE (Large Cards) -->
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide" style="font-family: var(--font-display);">
+            Organizadores
+          </h2>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-3"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {organizadores.map(org => (
+            <OrgCard 
+              name={org.name} 
+              linkedin={org.linkedin} 
+              description={org.description}
+              size="large" 
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- 2. COORGANIZADORES (Medium-Large Cards) -->
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide" style="font-family: var(--font-display);">
+            Coorganizadores
+          </h2>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-3"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {coorganizadores.map(org => (
+            <OrgCard 
+              name={org.name} 
+              linkedin={org.linkedin} 
+              description={org.description}
+              size="medium-large" 
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- 3. ALIADOS (Medium Cards) -->
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide" style="font-family: var(--font-display);">
+            Aliados
+          </h2>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-3"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 max-w-5xl mx-auto">
+          {aliados.map(org => (
+            <OrgCard 
+              name={org.name} 
+              linkedin={org.linkedin} 
+              size="medium" 
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- 4. AUSPICIADORES (Medium-Small Cards) -->
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide" style="font-family: var(--font-display);">
+            Auspiciadores
+          </h2>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-3"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+          {auspiciadores.map(org => (
+            <OrgCard 
+              name={org.name} 
+              linkedin={org.linkedin} 
+              size="small" 
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- 5. PATROCINADORES (Small Cards) -->
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-light text-white tracking-wide" style="font-family: var(--font-display);">
+            Patrocinadores
+          </h2>
+          <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-3"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+          {patrocinadores.map(org => (
+            <OrgCard 
+              name={org.name} 
+              linkedin={org.linkedin} 
+              size="small" 
+            />
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
 </Layout>

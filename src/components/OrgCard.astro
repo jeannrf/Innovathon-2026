@@ -1,0 +1,286 @@
+---
+// src/components/OrgCard.astro
+interface Props {
+  name: string;
+  linkedin: string;
+  logo?: string;
+  description?: string;
+  size?: 'large' | 'medium-large' | 'medium' | 'small';
+}
+
+const { name, linkedin = '#', logo = '', description, size = 'medium' } = Astro.props;
+
+// Mapeamos el tamaño a su clase CSS correspondiente
+const sizeClasses = {
+  'large': 'org-card--large',
+  'medium-large': 'org-card--medium-large',
+  'medium': 'org-card--medium',
+  'small': 'org-card--small'
+};
+
+const cardClass = `org-card ${sizeClasses[size]} group`;
+const badgeClass = size === 'small' ? 'org-card__linkedin-badge org-card__linkedin-badge--small' : 'org-card__linkedin-badge';
+const badgeText = size === 'small' ? 'Ver' : 'LinkedIn';
+---
+
+<a href={linkedin} target="_blank" rel="noopener noreferrer" class={cardClass}>
+  <!-- Borde de resplandor sutil arriba -->
+  <div class="org-card__glow-border"></div>
+  
+  <!-- Contenido de la tarjeta -->
+  <div class="org-card__content">
+    {logo ? (
+      <img src={logo} alt={name} class="org-card__logo" />
+    ) : (
+      <span class="org-card__placeholder-label">Logo</span>
+    )}
+    
+    <span class="org-card__title">{name}</span>
+    
+    {description && (
+      <p class="org-card__description">{description}</p>
+    )}
+  </div>
+
+  <!-- LinkedIn overlay que surge en hover -->
+  <div class="org-card__linkedin-overlay">
+    <div class={badgeClass}>
+      <svg class="w-4 h-4 text-[#0077B5] fill-current" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+      <span>{badgeText}</span>
+    </div>
+  </div>
+</a>
+
+<style>
+  /* ===== ESTILOS DEL COMPONENTE ORGCARD (SCOPED) ===== */
+  .org-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.25rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Alturas y proporciones jerárquicas */
+  .org-card--large {
+    min-height: 180px;
+    padding: 2rem;
+  }
+  
+  .org-card--medium-large {
+    min-height: 140px;
+    padding: 1.5rem;
+  }
+
+  .org-card--medium {
+    min-height: 110px;
+    padding: 1.25rem;
+  }
+
+  .org-card--small {
+    min-height: 90px;
+    padding: 1rem;
+    border-radius: 0.875rem;
+  }
+
+  /* Borde de resplandor sutil arriba */
+  .org-card__glow-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--theme-color-primary),
+      var(--theme-color-secondary),
+      transparent
+    );
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Contenido interno */
+  .org-card__content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Círculo indicador de logo vacío */
+  .org-card__placeholder-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+  }
+  
+  .org-card--small .org-card__placeholder-label {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .org-card__title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+    transition: color 0.4s ease;
+  }
+  
+  .org-card--large .org-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .org-card--medium-large .org-card__title {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .org-card--small .org-card__title {
+    font-size: 0.8rem;
+  }
+
+  /* Descripción del organizador */
+  .org-card__description {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    max-w: 90%;
+    line-height: 1.4;
+    margin-top: 0.25rem;
+    transition: color 0.4s ease;
+  }
+
+  /* LinkedIn overlay (surges on hover) */
+  .org-card__linkedin-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 18, 25, 0.85); /* Tintado neutro oscuro */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: scale(0.96);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .org-card__linkedin-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    background: rgba(0, 119, 181, 0.1);
+    border: 1px solid rgba(0, 119, 181, 0.3);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .org-card__linkedin-badge--small {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.7rem;
+    border-radius: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  /* Logo Image */
+  .org-card__logo {
+    max-height: 48px;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+  }
+
+  .org-card--small .org-card__logo {
+    max-height: 32px;
+  }
+
+  /* ===== HOVER STATES ===== */
+  .org-card:hover {
+    border-color: var(--theme-color-primary);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
+    transform: translateY(-4px);
+    box-shadow: 
+      0 0 30px var(--theme-color-glow),
+      0 12px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .org-card:hover .org-card__glow-border {
+    opacity: 1;
+  }
+
+  .org-card:hover .org-card__content {
+    transform: scale(0.95);
+  }
+
+  .org-card:hover .org-card__placeholder-label {
+    color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .org-card:hover .org-card__title {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .org-card:hover .org-card__description {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .org-card:hover .org-card__logo {
+    opacity: 1;
+  }
+
+  .org-card:hover .org-card__linkedin-overlay {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .org-card__linkedin-badge:hover {
+    transform: scale(1.05);
+    background: rgba(0, 119, 181, 0.2);
+    border-color: rgba(0, 119, 181, 0.5);
+  }
+</style>
