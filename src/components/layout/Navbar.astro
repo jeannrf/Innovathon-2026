@@ -35,9 +35,6 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     <div class="flex items-center gap-3">
       <a href="/inscripcion" class="navbar__cta">
         Inscríbete
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
       </a>
 
       <!-- Mobile hamburger -->
@@ -61,9 +58,6 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
       <div class="mt-4 pt-4 border-t border-white/10">
         <a href="/inscripcion" class="navbar__mobile-cta">
           Inscríbete ahora
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
         </a>
       </div>
     </div>
@@ -170,25 +164,42 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
   .navbar__cta {
     display: none;
     align-items: center;
-    gap: 0.375rem;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.8125rem;
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: white;
     text-decoration: none;
-    border-radius: 0.625rem;
-    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--theme-color-primary), var(--theme-color-secondary));
+    border: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     cursor: pointer;
   }
   @media (min-width: 768px) {
     .navbar__cta { display: inline-flex; }
   }
+  .navbar__cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
   .navbar__cta:hover {
-    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
-    box-shadow: 0 0 25px var(--theme-color-primary);
-    transform: translateY(-1px);
+    transform: translateY(-1.5px);
+    box-shadow: 0 6px 20px var(--theme-color-glow);
+    filter: brightness(1.08);
+  }
+  .navbar__cta:hover::before {
+    opacity: 1;
   }
 
   /* Hamburger */
@@ -274,20 +285,21 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
     width: 100%;
-    padding: 0.875rem;
+    padding: 0.8rem 1.5rem;
     font-size: 0.9375rem;
     font-weight: 600;
     color: white;
     text-decoration: none;
-    border-radius: 0.75rem;
-    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
-    transition: all 0.3s ease;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--theme-color-primary), var(--theme-color-secondary));
+    border: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
   }
   .navbar__mobile-cta:hover {
-    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+    box-shadow: 0 4px 15px var(--theme-color-glow);
+    filter: brightness(1.08);
   }
 </style>
 
