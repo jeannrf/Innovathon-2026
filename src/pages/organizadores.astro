@@ -5,21 +5,21 @@ import OrgCard from '../components/OrgCard.astro';
 const organizadores = [
   { 
     name: "CEIIS", 
-    logo: "", 
-    linkedin: "https://linkedin.com", 
-    description: "Comunidad de Estudiantes de Ingeniería de Sistemas de la Universidad Nacional de Ingeniería, impulsando la innovación tecnológica." 
+    logo: "/images/logos/ceiis.png", 
+    linkedin: "https://www.linkedin.com/company/ceiisuni/", 
+    description: "Comunidad de Estudiantes de Ingeniería de Sistemas de la Universidad Nacional de Ingeniería, dedicada a impulsar la innovación tecnológica, el desarrollo de proyectos y la capacitación constante de futuros líderes en el sector TI." 
   },
   { 
     name: "CCAT", 
     logo: "", 
     linkedin: "https://linkedin.com", 
-    description: "Centro Cultural de Avanzada Tecnológica, promoviendo la investigación y el desarrollo de software científico y aplicado." 
+    description: "Centro Cultural de Avanzada Tecnológica de la UNI, promoviendo activamente la investigación científica, el desarrollo de software de alto impacto y la formación de talento técnico de excelencia." 
   },
   { 
     name: "CODE", 
     logo: "", 
     linkedin: "https://linkedin.com", 
-    description: "Comunidad de desarrollo y programación competitiva FIIS-UNI, formando talentos para resolver retos reales." 
+    description: "Comunidad de desarrollo y programación competitiva de la FIIS-UNI, enfocada en la formación de talentos de alto rendimiento para resolver problemas algorítmicos complejos y retos del mundo real." 
   },
 ];
 
@@ -28,23 +28,25 @@ const coorganizadores = [
     name: "Proyecta UNI", 
     logo: "", 
     linkedin: "https://linkedin.com", 
-    description: "Organización líder en dirección estratégica y formulación de proyectos multidisciplinarios en la UNI." 
+    description: "Organización estudiantil líder en dirección estratégica y formulación de proyectos multidisciplinarios con impacto social y tecnológico, conectando a la academia con la industria." 
   },
   { 
     name: "Coorganizador 2", 
     logo: "", 
-    linkedin: "#" 
+    linkedin: "#",
+    description: ""
   },
   { 
     name: "Coorganizador 3", 
     logo: "", 
-    linkedin: "#" 
+    linkedin: "#",
+    description: ""
   },
   { 
     name: "DSC UTP", 
     logo: "", 
     linkedin: "https://linkedin.com", 
-    description: "Google Developer Student Club UTP, conectando estudiantes con herramientas y mentores de Google." 
+    description: "Google Developer Student Club de la UTP, un espacio de aprendizaje e innovación tecnológica que conecta a estudiantes con herramientas, recursos y mentores experimentados de Google." 
   },
 ];
 
@@ -120,6 +122,7 @@ const patrocinadores = [
             <OrgCard 
               name={org.name} 
               linkedin={org.linkedin} 
+              logo={org.logo}
               description={org.description}
               size="large" 
             />
@@ -141,6 +144,7 @@ const patrocinadores = [
             <OrgCard 
               name={org.name} 
               linkedin={org.linkedin} 
+              logo={org.logo}
               description={org.description}
               size="medium-large" 
             />
@@ -162,6 +166,7 @@ const patrocinadores = [
             <OrgCard 
               name={org.name} 
               linkedin={org.linkedin} 
+              logo={org.logo}
               size="medium" 
             />
           ))}
@@ -182,6 +187,7 @@ const patrocinadores = [
             <OrgCard 
               name={org.name} 
               linkedin={org.linkedin} 
+              logo={org.logo}
               size="small" 
             />
           ))}
@@ -202,6 +208,7 @@ const patrocinadores = [
             <OrgCard 
               name={org.name} 
               linkedin={org.linkedin} 
+              logo={org.logo}
               size="small" 
             />
           ))}
