@@ -1,0 +1,30 @@
+---
+// src/components/RequirementItem.astro
+import IconGraduationCap from "./icons/IconGraduationCap.astro";
+import IconUsers from "./icons/IconUsers.astro";
+import IconTerminal from "./icons/IconTerminal.astro";
+import IconLayers from "./icons/IconLayers.astro";
+import IconLightbulb from "./icons/IconLightbulb.astro";
+
+interface Props {
+  icon: 'graduation-cap' | 'users' | 'terminal' | 'layers' | 'lightbulb';
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<li class="flex items-start gap-5">
+  <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] flex items-center justify-center border border-[var(--theme-color-primary)]/20 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
+    {icon === 'graduation-cap' && <IconGraduationCap class="w-6 h-6" />}
+    {icon === 'users' && <IconUsers class="w-6 h-6" />}
+    {icon === 'terminal' && <IconTerminal class="w-6 h-6" />}
+    {icon === 'layers' && <IconLayers class="w-6 h-6" />}
+    {icon === 'lightbulb' && <IconLightbulb class="w-6 h-6" />}
+  </span>
+  <div>
+    <strong class="text-white font-semibold text-lg block font-outfit mb-1">{title}</strong>
+    <p class="text-slate-400 text-sm md:text-base leading-relaxed font-light">{description}</p>
+  </div>
+</li>

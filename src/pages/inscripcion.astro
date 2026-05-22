@@ -8,13 +8,14 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 
 <Layout title="Inscripción | Innovathon 2026">
 	<!-- Hero y Formulario -->
-	<section class="relative pt-20 pb-12 overflow-hidden min-h-screen">
-		<!-- Ambient orbs -->
-		<div class="hero-orb hero-orb--primary"></div>
-		<div class="hero-orb hero-orb--secondary"></div>
-		<div class="hero-orb hero-orb--glow"></div>
-		<!-- Radial ring decoration -->
-		<div class="hero-ring"></div>
+	<section class="relative pt-20 pb-12 min-h-screen">
+		<!-- Ambient orbs / Dynamic Gradient Mesh -->
+		<div class="hero-bg-glow hero-bg-glow--1"></div>
+		<div class="hero-bg-glow hero-bg-glow--2"></div>
+		<div class="hero-bg-glow hero-bg-glow--3"></div>
+		<div class="hero-bg-glow hero-bg-glow--4"></div>
+		<!-- Noise Overlay for Cinematic Texture & Banding elimination -->
+		<div class="hero-noise"></div>
 		<!-- Grid pattern -->
 		<div class="hero-grid"></div>
 
@@ -232,7 +233,7 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 										)}
 
 										<div class="form-group md:col-span-2">
-											<label class="form-label">Cuéntame algo de ti</label>
+											<label class="form-label">Cuéntanos algo de ti</label>
 											<textarea name={`about_${i}`} rows="3" class="form-input resize-none" placeholder="Tus hobbies, intereses, motivación para participar..."></textarea>
 										</div>
 									</div>
@@ -303,62 +304,132 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			pointer-events: none;
 		}
 
-		.hero-orb {
+		.hero-bg-glow {
 			position: absolute;
 			border-radius: 50%;
-			filter: blur(120px);
-			animation: orb-float 24s ease-in-out infinite;
+			filter: blur(100px);
 			pointer-events: none;
+			mix-blend-mode: screen;
+			will-change: transform;
+			transition:
+				background 0.8s ease,
+				opacity 0.8s ease;
 		}
-		.hero-orb--primary {
-			width: 700px; height: 700px;
-			background: radial-gradient(circle, var(--theme-color-glow), transparent 65%);
-			top: -300px; left: 50%;
-			transform: translateX(-50%);
+		.hero-bg-glow--1 {
+			width: 800px;
+			height: 800px;
+			top: -300px;
+			left: 10%;
+			background: radial-gradient(
+				circle at center,
+				color-mix(in srgb, var(--theme-color-primary) 22%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 14%, transparent) 30%,
+				color-mix(in srgb, var(--theme-color-primary) 6%, transparent) 60%,
+				color-mix(in srgb, var(--theme-color-primary) 1%, transparent) 85%,
+				transparent 100%
+			);
+			opacity: 0.35;
+			animation: glow-drift-1 30s ease-in-out infinite alternate;
 		}
-		.hero-orb--secondary {
-			width: 500px; height: 500px;
-			background: radial-gradient(circle, var(--theme-color-glow), transparent 65%);
-			bottom: -150px; left: -150px;
-			animation-delay: -3s;
+		.hero-bg-glow--2 {
+			width: 700px;
+			height: 700px;
+			bottom: -200px;
+			right: 10%;
+			background: radial-gradient(
+				circle at center,
+				color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 11%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 5%, transparent) 65%,
+				color-mix(in srgb, var(--theme-color-secondary) 1%, transparent) 85%,
+				transparent 100%
+			);
+			opacity: 0.25;
+			animation: glow-drift-2 35s ease-in-out infinite alternate;
 		}
-		.hero-orb--glow {
-			width: 400px; height: 400px;
-			background: radial-gradient(circle, var(--theme-color-glow), transparent 65%);
-			bottom: -50px; right: -80px;
-			animation-delay: -5s;
+		.hero-bg-glow--3 {
+			width: 600px;
+			height: 600px;
+			top: 20%;
+			right: 20%;
+			background: radial-gradient(
+				circle at center,
+				rgba(168, 85, 247, 0.18) 0%,
+				rgba(168, 85, 247, 0.11) 30%,
+				rgba(168, 85, 247, 0.05) 60%,
+				rgba(168, 85, 247, 0.01) 85%,
+				transparent 100%
+			);
+			opacity: 0.3;
+			animation: glow-drift-3 24s ease-in-out infinite alternate;
 		}
-		@keyframes orb-float {
-			0%, 100% { transform: translateY(0px) translateX(-50%); }
-			50% { transform: translateY(-30px) translateX(-50%); }
+		.hero-bg-glow--4 {
+			width: 550px;
+			height: 550px;
+			bottom: 5%;
+			left: 5%;
+			background: radial-gradient(
+				circle at center,
+				rgba(6, 182, 212, 0.18) 0%,
+				rgba(6, 182, 212, 0.11) 30%,
+				rgba(6, 182, 212, 0.05) 60%,
+				rgba(6, 182, 212, 0.01) 85%,
+				transparent 100%
+			);
+			opacity: 0.25;
+			animation: glow-drift-4 32s ease-in-out infinite alternate;
 		}
-		
-		.hero-ring {
+		.hero-noise {
 			position: absolute;
-			top: 50%; left: 50%; transform: translate(-50%, -50%);
-			width: 600px; height: 600px;
-			border-radius: 50%;
-			border: 1px solid var(--theme-color-glow);
-			animation: spin-ring 90s linear infinite;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.022;
 			pointer-events: none;
+			z-index: 1;
+			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+			mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		}
-		.hero-ring::before {
-			content: ""; position: absolute;
-			top: -2px; left: 50%; width: 4px; height: 4px;
-			border-radius: 50%; background: var(--theme-color-primary);
-			box-shadow: 0 0 12px var(--theme-color-primary);
-		}
-		@keyframes spin-ring {
-			from { transform: translate(-50%, -50%) rotate(0deg); }
-			to { transform: translate(-50%, -50%) rotate(360deg); }
-		}
-		
 		.hero-grid {
-			position: absolute; inset: 0;
-			background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+			position: absolute;
+			inset: 0;
+			z-index: 2;
+			background-image:
+				linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+				linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 			background-size: 60px 60px;
-			mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+			mask-image: radial-gradient(
+				ellipse at 50% 35%,
+				black 10%,
+				transparent 60%
+			);
+			animation: grid-pulse 12s ease-in-out infinite alternate;
 			pointer-events: none;
+		}
+		
+		@keyframes glow-drift-1 {
+			0% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(80px, 50px) scale(1.1); }
+			100% { transform: translate(-40px, 90px) scale(0.95); }
+		}
+		@keyframes glow-drift-2 {
+			0% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(-100px, -60px) scale(0.9); }
+			100% { transform: translate(60px, -110px) scale(1.15); }
+		}
+		@keyframes glow-drift-3 {
+			0% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(50px, -90px) scale(1.15); }
+			100% { transform: translate(-80px, 40px) scale(0.85); }
+		}
+		@keyframes glow-drift-4 {
+			0% { transform: translate(0, 0) scale(1); }
+			50% { transform: translate(70px, 80px) scale(0.85); }
+			100% { transform: translate(-50px, -50px) scale(1.1); }
+		}
+		@keyframes grid-pulse {
+			0% { opacity: 0.55; }
+			100% { opacity: 0.95; }
 		}
 
 		.animate-float { animation: float-simple 12s ease-in-out infinite; }
