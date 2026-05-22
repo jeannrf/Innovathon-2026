@@ -14,60 +14,70 @@ const pathname = Astro.url.pathname;
 const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
 ---
 
-<nav id="main-navbar" class="navbar">
-  <div class="navbar__inner container-custom">
-    <!-- Brand -->
-    <a href="/" class="navbar__brand" aria-label="Ir al inicio">
-      <img src="/images/logos/innovathon_logo.png" alt="Innovathon" class="h-10 w-auto object-contain drop-shadow-md transition-transform hover:scale-105" />
-    </a>
-
-    <!-- Desktop Navigation -->
-    <div class="navbar__links">
-      {navLinks.map(link => {
-        const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
-        return (
-          <a href={link.href} class={`navbar__link ${isActive ? 'active' : ''}`}>{link.label}</a>
-        );
-      })}
-    </div>
-
-    <!-- CTA + Mobile Toggle -->
-    <div class="flex items-center gap-3">
-      <a href="/inscripcion" class="navbar__cta">
-        Inscríbete
+<div class="navbar-wrapper">
+  <nav id="main-navbar" class="navbar">
+    <div class="navbar__inner container-custom">
+      <!-- Brand -->
+      <a href="/" class="navbar__brand" aria-label="Ir al inicio">
+        <img src="/images/logos/innovathon_logo.png" alt="Innovathon" class="h-10 w-auto object-contain drop-shadow-md transition-transform hover:scale-105" />
       </a>
 
-      <!-- Mobile hamburger -->
-      <button id="mobile-toggle" class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span class="navbar__hamburger-line"></span>
-        <span class="navbar__hamburger-line"></span>
-        <span class="navbar__hamburger-line"></span>
-      </button>
-    </div>
-  </div>
+      <!-- Desktop Navigation -->
+      <div class="navbar__links">
+        {navLinks.map(link => {
+          const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
+          return (
+            <a href={link.href} class={`navbar__link ${isActive ? 'active' : ''}`}>{link.label}</a>
+          );
+        })}
+      </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="navbar__mobile" aria-hidden="true">
-    <div class="navbar__mobile-inner">
-      {navLinks.map(link => {
-        const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
-        return (
-          <a href={link.href} class={`navbar__mobile-link ${isActive ? 'active' : ''}`}>{link.label}</a>
-        );
-      })}
-      <div class="mt-4 pt-4 border-t border-white/10">
-        <a href="/inscripcion" class="navbar__mobile-cta">
-          Inscríbete ahora
+      <!-- CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="/inscripcion" class="navbar__cta">
+          Inscríbete
         </a>
+
+        <!-- Mobile hamburger -->
+        <button id="mobile-toggle" class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line"></span>
+        </button>
       </div>
     </div>
-  </div>
-</nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="navbar__mobile" aria-hidden="true">
+      <div class="navbar__mobile-inner">
+        {navLinks.map(link => {
+          const isActive = currentPath === link.href || (currentPath === '' && link.href === '/');
+          return (
+            <a href={link.href} class={`navbar__mobile-link ${isActive ? 'active' : ''}`}>{link.label}</a>
+          );
+        })}
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <a href="/inscripcion" class="navbar__mobile-cta">
+            Inscríbete ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
 
 <style>
+  .navbar-wrapper {
+    position: relative;
+    height: 65px;
+    z-index: 50;
+  }
+
   .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 50;
     width: 100%;
     padding: 0.75rem 0;
@@ -75,11 +85,15 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
     backdrop-filter: blur(20px) saturate(1.5);
     -webkit-backdrop-filter: blur(20px) saturate(1.5);
     border-bottom: 1px solid oklch(1 0 0 / 0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 
+      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: background-color, border-color, box-shadow;
+    transform: translate3d(0, 0, 0);
   }
 
   .navbar--scrolled {
-    padding: 0.5rem 0;
     background: oklch(0.14 0.02 280 / 0.85);
     border-bottom-color: oklch(1 0 0 / 0.1);
     box-shadow:
@@ -306,13 +320,25 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
 <script>
   // Scroll behavior
   const navbar = document.getElementById('main-navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      navbar?.classList.add('navbar--scrolled');
-    } else {
-      navbar?.classList.remove('navbar--scrolled');
+  let isScrolled = false;
+
+  function handleScroll() {
+    const scrolled = window.scrollY > 30;
+    if (scrolled !== isScrolled) {
+      isScrolled = scrolled;
+      if (isScrolled) {
+        navbar?.classList.add('navbar--scrolled');
+      } else {
+        navbar?.classList.remove('navbar--scrolled');
+      }
     }
-  });
+  }
+
+  // Initial check on load
+  handleScroll();
+
+  // Listen with passive listener for optimal performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
   // Mobile toggle
   const toggle = document.getElementById('mobile-toggle');
