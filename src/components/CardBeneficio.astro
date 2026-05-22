@@ -1,0 +1,25 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	iconLabel: string;
+	reversed?: boolean;
+}
+
+const { title, description, iconLabel, reversed = false } = Astro.props;
+---
+
+<div>
+	<h3 class="text-lg text-slate-200 mb-3 font-semibold">{title}</h3>
+	<div class={`glow-card flex flex-col items-center gap-6 p-6 md:p-8 ${reversed ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+		<div class={`flex-1 text-center md:text-left mb-6 md:mb-0 ${reversed ? 'md:pl-8 md:border-l' : 'md:pr-8 md:border-r'} border-white/10`}>
+			<p class="text-slate-300 font-light">
+				{description}
+			</p>
+		</div>
+		<div class="flex flex-col items-center justify-center text-center shrink-0 w-32">
+			<slot name="icon" />
+			<span class="text-sm font-semibold text-white leading-tight mt-1">{iconLabel}</span>
+		</div>
+	</div>
+</div>
