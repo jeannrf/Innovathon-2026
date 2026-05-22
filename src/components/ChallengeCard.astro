@@ -20,16 +20,13 @@ const { icon, ods, title, description } = Astro.props;
   <div class="absolute -top-24 -right-24 w-40 h-40 bg-[var(--theme-color-glow)] rounded-full blur-[80px] opacity-30 pointer-events-none group-hover:opacity-60 transition-opacity duration-500"></div>
   
   <div class="relative z-10 mb-6">
-    <div class="flex justify-between items-start mb-6">
+    <div class="flex items-start mb-6">
       <div class="w-12 h-12 rounded-xl bg-[var(--theme-color-primary)]/10 text-[var(--theme-color-primary)] flex items-center justify-center border border-[var(--theme-color-primary)]/20 shadow-[0_0_15px_rgba(255,255,255,0.02)]">
         {icon === 'pickaxe' && <IconPickaxe class="w-6 h-6" />}
         {icon === 'shopping-cart' && <IconShoppingCart class="w-6 h-6" />}
         {icon === 'truck' && <IconTruck class="w-6 h-6" />}
         {icon === 'book-open' && <IconBookOpen class="w-6 h-6" />}
       </div>
-      <span class="text-xs font-semibold uppercase tracking-wider bg-white/5 text-slate-400 px-3 py-1 rounded-full border border-white/10">
-        {ods}
-      </span>
     </div>
     
     <h3 
