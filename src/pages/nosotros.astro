@@ -1,12 +1,257 @@
 ---
+// src/pages/nosotros.astro
 import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CommunityPhotoCard from '../components/CommunityPhotoCard.astro';
+
+const communityPhotos = [
+  {
+    href: "https://www.linkedin.com/company/tinkuylabs/",
+    src: "/images/photos_innovathon_2025/Innovathon_photo_final_2025_v1.webp",
+    alt: "Comunidad TinkuyLabs 2025",
+    label: "Comunidad 2025",
+    positionClass: "absolute top-0 left-4 w-[58%] aspect-[4/3] -rotate-6 z-10",
+    platform: "linkedin"
+  },
+  {
+    href: "https://www.instagram.com/p/DQroW5PERSY/?img_index=2",
+    src: "/images/photos_innovathon_2025/innovathon_2025.png",
+    alt: "Innovathon 2025",
+    label: "Innovathon 2025",
+    positionClass: "absolute top-12 right-4 w-[58%] aspect-[4/3] rotate-3 z-15",
+    platform: "instagram"
+  },
+  {
+    href: "https://www.linkedin.com/feed/update/urn:li:activity:7399951270406488064/",
+    src: "/images/photos_innovathon_2025/competitividad.jpg",
+    alt: "Competitividad",
+    label: "Competitividad",
+    positionClass: "absolute bottom-16 left-8 w-[58%] aspect-[4/3] -rotate-3 z-20",
+    platform: "linkedin"
+  },
+  {
+    href: "https://web.facebook.com/photo/?fbid=122161082324874228&set=pcb.122161083218874228",
+    src: "/images/photos_innovathon_2025/premiacion_impacto.jpg",
+    alt: "Premiación e Impacto",
+    label: "Premiación e Impacto",
+    positionClass: "absolute bottom-0 right-4 w-[58%] aspect-[4/3] rotate-6 z-25",
+    platform: "facebook"
+  }
+];
+
+const areas = [
+  {
+    tag: "TI & AI",
+    title: "Tecnología e Inteligencia Artificial",
+    description: "Investigación y desarrollo de aplicaciones inteligentes. Creamos soluciones utilizando aprendizaje automático, procesamiento de lenguaje natural y visión artificial, alineadas a las mejores prácticas de ingeniería de software moderno.",
+    tagColorClass: "bg-red-500/10 text-red-400 border-red-500/20",
+    iconColorClass: "border-red-500/30 bg-red-500/5 text-red-400 group-hover:border-red-500 group-hover:bg-red-500/10 group-hover:shadow-[0_0_25px_rgba(239,68,68,0.2)]",
+    hoverBorderClass: "hover:border-[var(--theme-color-primary)]",
+    iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>`
+  },
+  {
+    tag: "Cloud",
+    title: "Cloud Computing & DevOps",
+    description: "Diseño e implementación de arquitectura en la nube altamente escalable y segura. Automatizamos procesos mediante integración y despliegue continuo (CI/CD) para garantizar la rapidez y estabilidad de cada producto que construimos.",
+    tagColorClass: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    iconColorClass: "border-orange-500/30 bg-orange-500/5 text-orange-400 group-hover:border-orange-500 group-hover:bg-orange-500/10 group-hover:shadow-[0_0_25px_rgba(249,115,22,0.2)]",
+    hoverBorderClass: "hover:border-[var(--theme-color-secondary)]",
+    iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+    </svg>`
+  },
+  {
+    tag: "UI/UX",
+    title: "Diseño de Experiencia de Usuario",
+    description: "Investigación profunda de usuarios, diseño de flujos e interfaces visuales atractivas. Nuestro equipo de diseño transforma la complejidad técnica en productos digitales intuitivos, accesibles y estéticamente premium.",
+    tagColorClass: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    iconColorClass: "border-emerald-500/30 bg-emerald-500/5 text-emerald-400 group-hover:border-emerald-500 group-hover:bg-emerald-500/10 group-hover:shadow-[0_0_25px_rgba(34,197,94,0.2)]",
+    hoverBorderClass: "hover:border-emerald-500",
+    iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+    </svg>`
+  },
+  {
+    tag: "Agile",
+    title: "Gestión de Proyectos & Metodologías Ágiles",
+    description: "Coordinación y dirección estratégica de proyectos bajo marcos de trabajo ágiles (Scrum, Kanban). Aseguramos la alineación de objetivos, fomentamos la comunicación y aceleramos el ritmo de entrega de valor en el equipo.",
+    tagColorClass: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    iconColorClass: "border-blue-500/30 bg-blue-500/5 text-blue-400 group-hover:border-blue-500 group-hover:bg-blue-500/10 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]",
+    hoverBorderClass: "hover:border-blue-500",
+    iconSvg: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+    </svg>`
+  }
+];
 ---
 
 <Layout title="Nosotros">
-	<section class="py-32 min-h-[60vh] flex items-center">
+	<!-- Noise Overlay & Dynamic Ambient Glows (matching index.astro aesthetic) -->
+	<div class="hero-noise pointer-events-none"></div>
+	
+	<!-- Top main header "¿QUÉ ES TINKUYLABS?" -->
+	<header class="relative pt-32 pb-8 overflow-x-clip text-center">
+		<!-- Ambient Glows -->
+		<div class="absolute left-1/2 -top-[20%] -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[var(--theme-color-glow)] blur-[140px] pointer-events-none opacity-30 z-0"></div>
+		
+		<div class="container-custom relative z-10">
+			<h1 class="text-5xl md:text-7xl lg:text-8xl font-light text-white tracking-tight hero-title mb-2" style="font-family: var(--font-display);">
+				¿Qué es TinkuyLabs?
+			</h1>
+			<div class="w-24 h-[2px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-4"></div>
+		</div>
+	</header>
+
+	<!-- SECCIÓN 1: INFORMACIÓN -->
+	<section class="py-16 relative z-10">
 		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Nosotros</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Acerca de TinkuyLabs y el evento.</p>
+			<SectionHeader title="Información" mbClass="mb-10" />
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+				<!-- Left Column: Main Description Text -->
+				<div class="lg:col-span-7 text-left space-y-6 reveal leading-relaxed">
+					<div class="space-y-6 text-slate-300/90 text-lg font-light">
+						<p>
+							TinkuyLabs es una comunidad tecnológica y laboratorio de innovación nacido en la <strong class="text-white font-normal">Universidad Nacional de Ingeniería (UNI)</strong>. Nuestro propósito es ser el puente que conecta el talento universitario con los desafíos y metodologías ágiles de la industria tecnológica moderna.
+						</p>
+						<p>
+							El término <strong>"Tinkuy"</strong> proviene del quechua y representa un "encuentro", una convergencia de caminos. En TinkuyLabs, este encuentro sucede entre la teoría académica y la práctica real del desarrollo de software, potenciando a estudiantes mediante Inteligencia Artificial y mentoría de primer nivel.
+						</p>
+						<p>
+							Diseñamos programas formativos, bootcamps prácticos y organizamos eventos de gran envergadura como la <strong>Innovathon</strong>, facilitando que ideas disruptivas se conviertan en productos mínimos viables y, potencialmente, en startups tecnológicas de alto impacto.
+						</p>
+					</div>
+
+					<!-- Redes Sociales de TinkuyLabs -->
+					<div class="mt-8 pt-6 border-t border-white/5 space-y-3">
+						<span class="text-xs font-semibold text-slate-400 uppercase tracking-widest block">Nuestras redes</span>
+						<SocialLinks />
+					</div>
+				</div>
+
+				<!-- Right Column: Empty Logo Placeholder (Wait for transparent PNG) -->
+				<div class="lg:col-span-5 flex justify-center items-center reveal reveal-delayed">
+					<div class="relative w-full max-w-sm aspect-[4/3] group">
+						<!-- Ambient Glow behind the placeholder -->
+						<div class="absolute -inset-6 bg-gradient-to-tr from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] rounded-3xl blur-[60px] opacity-20 pointer-events-none"></div>
+						
+						<!-- Dashed interactive placeholder box -->
+						<div class="relative w-full h-full rounded-2xl border-2 border-dashed border-white/20 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-500 flex flex-col items-center justify-center p-8 text-center group-hover:border-[var(--theme-color-primary)]/50 animate-float">
+							<!-- Inside glow element -->
+							<div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 text-slate-400 group-hover:text-[var(--theme-color-primary)]">
+								<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+								</svg>
+							</div>
+							<p class="text-sm font-semibold text-slate-300 tracking-wide">Logotipo TinkuyLabs</p>
+							<p class="text-xs text-slate-500 mt-1 max-w-xs">Espacio reservado para el logotipo oficial transparente</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECCIÓN 2: MISIÓN Y VISIÓN -->
+	<section id="mision-vision" class="py-24 relative z-10 bg-gradient-to-b from-transparent via-slate-950/30 to-transparent">
+		<div class="container-custom">
+			<SectionHeader title="Misión y Visión" />
+
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+				<!-- Left Column: Mision and Vision text inside Glow Card -->
+				<div class="lg:col-span-6 reveal">
+					<div class="glow-card space-y-8 p-8 md:p-10">
+						<div class="space-y-4">
+							<div class="flex items-center gap-3 text-[var(--theme-color-primary)]">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+								</svg>
+								<h3 class="text-xl font-semibold tracking-wide text-white" style="font-family: var(--font-display);">Nuestra Misión</h3>
+							</div>
+							<p class="text-slate-300 font-light leading-relaxed text-base">
+								Empoderar a los estudiantes universitarios del Perú a través de la educación práctica en tecnología de vanguardia, fomentando el desarrollo de proyectos reales y el aprendizaje colaborativo bajo metodologías ágiles de nivel internacional.
+							</p>
+						</div>
+
+						<div class="w-full h-[1px] bg-white/5"></div>
+
+						<div class="space-y-4">
+							<div class="flex items-center gap-3 text-[var(--theme-color-secondary)]">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+								</svg>
+								<h3 class="text-xl font-semibold tracking-wide text-white" style="font-family: var(--font-display);">Nuestra Visión</h3>
+							</div>
+							<p class="text-slate-300 font-light leading-relaxed text-base">
+								Convertirnos en el ecosistema estudiantil de innovación tecnológica líder de Latinoamérica, sirviendo como catalizador para el surgimiento de nuevos talentos técnicos, startups disruptivas y soluciones reales con impacto social.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Right Column: Overlapping Photos Layout (Stack of 4 Interactive Linked Cards) -->
+				<div class="lg:col-span-6 flex justify-center items-center reveal reveal-delayed">
+					<div class="relative w-full max-w-lg h-[460px] sm:h-[520px]">
+						{communityPhotos.map((photo) => (
+							<CommunityPhotoCard {...photo} />
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECCIÓN 3: ÁREAS -->
+	<section class="py-24 relative z-10">
+		<div class="container-custom">
+			<SectionHeader title="Áreas" />
+
+			<!-- Vertical Stack of Area Cards -->
+			<div class="space-y-6 max-w-5xl mx-auto reveal-stagger">
+				{areas.map((area) => (
+					<div class={`glow-card bg-slate-900/30 border border-white/5 flex flex-col md:flex-row items-start md:items-center justify-between p-6 md:p-8 gap-6 group transition-all duration-300 ${area.hoverBorderClass}`}>
+						<div class="space-y-2 max-w-3xl">
+							<div class="flex items-center gap-3">
+								<span class={`text-xs font-semibold px-2.5 py-1 rounded border ${area.tagColorClass}`}>{area.tag}</span>
+								<h3 class="text-xl font-medium text-white tracking-wide">{area.title}</h3>
+							</div>
+							<p class="text-slate-400 font-light text-sm md:text-base leading-relaxed">
+								{area.description}
+							</p>
+						</div>
+						<div class="self-end md:self-center">
+							<div class={`w-14 h-14 rounded-xl border flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.02)] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 ${area.iconColorClass}`}>
+								<Fragment set:html={area.iconSvg} />
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
 		</div>
 	</section>
 </Layout>
+
+<style>
+	/* Local Styles for Nosotros page */
+	.hero-noise {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.022;
+		pointer-events: none;
+		z-index: 1;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+		mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+	}
+	.hero-title {
+		color: white;
+		text-shadow: 
+			0 0 80px var(--theme-color-glow),
+			0 0 160px rgba(255, 255, 255, 0.05);
+	}
+</style>

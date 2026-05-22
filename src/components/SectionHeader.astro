@@ -1,0 +1,17 @@
+---
+// src/components/SectionHeader.astro
+interface Props {
+  title: string;
+  className?: string;
+  mbClass?: string;
+}
+
+const { title, className = "", mbClass = "mb-12" } = Astro.props;
+---
+
+<div class={`text-left reveal ${mbClass} ${className}`}>
+  <h2 class="text-3xl font-light text-white tracking-wide uppercase" style="font-family: var(--font-display);">
+    {title}
+  </h2>
+  <div class="w-12 h-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mt-2"></div>
+</div>

@@ -1,0 +1,46 @@
+---
+// src/components/SocialLinks.astro
+import SocialIcon from './SocialIcon.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const socialLinks = [
+  {
+    name: "Facebook",
+    platform: "facebook",
+    href: "https://web.facebook.com/profile.php?id=61576226867458",
+    colorHover: "hover:text-blue-500 hover:border-blue-500/30 hover:bg-blue-500/5"
+  },
+  {
+    name: "Instagram",
+    platform: "instagram",
+    href: "https://www.instagram.com/tinkuy.labs/",
+    colorHover: "hover:text-pink-500 hover:border-pink-500/30 hover:bg-pink-500/5"
+  },
+  {
+    name: "LinkedIn",
+    platform: "linkedin",
+    href: "https://www.linkedin.com/company/tinkuylabs/?viewAsMember=true",
+    colorHover: "hover:text-blue-400 hover:border-blue-400/30 hover:bg-blue-400/5"
+  }
+];
+---
+
+<div class={`flex items-center gap-3.5 ${className}`}>
+  {socialLinks.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`flex items-center justify-center w-11 h-11 rounded-xl bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] transition-all duration-300 ${link.colorHover}`}
+      aria-label={`Visitar nuestro ${link.name}`}
+      title={link.name}
+    >
+      <SocialIcon platform={link.platform} class="w-5 h-5" />
+    </a>
+  ))}
+</div>
