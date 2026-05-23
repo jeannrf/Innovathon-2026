@@ -6,8 +6,8 @@
    ============================================ */
 
 @theme extend {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Outfit", "Inter", sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
 
   /* Brand Colors */
   --color-primary: oklch(0.72 0.19 290);

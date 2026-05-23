@@ -1,12 +1,242 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ChallengeCard from '../components/ChallengeCard.astro';
+import { desafios } from '../data/desafios';
 ---
 
-<Layout title="Desafíos">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Desafíos</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irán los tracks del Innovathon.</p>
+<Layout title="Desafíos | Innovathon 2026">
+	<div class="relative min-h-screen w-full overflow-hidden">
+		<!-- Background Orbs and Grid (Visible on Scroll) -->
+		<div class="absolute inset-0 pointer-events-none z-0">
+			<div class="hero-orb hero-orb--primary"></div>
+			<div class="hero-orb hero-orb--secondary"></div>
+			<div class="page-grid"></div>
+		</div>
+
+		<!-- Hero Section -->
+		<section class="relative pt-24 pb-12 overflow-hidden min-h-[35vh] flex items-center justify-center z-10">
+
+		<div class="container-custom relative z-10 max-w-5xl text-center reveal">
+			<h1 
+				class="text-5xl md:text-7xl font-extralight tracking-tight mb-6"
+				style="font-family: var(--font-display);"
+			>
+				<span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Desafíos</span>
+			</h1>
+			<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+				Elige el reto que más te apasione y propón soluciones innovadoras basadas en Inteligencia Artificial.
+			</p>
 		</div>
 	</section>
+
+	<!-- Grid de Desafíos -->
+	<div class="container-custom max-w-5xl pb-32 relative z-10">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 reveal-stagger">
+			{desafios.map((desafio) => (
+				<ChallengeCard {...desafio} />
+			))}
+		</div>
+	</div>
+
+	<!-- Modal Global -->
+	<dialog id="desafio-modal" class="bg-transparent border-0 outline-none p-4 max-w-2xl w-full">
+		<div class="glow-card relative border-[var(--theme-color-primary)]/30 shadow-[0_0_50px_rgba(255,255,255,0.05)] p-8 md:p-10 overflow-hidden bg-[#0c101d]/95 backdrop-blur-xl">
+			<!-- Background Glow inside Modal -->
+			<div class="absolute -top-24 -right-24 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] pointer-events-none"></div>
+			
+			<!-- Close Button -->
+			<button id="close-modal" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors cursor-pointer p-2 rounded-lg hover:bg-white/5 z-30">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+
+			<!-- Modal Content -->
+			<div class="space-y-6 relative z-10">
+				
+				<h2 id="modal-title" class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight" style="font-family: var(--font-display);">
+					Título del Desafío
+				</h2>
+				
+				<div class="h-px bg-white/10 w-full"></div>
+				
+				<div class="space-y-4 text-slate-300 text-sm md:text-base font-light leading-relaxed">
+					<p id="modal-description-brief" class="font-normal text-white">
+						Descripción breve del reto...
+					</p>
+					<p>
+						Este desafío invita a los equipos a desarrollar prototipos funcionales y propuestas tecnológicas viables utilizando Inteligencia Artificial (por ejemplo, Machine Learning para predicción de fallas, modelos generativos para optimización de recursos, o visión artificial para monitoreo en tiempo real) orientadas a mitigar los impactos negativos y potenciar la productividad verde.
+					</p>
+					<p>
+						Los proyectos presentados en esta categoría deben alinearse con las metas específicas de los ODS indicados, demostrando un caso de negocio sostenible, viabilidad técnica y un impacto medible sobre la reducción de huella de carbono o el cuidado de la biodiversidad en las zonas operativas.
+					</p>
+				</div>
+				
+				<!-- Action Buttons -->
+				<div class="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-white/5">
+					<a 
+						id="modal-download" 
+						href="/docs/desafio_detalle.pdf" 
+						download
+						class="w-full sm:w-auto btn-animate-rgb inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white cursor-pointer text-sm"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+						</svg>
+						Descargar Documento PDF
+					</a>
+					<span class="text-xs text-slate-500 font-light italic">Tamaño: 1.8 MB • Formato: PDF</span>
+				</div>
+			</div>
+		</div>
+	</dialog>
+	</div>
 </Layout>
+
+<style>
+	/* ===== CSS LOCAL STYLES ===== */
+	
+	/* Hero Orbs (consistent with index.astro) */
+	.hero-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		pointer-events: none;
+	}
+	.hero-orb--primary {
+		width: 600px;
+		height: 600px;
+		top: -250px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+		opacity: 0.15;
+		animation: orb-float 20s ease-in-out infinite;
+	}
+	.hero-orb--secondary {
+		width: 400px;
+		height: 400px;
+		bottom: -100px;
+		left: 10%;
+		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+		opacity: 0.1;
+		animation: orb-float 24s ease-in-out infinite;
+		animation-delay: -5s;
+	}
+	
+	@keyframes orb-float {
+		0%, 100% { transform: translateY(0px) translateX(0px); }
+		50% { transform: translateY(-20px) translateX(15px); }
+	}
+
+	.page-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 60px 60px;
+		pointer-events: none;
+	}
+
+
+
+	/* Buttons styling */
+	.btn-animate-rgb {
+		position: relative;
+		background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+		z-index: 1;
+	}
+	.btn-animate-rgb::before {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		background: inherit;
+		background-size: inherit;
+		border-radius: inherit;
+		filter: blur(12px);
+		opacity: 0;
+		z-index: -1;
+		transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	.btn-animate-rgb:hover {
+		transform: scale(1.03);
+	}
+	.btn-animate-rgb:hover::before {
+		opacity: 0.6;
+		transform: scale(1.02);
+	}
+
+	/* Dialog Centered Styling */
+	dialog {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+		background: transparent;
+		border: none;
+		outline: none;
+	}
+
+	/* Modal Backdrop Styling */
+	dialog::backdrop {
+		background: rgba(11, 15, 25, 0.8);
+		backdrop-filter: blur(12px);
+		animation: backdrop-fade-in 0.3s ease forwards;
+	}
+
+	@keyframes backdrop-fade-in {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+</style>
+
+<script>
+	// Client-side Javascript logic
+	document.addEventListener('DOMContentLoaded', () => {
+		const modal = document.getElementById('desafio-modal') as HTMLDialogElement;
+		const closeButton = document.getElementById('close-modal');
+		const modalTitle = document.getElementById('modal-title');
+		const modalDescBrief = document.getElementById('modal-description-brief');
+		const triggerButtons = document.querySelectorAll('.btn-ver-mas');
+
+		if (!modal || !closeButton) return;
+
+		// 1. Capture click on "Ver más" buttons
+		triggerButtons.forEach(button => {
+			button.addEventListener('click', (e) => {
+				const btn = e.currentTarget as HTMLButtonElement;
+				const title = btn.getAttribute('data-title') || '';
+				const ods = btn.getAttribute('data-ods') || '';
+				const description = btn.getAttribute('data-description') || '';
+
+				// 2. Inject title and description in the modal
+				if (modalTitle) modalTitle.textContent = title;
+				if (modalDescBrief) modalDescBrief.textContent = description;
+
+				// 3. Show the modal
+				modal.showModal();
+			});
+		});
+
+		// 4. Close modal on close button click
+		closeButton.addEventListener('click', () => {
+			modal.close();
+		});
+
+		// 5. Close modal on click outside content
+		modal.addEventListener('click', (e) => {
+			const dialogDimensions = modal.getBoundingClientRect();
+			if (
+				e.clientX < dialogDimensions.left ||
+				e.clientX > dialogDimensions.right ||
+				e.clientY < dialogDimensions.top ||
+				e.clientY > dialogDimensions.bottom
+			) {
+				modal.close();
+			}
+		});
+	});
+</script>
