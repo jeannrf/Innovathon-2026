@@ -34,12 +34,8 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
   <div class="org-card__glow-border"></div>
 
   <!-- Contenido de la tarjeta -->
-  <div
-    class={`org-card__content ${!description ? "org-card__content--no-description" : ""}`}
-  >
-    <div
-      class={`org-card__header ${description ? "org-card__header--has-description" : ""}`}
-    >
+  <div class="org-card__content">
+    <div class="org-card__header">
       <span class="org-card__title">{name}</span>
       <div class="org-card__logo-wrapper">
         {
@@ -54,19 +50,6 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
 
     {description && <p class="org-card__description">{description}</p>}
   </div>
-
-  <!-- Botón flotante de LinkedIn que surge en hover -->
-  {
-    hasLink && (
-      <div class="org-card__linkedin-btn">
-        <img
-          src="/images/logos/linkedin.png"
-          alt="LinkedIn"
-          class="org-card__linkedin-img"
-        />
-      </div>
-    )
-  }
 </Tag>
 
 <style>
@@ -100,12 +83,12 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
 
   /* Alturas y proporciones jerárquicas */
   .org-card--large {
-    min-height: 250px;
+    height: 250px;
     padding: 1.25rem 1.25rem 1.5rem 1.25rem;
   }
 
   .org-card--medium-large {
-    min-height: 190px;
+    height: 230px;
     padding: 1.125rem 1.125rem 1.25rem 1.125rem;
   }
 
@@ -150,11 +133,6 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
   }
 
   .org-card__content--no-description {
-    justify-content: center;
-  }
-
-  .org-card--large .org-card__content--no-description,
-  .org-card--medium-large .org-card__content--no-description {
     justify-content: center;
   }
 
@@ -215,11 +193,16 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
   /* === ESTILOS ESPECÍFICOS SEGÚN EL TAMAÑO === */
 
   /* Tarjetas Grandes (Organizadores Core) y Medianas-Grandes (Coorganizadores) */
-  .org-card--large .org-card__content,
-  .org-card--medium-large .org-card__content {
+  .org-card--large .org-card__content {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 1.25rem;
+  }
+
+  .org-card--medium-large .org-card__content {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.875rem;
   }
 
   .org-card--large .org-card__header,
@@ -231,16 +214,18 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
     width: 100%;
   }
 
-  .org-card__header--has-description {
+  /* Cabecera con línea divisoria fija para Large y Medium-Large */
+  .org-card--large .org-card__header,
+  .org-card--medium-large .org-card__header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .org-card--large .org-card__header--has-description {
+  .org-card--large .org-card__header {
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
   }
 
-  .org-card--medium-large .org-card__header--has-description {
+  .org-card--medium-large .org-card__header {
     padding-bottom: 0.4rem;
     margin-bottom: 0.8rem;
   }
@@ -273,9 +258,21 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
   .org-card__description {
     font-weight: 300;
     transition: color 0.4s ease;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .org-card--large .org-card__description,
+  .org-card--large .org-card__description {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: left;
+    max-w: 100%;
+    line-height: 1.5;
+    margin-top: 0;
+    -webkit-line-clamp: 4;
+  }
+
   .org-card--medium-large .org-card__description {
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.4);
@@ -283,6 +280,7 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
     max-w: 100%;
     line-height: 1.5;
     margin-top: 0;
+    -webkit-line-clamp: 4;
   }
 
   /* Ajustes específicos de placeholder por tamaño */
@@ -342,50 +340,6 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
     transition: opacity 0.4s ease;
   }
 
-  /* Botón flotante de LinkedIn */
-  .org-card__linkedin-btn {
-    position: absolute;
-    bottom: 1.25rem;
-    right: 1.25rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 20;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .org-card__linkedin-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  /* Ajustes de tamaño del botón flotante */
-  .org-card--medium-large .org-card__linkedin-btn {
-    bottom: 1.125rem;
-    right: 1.125rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 7px;
-  }
-
-  .org-card--medium .org-card__linkedin-btn,
-  .org-card--small .org-card__linkedin-btn {
-    bottom: 0.75rem;
-    right: 0.75rem;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-  }
-
   /* ===== HOVER STATES ===== */
   .org-card--has-link::after {
     content: "";
@@ -442,25 +396,5 @@ const cardClass = `org-card ${sizeClasses[size]} ${hasLink ? "org-card--has-link
 
   .org-card--has-link:hover .org-card__logo {
     opacity: 1;
-  }
-
-
-  /* Aparición del botón flotante */
-  .org-card--has-link:hover .org-card__linkedin-btn {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Micro-interacción sobre el botón de LinkedIn */
-  .org-card__linkedin-btn:hover {
-    transform: scale(1.1);
-    box-shadow:
-      0 0 15px rgba(0, 119, 181, 0.5),
-      0 6px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .org-card__linkedin-btn:hover .org-card__linkedin-img {
-    transform: scale(1.05);
-    filter: brightness(1.05);
   }
 </style>
