@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme extend {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Outfit", "Inter", sans-serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-display: "Poppins", system-ui, sans-serif;
 
   --color-primary: oklch(0.72 0.19 290);
   --color-primary-light: oklch(0.80 0.15 290);
@@ -43,23 +43,23 @@
 
 @keyframes global-theme-cycle {
   0%, 100% {
-    --theme-color-primary: #ef4444;
-    --theme-color-secondary: #991b1b;
+    --theme-color-primary: #ef4444; /* Rojo vibrante */
+    --theme-color-secondary: #ec4899; /* Rosa vibrante */
     --theme-color-glow: rgba(239, 68, 68, 0.15);
   }
   25% {
-    --theme-color-primary: #f97316;
-    --theme-color-secondary: #9a3412;
+    --theme-color-primary: #f97316; /* Naranja vibrante */
+    --theme-color-secondary: #eab308; /* Amarillo vibrante */
     --theme-color-glow: rgba(249, 115, 22, 0.15);
   }
   50% {
-    --theme-color-primary: #22c55e;
-    --theme-color-secondary: #166534;
+    --theme-color-primary: #22c55e; /* Verde vibrante */
+    --theme-color-secondary: #06b6d4; /* Cian vibrante */
     --theme-color-glow: rgba(34, 197, 94, 0.15);
   }
   75% {
-    --theme-color-primary: #3b82f6;
-    --theme-color-secondary: #1e40af;
+    --theme-color-primary: #3b82f6; /* Azul vibrante */
+    --theme-color-secondary: #a855f7; /* Púrpura vibrante */
     --theme-color-glow: rgba(59, 130, 246, 0.15);
   }
 }
