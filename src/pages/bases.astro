@@ -1,12 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CardRequisitos from '../components/bases/CardRequisitos.astro';
+import CardDesafios from '../components/bases/CardDesafios.astro';
+import CardEntregables from '../components/bases/CardEntregables.astro';
 ---
 
 <Layout title="Bases">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Bases del Concurso</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irán los términos, reglas y condiciones.</p>
+	<section class="py-32 relative z-10 min-h-screen overflow-hidden">
+		<div class="hero-orb hero-orb--purple"></div>
+		<div class="hero-orb hero-orb--blue"></div>
+		<div class="hero-orb hero-orb--pink"></div>
+		<div class="hero-ring"></div>
+		<div class="hero-grid"></div>
+		
+		<div class="container-custom relative z-10 max-w-5xl">
+			<!-- Título de la Página -->
+			<div class="text-center mb-16 reveal">
+				<h1 class="text-4xl md:text-6xl font-normal mb-6 tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+					Bases
+				</h1>
+			</div>
+
+			<!-- Contenido de las Bases en 3 Bloques Separados -->
+			<div class="space-y-16 max-w-4xl mx-auto mb-20">
+				
+				<!-- Sección 1: Requisitos -->
+				<div class="reveal">
+					<div class="flex items-center gap-3 mb-6">
+						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Requisitos</h2>
+						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
+					</div>
+					<CardRequisitos />
+				</div>
+
+				<!-- Sección 2: Desafíos -->
+				<div class="reveal">
+					<div class="flex items-center gap-3 mb-6">
+						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Desafíos</h2>
+						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
+					</div>
+					<CardDesafios />
+				</div>
+
+				<!-- Sección 3: Entregables -->
+				<div class="reveal">
+					<div class="flex items-center gap-3 mb-6">
+						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Entregables</h2>
+						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
+					</div>
+					<CardEntregables />
+				</div>
+
+			</div>
+
+			<!-- Premium Download Action Card (Maximum Motivation) - NUNCA ALTERADO -->
+			<div class="reveal">
+				<div class="glow-card glow-card--cta text-center relative max-w-4xl mx-auto overflow-hidden border-2 border-white/5 hover:border-[var(--theme-color-primary)]/40">
+					<div class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"></div>
+					<div class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"></div>
+					
+					<div class="relative z-10 py-8 px-4">
+						<div class="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-6 shadow-inner">
+							<svg class="w-8 h-8 text-[var(--theme-color-primary)] animate-bounce" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+							</svg>
+						</div>
+						
+						<h3 class="text-3xl md:text-5xl font-extrabold text-white mb-8 tracking-tight" style="font-family: var(--font-display);">
+							¿Listo para competir?
+						</h3>
+						
+						<a
+							href="/documents/bases.pdf"
+							download="Bases_Innovathon_2026.pdf"
+							class="btn-animate-rgb inline-flex items-center gap-3 px-12 py-4.5 rounded-2xl font-bold text-white text-lg cursor-pointer transform hover:scale-105 transition-transform"
+						>
+							<span class="flex items-center gap-2">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+								</svg>
+								Descargar Reglamento Oficial (PDF)
+							</span>
+						</a>
+						
+						<span class="block text-slate-500 text-xs mt-4">Documento Obligatorio &nbsp;&nbsp;•&nbsp;&nbsp; 1.03 MB &nbsp;&nbsp;•&nbsp;&nbsp; Edición 2026</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 </Layout>

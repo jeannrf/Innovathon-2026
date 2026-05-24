@@ -1,15 +1,9 @@
 @import "tailwindcss";
 
-/* ============================================
-   DESIGN SYSTEM — Innovathon 2026
-   Using @theme extend to PRESERVE Tailwind defaults
-   ============================================ */
-
 @theme extend {
   --font-sans: "Poppins", system-ui, sans-serif;
   --font-display: "Poppins", system-ui, sans-serif;
 
-  /* Brand Colors */
   --color-primary: oklch(0.72 0.19 290);
   --color-primary-light: oklch(0.80 0.15 290);
   --color-primary-dark: oklch(0.55 0.22 290);
@@ -18,7 +12,6 @@
   --color-cyan: oklch(0.78 0.14 210);
   --color-cyan-light: oklch(0.85 0.10 210);
 
-  /* Surfaces */
   --color-surface: oklch(0.14 0.02 280);
   --color-surface-elevated: oklch(0.18 0.02 280);
 }
@@ -158,158 +151,256 @@
   75% { transform: translate(-30px, -10px) scale(1.02); }
 }
 
-/* ===== GLOW CARD & HERO BACKGROUNDS (Extracted from beneficios) ===== */
+.glow-card {
+  position: relative;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.75rem;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--theme-color-primary),
+    var(--theme-color-secondary),
+    transparent
+  );
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--theme-color-glow),
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.glow-card:hover {
+  border-color: var(--theme-color-primary);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.04)
+  );
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 30px var(--theme-color-glow),
+    0 20px 40px rgba(0, 0, 0, 0.4);
+}
+.glow-card:hover::before {
+  opacity: 1;
+}
+.glow-card:hover::after {
+  opacity: 1;
+}
 
-		/* ===== GLOW CARD SYSTEM ===== */
-		.glow-card {
-			position: relative;
-			border-radius: 1.25rem;
-			background: linear-gradient(
-				135deg,
-				rgba(255, 255, 255, 0.06),
-				rgba(255, 255, 255, 0.02)
-			);
-			border: 1px solid rgba(255, 255, 255, 0.08);
-			padding: 1.75rem;
-			overflow: hidden;
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			backdrop-filter: blur(10px);
-		}
-		/* Top shimmer line */
-		.glow-card::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 1px;
-			background: linear-gradient(
-				90deg,
-				transparent,
-				var(--theme-color-primary),
-				var(--theme-color-secondary),
-				transparent
-			);
-			opacity: 0.5;
-			transition: opacity 0.5s ease;
-		}
-		/* Inner corner glow */
-		.glow-card::after {
-			content: "";
-			position: absolute;
-			top: -50%;
-			left: -50%;
-			width: 200%;
-			height: 200%;
-			background: radial-gradient(
-				circle at 30% 30%,
-				var(--theme-color-glow),
-				transparent 50%
-			);
-			opacity: 0;
-			transition: opacity 0.5s ease;
-			pointer-events: none;
-		}
-		.glow-card:hover {
-			border-color: var(--theme-color-primary);
-			background: linear-gradient(
-				135deg,
-				rgba(255, 255, 255, 0.1),
-				rgba(255, 255, 255, 0.04)
-			);
-			transform: translateY(-4px);
-			box-shadow:
-				0 0 30px var(--theme-color-glow),
-				0 20px 40px rgba(0, 0, 0, 0.4);
-		}
-		.glow-card:hover::before {
-			opacity: 1;
-		}
-		.glow-card:hover::after {
-			opacity: 1;
-		}
-	
 .hero-orb {
-		position: absolute;
-		border-radius: 50%;
-		filter: blur(120px);
-	}
-	.hero-orb--purple {
-		width: 700px;
-		height: 700px;
-		top: -300px;
-		left: 50%;
-		transform: translateX(-50%);
-		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
-		opacity: 0.25;
-		animation: orb-float 24s ease-in-out infinite;
-		transition: background 0.5s ease;
-	}
-	.hero-orb--blue {
-		width: 500px;
-		height: 500px;
-		bottom: -150px;
-		left: -150px;
-		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
-		opacity: 0.15;
-		animation: orb-float 24s ease-in-out infinite;
-		animation-delay: -3s;
-		transition: background 0.5s ease;
-	}
-	.hero-orb--pink {
-		width: 400px;
-		height: 400px;
-		bottom: -50px;
-		right: -80px;
-		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
-		opacity: 0.18;
-		animation: orb-float 24s ease-in-out infinite;
-		animation-delay: -5s;
-		transition: background 0.5s ease;
-	}
-	/* Rotating ring decoration */
-	.hero-ring {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 600px;
-		height: 600px;
-		border-radius: 50%;
-		border: 1px solid color-mix(in srgb, var(--theme-color-primary) 8%, transparent);
-		animation: spin-ring 90s linear infinite;
-		pointer-events: none;
-	}
-	.hero-ring::before {
-		content: "";
-		position: absolute;
-		top: -2px;
-		left: 50%;
-		width: 4px;
-		height: 4px;
-		border-radius: 50%;
-		background: var(--theme-color-primary);
-		box-shadow: 0 0 12px color-mix(in srgb, var(--theme-color-primary) 60%, transparent);
-	}
-	@keyframes spin-ring {
-		from { transform: translate(-50%, -50%) rotate(0deg); }
-		to { transform: translate(-50%, -50%) rotate(360deg); }
-	}
-	.hero-grid {
-		position: absolute;
-		inset: 0;
-		background-image:
-			linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-		background-size: 60px 60px;
-		mask-image: radial-gradient(
-			ellipse at center,
-			black 30%,
-			transparent 70%
-		);
-	}
-	@keyframes orb-float {
-		0%, 100% { transform: translateY(0px) translateX(-50%); }
-		50% { transform: translateY(-30px) translateX(-50%); }
-	}
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+}
+.hero-orb--purple {
+  width: 700px;
+  height: 700px;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+  opacity: 0.25;
+  animation: orb-float 24s ease-in-out infinite;
+  transition: background 0.5s ease;
+}
+.hero-orb--blue {
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -150px;
+  background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+  opacity: 0.15;
+  animation: orb-float 24s ease-in-out infinite;
+  animation-delay: -3s;
+  transition: background 0.5s ease;
+}
+.hero-orb--pink {
+  width: 400px;
+  height: 400px;
+  bottom: -50px;
+  right: -80px;
+  background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+  opacity: 0.18;
+  animation: orb-float 24s ease-in-out infinite;
+  animation-delay: -5s;
+  transition: background 0.5s ease;
+}
+.hero-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--theme-color-primary) 8%, transparent);
+  animation: spin-ring 90s linear infinite;
+  pointer-events: none;
+}
+.hero-ring::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--theme-color-primary);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-color-primary) 60%, transparent);
+}
+@keyframes spin-ring {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse at center,
+    black 30%,
+    transparent 70%
+  );
+}
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0px) translateX(-50%); }
+  50% { transform: translateY(-30px) translateX(-50%); }
+}
 
+/* Desynchronized theme cycles for deliverable cards */
+@keyframes theme-cycle-step1 {
+  0%, 100% {
+    --theme-color-primary: #ef4444;
+    --theme-color-secondary: #991b1b;
+    --theme-color-glow: rgba(239, 68, 68, 0.15);
+  }
+  25% {
+    --theme-color-primary: #f97316;
+    --theme-color-secondary: #9a3412;
+    --theme-color-glow: rgba(249, 115, 22, 0.15);
+  }
+  50% {
+    --theme-color-primary: #22c55e;
+    --theme-color-secondary: #166534;
+    --theme-color-glow: rgba(34, 197, 94, 0.15);
+  }
+  75% {
+    --theme-color-primary: #3b82f6;
+    --theme-color-secondary: #1e40af;
+    --theme-color-glow: rgba(59, 130, 246, 0.15);
+  }
+}
+@keyframes theme-cycle-step2 {
+  0%, 100% {
+    --theme-color-primary: #f97316;
+    --theme-color-secondary: #9a3412;
+    --theme-color-glow: rgba(249, 115, 22, 0.15);
+  }
+  25% {
+    --theme-color-primary: #22c55e;
+    --theme-color-secondary: #166534;
+    --theme-color-glow: rgba(34, 197, 94, 0.15);
+  }
+  50% {
+    --theme-color-primary: #3b82f6;
+    --theme-color-secondary: #1e40af;
+    --theme-color-glow: rgba(59, 130, 246, 0.15);
+  }
+  75% {
+    --theme-color-primary: #ef4444;
+    --theme-color-secondary: #991b1b;
+    --theme-color-glow: rgba(239, 68, 68, 0.15);
+  }
+}
+@keyframes theme-cycle-step3 {
+  0%, 100% {
+    --theme-color-primary: #22c55e;
+    --theme-color-secondary: #166534;
+    --theme-color-glow: rgba(34, 197, 94, 0.15);
+  }
+  25% {
+    --theme-color-primary: #3b82f6;
+    --theme-color-secondary: #1e40af;
+    --theme-color-glow: rgba(59, 130, 246, 0.15);
+  }
+  50% {
+    --theme-color-primary: #ef4444;
+    --theme-color-secondary: #991b1b;
+    --theme-color-glow: rgba(239, 68, 68, 0.15);
+  }
+  75% {
+    --theme-color-primary: #f97316;
+    --theme-color-secondary: #9a3412;
+    --theme-color-glow: rgba(249, 115, 22, 0.15);
+  }
+}
+
+.step-theme-1 {
+  animation: theme-cycle-step1 24s linear infinite;
+}
+.step-theme-2 {
+  animation: theme-cycle-step2 24s linear infinite;
+}
+.step-theme-3 {
+  animation: theme-cycle-step3 24s linear infinite;
+}
+
+@keyframes theme-cycle-step4 {
+  0%, 100% {
+    --theme-color-primary: #3b82f6;
+    --theme-color-secondary: #1e40af;
+    --theme-color-glow: rgba(59, 130, 246, 0.15);
+  }
+  25% {
+    --theme-color-primary: #ef4444;
+    --theme-color-secondary: #991b1b;
+    --theme-color-glow: rgba(239, 68, 68, 0.15);
+  }
+  50% {
+    --theme-color-primary: #f97316;
+    --theme-color-secondary: #9a3412;
+    --theme-color-glow: rgba(249, 115, 22, 0.15);
+  }
+  75% {
+    --theme-color-primary: #22c55e;
+    --theme-color-secondary: #166534;
+    --theme-color-glow: rgba(34, 197, 94, 0.15);
+  }
+}
+
+.step-theme-4 {
+  animation: theme-cycle-step4 24s linear infinite;
+}

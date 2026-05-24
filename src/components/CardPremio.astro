@@ -12,10 +12,8 @@ const { puestoNum, title, description, cashAmount, items, color } = Astro.props;
 ---
 
 <div class="glow-card flex flex-col items-center text-center p-8 relative overflow-hidden group">
-	<!-- Ambient glow for this card -->
 	<div class="absolute top-10 left-1/2 -translate-x-1/2 w-24 h-24 opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity duration-500" style={`background-color: ${color};`}></div>
 	
-	<!-- Medal SVG -->
 	<svg class="w-20 h-20 mb-6 relative z-10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style={`color: ${color};`}>
 		<circle cx="12" cy="15" r="7" />
 		<path d="M8.5 9L4 2h4l4 5" />
@@ -35,6 +33,5 @@ const { puestoNum, title, description, cashAmount, items, color } = Astro.props;
 		))}
 	</div>
 	
-	<!-- SVG Prize Slot -->
 	<slot name="prize-icon" />
 </div>
