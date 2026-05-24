@@ -84,7 +84,7 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 							</div>
 
 							<div class="form-group">
-								<label for="teamCategory" class="form-label">Categoría del Proyecto *</label>
+								<label for="teamCategory" class="form-label">Categoría del Proyecto</label>
 								<select id="teamCategory" name="teamCategory" class="form-select appearance-none">
 									<option value="" disabled selected>Selecciona una categoría...</option>
 									<option value="mineria">Minería</option>
@@ -214,7 +214,7 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 										<!-- Skills: Solo para Individual (i === 0) y cuando está en modo individual -->
 										{i === 0 && (
 											<div id="individual-skills-wrapper" class="form-group md:col-span-2">
-												<label class="form-label">Tus Skills (Agrega varias para emparejarte mejor) *</label>
+												<label class="form-label">Selecciona tus Skills</label>
 												<select id="individualSkillsSelect" class="form-select appearance-none mb-3">
 													<option value="" disabled selected>Selecciona un skill para añadirlo...</option>
 													<option value="Frontend">Frontend (HTML/CSS/JS/React)</option>
@@ -668,7 +668,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 						
 						// Require team fields
 						document.getElementById('teamName')?.setAttribute('required', 'true');
-						document.getElementById('teamCategory')?.setAttribute('required', 'true');
 						document.getElementById('teamIdea')?.setAttribute('required', 'true');
 						
 						updateTabsVisibility();
@@ -682,7 +681,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 
 						// Unrequire team fields
 						document.getElementById('teamName')?.removeAttribute('required');
-						document.getElementById('teamCategory')?.removeAttribute('required');
 						document.getElementById('teamIdea')?.removeAttribute('required');
 
 						// Reset to tab 0
