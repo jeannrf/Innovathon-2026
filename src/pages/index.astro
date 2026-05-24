@@ -1,11 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CollaboratorsCard from "../components/layout/CollaboratorsCard.astro";
-import { collaborators } from "../data/collaborators";
-
-const organizadores = collaborators.filter(c => c.category === "organizadores");
-const auspiciadores = collaborators.filter(c => c.category === "auspiciadores");
-const patrocinadores = collaborators.filter(c => c.category === "patrocinadores");
 import CardHomeMain from "../components/home/CardHomeMain.astro";
 import CardHomeStat from "../components/home/CardHomeStat.astro";
 import CardHomePrize from "../components/home/CardHomePrize.astro";
