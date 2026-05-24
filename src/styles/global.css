@@ -103,6 +103,31 @@
     color: oklch(0.80 0.15 290);
     border: 1px solid oklch(0.72 0.19 290 / 0.2);
   }
+  .btn-animate-rgb {
+    position: relative;
+    background: linear-gradient(to right, var(--theme-color-primary), var(--theme-color-secondary));
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+  .btn-animate-rgb::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: inherit;
+    background-size: inherit;
+    border-radius: inherit;
+    filter: blur(12px);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-animate-rgb:hover {
+    transform: scale(1.03);
+  }
+  .btn-animate-rgb:hover::before {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
 }
 
 @layer utilities {
