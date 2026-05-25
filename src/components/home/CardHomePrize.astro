@@ -21,18 +21,18 @@ const {
   title,
   description,
   badges = [],
-  color = place === 'third' ? 'secondary' : 'primary',
+  color = 'primary',
   orderClass = '',
   className = '',
 } = Astro.props;
 
 const isFeatured = place === 'first';
 
-const parsedBadges = badges.map((badge, index) => {
+const parsedBadges = badges.map((badge) => {
   if (typeof badge === 'string') {
     return {
       label: badge,
-      color: (index % 2 === 0 ? color : (color === 'primary' ? 'secondary' : 'primary')) as 'primary' | 'secondary'
+      color: color as 'primary' | 'secondary'
     };
   }
   return {
@@ -91,7 +91,7 @@ const parsedBadges = badges.map((badge, index) => {
 
   <p
     class={`${
-      isFeatured ? 'text-slate-300 leading-relaxed relative z-10 text-sm' : 'text-slate-400 text-sm'
+      isFeatured ? 'text-slate-300 leading-relaxed relative z-10 text-sm' : 'text-slate-300/90 leading-relaxed text-sm'
     }`}
   >
     {description}

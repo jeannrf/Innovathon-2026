@@ -1,12 +1,136 @@
 ---
+// src/pages/cronograma.astro
 import Layout from '../layouts/Layout.astro';
+import CardCronograma from '../components/cronograma/CardCronograma.astro';
+import { cronograma } from '../data/cronograma';
 ---
 
 <Layout title="Cronograma">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Cronograma</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irá la agenda del evento.</p>
+	<section class="py-32 relative z-10 min-h-screen overflow-hidden">
+		<!-- Background Orbs and perspective Grid -->
+		<div class="absolute inset-0 pointer-events-none z-0">
+			<div class="hero-orb hero-orb--purple"></div>
+			<div class="hero-orb hero-orb--blue"></div>
+			<div class="hero-orb hero-orb--pink"></div>
+			<div class="page-grid"></div>
+		</div>
+		
+		<div class="container-custom relative z-10 max-w-5xl">
+			<!-- Título de la Página -->
+			<div class="text-center mb-24 reveal">
+				<h1 
+					class="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
+					style="font-family: var(--font-display);"
+				>
+					Fases y <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Cronograma</span>
+				</h1>
+				<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+					Sigue el camino del reto tecnológico del año. Prepárate para cada etapa de la Innovathon 2026.
+				</p>
+			</div>
+
+			<!-- Timeline Pipeline Container -->
+			<div class="relative max-w-4xl mx-auto">
+				<!-- Vertical Pipeline Line (Dynamically matching the animated background gradient) -->
+				<div class="absolute left-6 md:left-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] transform md:-translate-x-1/2 z-0 opacity-40"></div>
+
+				<!-- Step Events -->
+				<div class="space-y-12 md:space-y-20 relative z-10">
+					{cronograma.map((event, index) => {
+						const isEven = index % 2 === 0;
+						
+						return (
+							<div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 reveal items-center">
+								<!-- Center/Left Node Anchor (Dynamically matches current theme) -->
+								<div 
+									class="absolute left-6 md:left-1/2 w-4 h-4 rounded-full bg-[#141219] border-2 border-[var(--theme-color-primary)] transform -translate-x-1/2 z-20 top-1/2 -translate-y-1/2 flex items-center justify-center transition-transform duration-300 hover:scale-125"
+									style="box-shadow: 0 0 15px var(--theme-color-glow);"
+								>
+									<div 
+										class="w-1.5 h-1.5 rounded-full animate-ping absolute bg-[var(--theme-color-primary)]"
+									></div>
+									<div 
+										class="w-1.5 h-1.5 rounded-full absolute bg-[var(--theme-color-primary)]"
+									></div>
+								</div>
+
+								<!-- Card Column -->
+								<div class={`relative pl-16 md:pl-0 z-10 ${isEven ? 'md:col-start-1 md:text-right' : 'md:col-start-2'}`}>
+									<CardCronograma
+										index={index}
+										title={event.title}
+										date={event.date}
+										description={event.description}
+										isActive={event.active}
+									/>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
 		</div>
 	</section>
 </Layout>
+
+<style>
+	/* ===== CSS LOCAL STYLES ===== */
+	
+	/* Hero Orbs (consistent with index.astro) */
+	.hero-orb {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		pointer-events: none;
+	}
+	.hero-orb--purple {
+		width: 600px;
+		height: 600px;
+		top: -200px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+		opacity: 0.15;
+		animation: orb-float-slow 24s ease-in-out infinite;
+	}
+	.hero-orb--blue {
+		width: 400px;
+		height: 400px;
+		bottom: 10%;
+		left: -10%;
+		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
+		opacity: 0.12;
+		animation: orb-float-slow 20s ease-in-out infinite;
+		animation-delay: -3s;
+	}
+	.hero-orb--pink {
+		width: 500px;
+		height: 500px;
+		top: 40%;
+		right: -15%;
+		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
+		opacity: 0.1;
+		animation: orb-float-slow 28s ease-in-out infinite;
+		animation-delay: -6s;
+	}
+	
+	@keyframes orb-float-slow {
+		0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+		50% { transform: translateY(-40px) translateX(25px) scale(1.05); }
+	}
+
+	.page-grid {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+		background-size: 60px 60px;
+		pointer-events: none;
+		mask-image: radial-gradient(
+			ellipse at center,
+			black 40%,
+			transparent 80%
+		);
+	}
+</style>
