@@ -48,7 +48,6 @@ const areas = [
     titleColorClass: "text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.25)]",
     glowColorClass: "from-red-500/20 to-rose-500/20",
     borderColorClass: "group-hover:border-red-500/30",
-    buttonClass: "bg-red-500 text-slate-950 hover:bg-red-400 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]",
     iconColorClass: "border-red-500/30 bg-red-500/5 text-red-400 group-hover:border-red-500 group-hover:bg-red-500/10 group-hover:shadow-[0_0_25px_rgba(239,68,68,0.2)]",
     hoverBorderClass: "hover:border-red-500/30",
     iconSvg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +66,6 @@ const areas = [
     titleColorClass: "text-orange-400 drop-shadow-[0_0_15px_rgba(249,115,22,0.25)]",
     glowColorClass: "from-orange-500/20 to-amber-500/20",
     borderColorClass: "group-hover:border-orange-500/30",
-    buttonClass: "bg-orange-500 text-slate-950 hover:bg-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]",
     iconColorClass: "border-orange-500/30 bg-orange-500/5 text-orange-400 group-hover:border-orange-500 group-hover:bg-orange-500/10 group-hover:shadow-[0_0_25px_rgba(249,115,22,0.2)]",
     hoverBorderClass: "hover:border-orange-500/30",
     iconSvg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +84,6 @@ const areas = [
     titleColorClass: "text-emerald-400 drop-shadow-[0_0_15px_rgba(34,197,94,0.25)]",
     glowColorClass: "from-emerald-500/20 to-teal-500/20",
     borderColorClass: "group-hover:border-emerald-500/30",
-    buttonClass: "bg-emerald-500 text-slate-950 hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]",
     iconColorClass: "border-emerald-500/30 bg-emerald-500/5 text-emerald-400 group-hover:border-emerald-500 group-hover:bg-emerald-500/10 group-hover:shadow-[0_0_25px_rgba(34,197,94,0.2)]",
     hoverBorderClass: "hover:border-emerald-500/30",
     iconSvg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +102,6 @@ const areas = [
     titleColorClass: "text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.25)]",
     glowColorClass: "from-blue-500/20 to-indigo-500/20",
     borderColorClass: "group-hover:border-blue-500/30",
-    buttonClass: "bg-blue-500 text-slate-950 hover:bg-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]",
     iconColorClass: "border-blue-500/30 bg-blue-500/5 text-blue-400 group-hover:border-blue-500 group-hover:bg-blue-500/10 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.2)]",
     hoverBorderClass: "hover:border-blue-500/30",
     iconSvg: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +125,7 @@ const areas = [
 		<div class="absolute left-1/2 -top-[20%] -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[var(--theme-color-glow)] blur-[140px] pointer-events-none opacity-30 z-0"></div>
 		
 		<div class="container-custom relative z-10">
-			<h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight mb-2 bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent transition-all duration-500" style="font-family: var(--font-display);">
+			<h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight mb-2 bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent transition-all duration-500" style="font-family: var(--font-display);">
 				¿Qué es TinkuyLabs?
 			</h1>
 			<div class="w-24 h-[2px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] mx-auto mt-4"></div>
@@ -137,7 +133,7 @@ const areas = [
 	</header>
 
 	<!-- SECCIÓN 1: INFORMACIÓN -->
-	<section class="py-16 relative z-10">
+	<section class="pt-16 pb-0 sm:pb-6 relative z-10">
 		<div class="container-custom">
 			<SectionHeader title="Información" mbClass="mb-10" />
 
@@ -306,7 +302,7 @@ const areas = [
 				</div>
 
 				<!-- Navigation arrows below carousel -->
-				<div class="flex justify-center gap-4 mt-8 reveal">
+				<div class="flex justify-center gap-4 mt-4 sm:mt-8 reveal">
 					<button 
 						id="carousel-prev" 
 						class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 focus:outline-none"
@@ -331,7 +327,7 @@ const areas = [
 	</section>
 
 	<!-- SECCIÓN 3: ÁREAS -->
-	<section class="py-24 relative z-10">
+	<section class="pt-0 sm:pt-6 pb-24 relative z-10">
 		<div class="container-custom">
 			<SectionHeader title="Áreas" />
 
@@ -340,7 +336,7 @@ const areas = [
 				{areas.map((area, index) => {
 					const isEven = index % 2 === 0;
 					return (
-						<div class={`glow-card bg-slate-900/25 border border-white/5 p-4 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] flex flex-col gap-6 md:gap-8 group transition-all duration-500 ${area.hoverBorderClass}`}>
+						<div class={`glow-card bg-slate-900/25 border border-white/5 p-4 sm:p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] group transition-all duration-500 ${area.hoverBorderClass}`}>
 							
 							<!-- Top Section: Image & Content -->
 							<div class={`flex ${isEven ? 'flex-row' : 'flex-row-reverse'} gap-4 sm:gap-6 md:gap-12 items-start w-full`}>
@@ -391,13 +387,6 @@ const areas = [
 								</div>
 							</div>
 
-							<!-- Bottom Section: Button Centered -->
-							<div class="w-full flex justify-center mt-2">
-								<button class={`px-6 py-2 sm:px-10 sm:py-3.5 rounded-full font-bold text-[10px] sm:text-sm transition-all duration-300 ${area.buttonClass}`}>
-									Conoce más
-								</button>
-							</div>
-
 						</div>
 					);
 				})}
@@ -434,6 +423,7 @@ const areas = [
 	#photo-carousel {
 		-ms-overflow-style: none;  /* IE and Edge */
 		scrollbar-width: none;  /* Firefox */
+		-webkit-overflow-scrolling: touch; /* Desplazamiento inercial suave en iOS */
 	}
 </style>
 
@@ -488,6 +478,8 @@ const areas = [
 			}
 		};
 
+		let isTouchActive = false;
+
 		const stopAutoplay = () => {
 			isPaused = true;
 		};
@@ -496,10 +488,12 @@ const areas = [
 			stopAutoplay();
 			if (pauseTimeout) clearTimeout(pauseTimeout);
 			pauseTimeout = setTimeout(() => {
-				// Re-sync virtual position with actual position
-				currentScroll = carousel.scrollLeft;
-				isPaused = false;
-				lastTime = 0;
+				if (!isTouchActive) {
+					// Re-sync virtual position with actual position
+					currentScroll = carousel.scrollLeft;
+					isPaused = false;
+					lastTime = 0;
+				}
 			}, 2000);
 		};
 
@@ -540,6 +534,46 @@ const areas = [
 		carousel.addEventListener('mouseleave', () => {
 			currentScroll = carousel.scrollLeft;
 			startAutoplay();
+		});
+
+		// Controles táctiles (Celular/Tablet) para evitar conflicto de animación al arrastrar con el dedo
+		carousel.addEventListener('touchstart', () => {
+			isTouchActive = true;
+			stopAutoplay();
+			if (pauseTimeout) clearTimeout(pauseTimeout);
+		}, { passive: true });
+
+		carousel.addEventListener('touchend', () => {
+			isTouchActive = false;
+			pauseTemporarily();
+		}, { passive: true });
+
+		carousel.addEventListener('touchcancel', () => {
+			isTouchActive = false;
+			pauseTemporarily();
+		}, { passive: true });
+
+		// Bucle infinito bidireccional fluido tanto para arrastre manual como para autoplay
+		carousel.addEventListener('scroll', () => {
+			const loopWidth = carousel.scrollWidth / 2;
+			if (!loopWidth) return;
+
+			// Si se arrastra manualmente a la derecha y se pasa el primer ciclo, saltamos al inicio de forma invisible
+			if (carousel.scrollLeft >= loopWidth) {
+				carousel.scrollLeft = carousel.scrollLeft - loopWidth + 2;
+				currentScroll = carousel.scrollLeft;
+			} 
+			// Si se arrastra a la izquierda y llega al tope, saltamos al final de la primera mitad de forma invisible
+			else if (carousel.scrollLeft <= 0) {
+				carousel.scrollLeft = loopWidth - 2;
+				currentScroll = carousel.scrollLeft;
+			} 
+			// Sincronizamos la posición virtual durante el arrastre normal
+			else {
+				if (isPaused) {
+					currentScroll = carousel.scrollLeft;
+				}
+			}
 		});
 
 		// Start autoplay
