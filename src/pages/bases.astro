@@ -3,10 +3,65 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Bases">
-	<section class="py-32 min-h-[60vh] flex items-center">
-		<div class="container-custom">
-			<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Bases del Concurso</h1>
-			<p class="text-slate-400 text-lg">Página en construcción. Aquí irán los términos, reglas y condiciones.</p>
+	<section class="py-32 relative z-10 min-h-screen overflow-hidden">
+		<div class="hero-orb hero-orb--purple"></div>
+		<div class="hero-orb hero-orb--blue"></div>
+		<div class="hero-orb hero-orb--pink"></div>
+		<div class="hero-grid"></div>
+		
+		<div class="container-custom relative z-10 max-w-5xl">
+			<!-- Título de la Página -->
+			<div class="text-center mb-16 reveal">
+				<h1 
+					class="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
+					style="font-family: var(--font-display);"
+				>
+					Reglamento y <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Bases</span>
+				</h1>
+				<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+					Visualiza y descarga el reglamento oficial completo para conocer en detalle todos los lineamientos y asegurar tu participación en la Innovathon 2026.
+				</p>
+			</div>
+
+			<!-- Visor de PDF Scrollable -->
+			<div class="reveal mb-20">
+				<div class="glow-card max-w-5xl mx-auto overflow-hidden p-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] rounded-2xl shadow-[0_0_30px_var(--theme-color-glow)] border border-white/5">
+					<div class="w-full h-[700px] md:h-[900px] rounded-2xl overflow-hidden bg-slate-950/80 backdrop-blur-md">
+						<iframe
+							src="/documents/bases.pdf#toolbar=0&navpanes=0"
+							class="w-full h-full border-none"
+							title="Reglamento e Instructivo Oficial - Innovathon 2026"
+						>
+							<div class="flex flex-col items-center justify-center h-full p-8 text-center bg-slate-950/90">
+								<p class="text-slate-400 mb-4 font-light">Tu navegador no admite la visualización directa de archivos PDF.</p>
+								<a
+									href="/documents/bases.pdf"
+									download="Bases_Innovathon_2026.pdf"
+									class="btn-animate-rgb inline-flex items-center gap-3 px-8 py-4 rounded-xl font-normal text-white text-base"
+								>
+									Descargar Reglamento (PDF)
+								</a>
+							</div>
+						</iframe>
+					</div>
+				</div>
+			</div>
+
+			<!-- Premium Download Action Button -->
+			<div class="reveal text-center mt-12">
+				<a
+					href="/documents/bases.pdf"
+					download="Bases_Innovathon_2026.pdf"
+					class="btn-animate-rgb inline-flex items-center gap-3 px-12 py-5 rounded-2xl font-normal text-white text-base md:text-lg cursor-pointer transform hover:scale-105 transition-transform shadow-[0_0_25px_var(--theme-color-glow)]"
+				>
+					<span class="flex items-center gap-3 font-normal">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+						</svg>
+						Descargar Reglamento Oficial (PDF)
+					</span>
+				</a>
+			</div>
 		</div>
 	</section>
 </Layout>

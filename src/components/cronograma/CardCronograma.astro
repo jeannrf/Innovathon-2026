@@ -1,0 +1,106 @@
+---
+// src/components/cronograma/CardCronograma.astro
+
+interface Props {
+  index: number;
+  title: string;
+  date: string;
+  description: string;
+  isActive?: boolean;
+}
+
+const { index, title, date, description, isActive = false } = Astro.props;
+const isEven = index % 2 === 0;
+---
+
+<div 
+  class="glow-card p-6 md:p-8 flex flex-col justify-between relative overflow-hidden group border border-[var(--theme-color-primary)]/20 hover:border-[var(--theme-color-primary)]/50 transition-all duration-500"
+>
+  <!-- Local ambient background glow inside cards -->
+  <div class="absolute -top-24 -right-24 w-48 h-48 bg-[var(--theme-color-glow)] rounded-full blur-[80px] opacity-35 group-hover:opacity-80 transition-opacity duration-500 pointer-events-none"></div>
+
+  <!-- Giant numeral outline backdropped (Placed opposite to the text alignment on desktop) -->
+  <div class={`absolute ${isEven ? 'right-6 md:right-auto md:left-8' : 'right-6 md:right-8'} top-3 text-7xl md:text-8xl font-black text-[var(--theme-color-primary)]/10 group-hover:text-[var(--theme-color-primary)]/25 transition-colors duration-500 font-mono select-none pointer-events-none opacity-[0.4] group-hover:opacity-[0.8]`}>
+    {String(index + 1).padStart(2, '0')}
+  </div>
+
+  <div class="relative z-10">
+    <h3 class="text-xl md:text-2xl font-normal text-white mb-3 group-hover:text-[var(--theme-color-primary)] transition-colors duration-300 tracking-tight leading-snug" style="font-family: var(--font-display);">
+      {title}
+    </h3>
+
+    <p class="text-slate-400 text-sm md:text-base leading-relaxed font-light mb-6">
+      {description}
+    </p>
+
+    <!-- Clean Info Text (No badges, elegant layout) -->
+    <div class={`flex items-center gap-2.5 flex-wrap ${isEven ? 'md:justify-end' : ''}`}>
+      <span class="text-white text-xs md:text-sm font-medium tracking-wide">
+        {date}
+      </span>
+      
+      {isActive && (
+        <>
+          <span class="text-slate-600 text-xs md:text-sm select-none">•</span>
+          <span 
+            class="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase animate-pulse"
+            style="color: var(--theme-color-primary);"
+          >
+            <span 
+              class="w-1.5 h-1.5 rounded-full"
+              style="background-color: var(--theme-color-primary); box-shadow: 0 0 8px var(--theme-color-primary);"
+            ></span>
+            FASE ACTIVA
+          </span>
+        </>
+      )}
+    </div>
+  </div>
+</div>
+
+<style>
+  .glow-card {
+    position: relative;
+    border-radius: 1.5rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.01)
+    );
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--theme-color-primary),
+      var(--theme-color-secondary),
+      transparent
+    );
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+  }
+  .glow-card:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.02)
+    );
+    transform: translateY(-6px);
+    box-shadow: 
+      0 0 35px var(--theme-color-glow),
+      0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  .glow-card:hover::before {
+    opacity: 0.9;
+  }
+</style>

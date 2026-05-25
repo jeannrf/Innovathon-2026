@@ -12,7 +12,6 @@ import IconTercerPuesto from '../components/icons/icons-beneficios/IconTercerPue
 import IconSegundoPuesto from '../components/icons/icons-beneficios/IconSegundoPuesto.astro';
 import IconPrimerPuesto from '../components/icons/icons-beneficios/IconPrimerPuesto.astro';
 
-
 const beneficiosData = [
 	{
 		title: "Desarrollo de Ideas y Validación de MVPs",
@@ -77,34 +76,30 @@ const premiosData = [
 
 <Layout title="Beneficios">
 	<section class="py-32 relative z-10 min-h-screen overflow-hidden">
-		<!-- Ambient orbs -->
 		<div class="hero-orb hero-orb--purple"></div>
 		<div class="hero-orb hero-orb--blue"></div>
 		<div class="hero-orb hero-orb--pink"></div>
-		<!-- Radial ring decoration -->
-		<div class="hero-ring"></div>
-		<!-- Grid pattern -->
 		<div class="hero-grid"></div>
 		
-		<div class="container-custom relative z-10 max-w-4xl">
-			<h1 class="text-4xl md:text-5xl font-normal text-center mb-16 tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
-				Beneficios
-			</h1>
-			
-			<!-- Propuesta de Valor -->
-			<div class="mb-20 reveal">
-				<p class="text-2xl md:text-3xl text-slate-300 leading-relaxed font-light max-w-4xl mx-auto text-center text-balance">
-					Más allá de la competencia, la Innovathon te ofrece un entorno de <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] font-semibold drop-shadow-sm">aceleración técnica y profesional</span> diseñado para llevar tus habilidades al siguiente nivel.
+		<div class="container-custom relative z-10 max-w-5xl">
+			<!-- Título de la Página -->
+			<div class="text-center mb-16 reveal">
+				<h1 
+					class="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
+					style="font-family: var(--font-display);"
+				>
+					Premios y <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Beneficios</span>
+				</h1>
+				<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
+					Más allá de la competencia, accede a un entorno de aceleración técnica y profesional diseñado para llevar tus habilidades al siguiente nivel.
 				</p>
 			</div>
 
-			<!-- Qué Ganas -->
 			<div class="space-y-12 reveal-stagger">
-				<h2 class="text-3xl md:text-4xl font-black text-center mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+				<h2 class="text-3xl md:text-4xl font-light text-center mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
 					¿Por qué deberías unirte?
 				</h2>
 
-				
 				{beneficiosData.map((b) => (
 					<CardBeneficio
 						title={b.title}
@@ -117,14 +112,12 @@ const premiosData = [
 				))}
 			</div>
 
-			<!-- Premios Section -->
 			<div class="mt-24 reveal-stagger">
-				<h2 class="text-3xl md:text-4xl font-black text-center mb-24 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
+				<h2 class="text-3xl md:text-4xl font-light text-center mb-24 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--theme-color-primary)] to-[var(--theme-color-secondary)]" style="font-family: var(--font-display); filter: drop-shadow(0 0 15px var(--theme-color-glow));">
 					¡Premiamos el logro de cada ganador del equipo!
 				</h2>
 				
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					
 					{premiosData.map((p) => (
 						<CardPremio
 							puestoNum={p.puestoNum}
@@ -140,8 +133,5 @@ const premiosData = [
 				</div>
 			</div>
 		</div>
-		</div>
 	</section>
-
-	
 </Layout>

@@ -2,13 +2,15 @@ export interface TimelineEvent {
   date: string;
   title: string;
   description: string;
+  active?: boolean;
 }
 
 export const cronograma: TimelineEvent[] = [
   {
     date: "23 de agosto al 11 de octubre",
     title: "Lanzamiento y Convocatoria",
-    description: "Difusión oficial en redes sociales y universidades. Charlas informativas y apertura de inscripciones."
+    description: "Difusión oficial en redes sociales y universidades. Charlas informativas y apertura de inscripciones.",
+    active: true
   },
   {
     date: "19 de septiembre al 11 de octubre",
