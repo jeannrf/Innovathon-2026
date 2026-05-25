@@ -3,6 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import CardHomeMain from "../components/home/CardHomeMain.astro";
 import CardHomeStat from "../components/home/CardHomeStat.astro";
 import CardHomePrize from "../components/home/CardHomePrize.astro";
+import CollaboratorsCard from "../components/home/CollaboratorsCard.astro";
+import { collaborators } from "../data/collaborators";
+
+const organizadores = collaborators.filter(c => c.category === "organizadores");
+const auspiciadores = collaborators.filter(c => c.category === "auspiciadores");
+const patrocinadores = collaborators.filter(c => c.category === "patrocinadores");
+
 ---
 
 <Layout title="Inicio">
@@ -224,41 +231,63 @@ import CardHomePrize from "../components/home/CardHomePrize.astro";
 		</div>
 	</section>
 
-	<!-- AUSPICIADORES -->
-	<section class="py-16 relative z-10">
+	<!-- Organizadores -->
+	<section id="organizadores" class="py-24 relative z-10">
 		<div class="container-custom text-center">
-			<p
-				class="text-xs font-semibold text-slate-500 uppercase tracking-[0.3em] mb-10"
-			>
-				Auspiciado por
-			</p>
-			<div
-				class="flex flex-wrap justify-center items-center gap-10 md:gap-16"
-			>
-				<div class="sponsor-logo">
-					<span
-						class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500"
-						>Zoom</span
-					>
+			{organizadores.length > 0 && (
+				<div class="mb-20">
+					<h3 class="text-xs font-semibold text-slate-500 uppercase tracking-[0.3em] mb-10">
+						Organizado por
+					</h3>
+					<div class="flex flex-wrap justify-center items-center gap-6 md:gap-8 max-w-5xl mx-auto">
+						{organizadores.map(org => (
+							<CollaboratorsCard 
+								src={org.src}
+								name={org.name}
+								size="large"
+								imageClassName={org.imageClassName}
+							/>
+						))}
+					</div>
 				</div>
-				<div class="sponsor-logo">
-					<span
-						class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500"
-						>Linear</span
-					>
-				</div>
-				<div class="sponsor-logo">
-					<span
-						class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500"
-						>Wahoo</span
-					>
-				</div>
-				<div class="sponsor-logo">
-					<span
-						class="text-xl font-black tracking-wider text-white/40 hover:text-white transition-all duration-500"
-						>Webflow</span
-					>
-				</div>
+			)}
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto mt-16">
+				{auspiciadores.length > 0 && (
+					<div>
+						<h3 class="text-xs font-semibold text-slate-500 uppercase tracking-[0.3em] mb-10">
+							Auspiciadores
+						</h3>
+						<div class="flex flex-wrap justify-center items-center gap-5">
+							{auspiciadores.map(ausp => (
+								<CollaboratorsCard 
+									src={ausp.src}
+									name={ausp.name}
+									size="small"
+									imageClassName={ausp.imageClassName}
+								/>
+							))}
+						</div>
+					</div>
+				)}
+
+				{patrocinadores.length > 0 && (
+					<div>
+						<h3 class="text-xs font-semibold text-slate-500 uppercase tracking-[0.3em] mb-10">
+							Patrocinadores
+						</h3>
+						<div class="flex flex-wrap justify-center items-center gap-5">
+							{patrocinadores.map(patr => (
+								<CollaboratorsCard 
+									src={patr.src}
+									name={patr.name}
+									size="small"
+									imageClassName={patr.imageClassName}
+								/>
+							))}
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	</section>
@@ -333,7 +362,6 @@ import CardHomePrize from "../components/home/CardHomePrize.astro";
 					title="RiqchariyFinanzas"
 					description="Finanzas educativas para escolares y personas iniciando en el ecosistema financiero."
 					badges={["Finanzas", "Eduación"]}
-					,
 					orderClass="order-3"
 				/>
 			</div>
