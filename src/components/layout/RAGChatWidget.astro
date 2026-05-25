@@ -1,0 +1,420 @@
+---
+// src/components/layout/RAGChatWidget.astro
+---
+
+<!-- Trigger Button -->
+<button
+  id="rag-chat-trigger"
+  class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg border border-white/20 cursor-pointer transition-all duration-300 group focus:outline-none"
+  aria-label="Abrir chat de asistencia"
+>
+  <!-- Glow Effect Background -->
+  <span
+    class="absolute inset-0 rounded-full bg-inherit blur-md opacity-40 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+  ></span>
+
+  <!-- Innovabot Logo (shown when closed) -->
+  <img
+    id="rag-icon-closed"
+    src="/images/logos/Innovabot_logo.png"
+    alt="Innovabot"
+    class="w-9 h-9 object-contain rounded-full"
+  />
+
+  <!-- Close Icon (shown when open) -->
+  <svg
+    id="rag-icon-opened"
+    class="absolute w-6 h-6 text-white"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+</button>
+
+<!-- Chat Window -->
+<div
+  id="rag-chat-window"
+  class="fixed bottom-24 right-6 w-[320px] sm:w-[350px] max-w-[calc(100vw-2rem)] h-[440px] max-h-[calc(100vh-8rem)] z-50 flex flex-col rounded-2xl border border-white/10 shadow-2xl bg-[#181620]/95 backdrop-blur-xl overflow-hidden"
+>
+  <!-- Header -->
+  <div
+    class="px-3.5 py-3 border-b border-white/10 flex items-center justify-between bg-white/5 relative"
+  >
+    <div class="flex items-center gap-2.5">
+      <!-- Avatar with glowing border -->
+      <div
+        class="w-8.5 h-8.5 rounded-full p-[1.5px] shadow-inner relative flex items-center justify-center shrink-0"
+        style="background: linear-gradient(135deg, var(--theme-color-primary, #ef4444), var(--theme-color-secondary, #f97316))"
+      >
+        <img
+          src="/images/logos/Innovabot_logo.png"
+          alt="Innovabot"
+          class="w-full h-full rounded-full bg-[#141219] object-contain"
+        />
+        <span
+          class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-[#181620] rounded-full animate-pulse"
+        ></span>
+      </div>
+      <div>
+        <h4
+          class="text-ls font-bold text-white tracking-wide leading-none mb-0.5"
+        >
+          Innovabot
+        </h4>
+        <span class="text-[12px] text-slate-400 font-medium"
+          >Asistente oficial de la Innovathon</span
+        >
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center">
+      <!-- Reset button -->
+      <button
+        id="rag-chat-reset"
+        class="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+        title="Reiniciar chat"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Messages Container -->
+  <div id="rag-chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3.5">
+    <!-- Messages injected dynamically by JS -->
+  </div>
+
+  <!-- Input Form -->
+  <form
+    id="rag-chat-form"
+    class="p-2.5 border-t border-white/10 bg-black/20 flex gap-2 items-center"
+  >
+    <input
+      type="text"
+      id="rag-chat-input"
+      placeholder="Escribe tu mensaje aquí..."
+      class="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-400 focus:outline-none transition-all duration-300"
+      autocomplete="off"
+      maxlength="200"
+    />
+    <button
+      type="submit"
+      id="rag-chat-submit"
+      class="w-8.5 h-8.5 rounded-xl flex items-center justify-center text-white transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
+      aria-label="Enviar mensaje"
+    >
+      <svg
+        class="w-4 h-4 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<style>
+  /* Springy open animation */
+  #rag-chat-window {
+    transform-origin: bottom right;
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease-out;
+  }
+  #rag-chat-window.open {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #rag-chat-trigger {
+    background: #181620;
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(#181620, #181620),
+      linear-gradient(
+        135deg,
+        var(--theme-color-primary, #ef4444),
+        var(--theme-color-secondary, #f97316)
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  #rag-chat-input:focus {
+    border-color: var(--theme-color-primary, #ef4444);
+    box-shadow: 0 0 0 1px var(--theme-color-primary, #ef4444);
+  }
+
+  #rag-chat-submit {
+    background: linear-gradient(135deg, var(--theme-color-primary, #ef4444), var(--theme-color-secondary, #f97316));
+  }
+  #rag-chat-submit:disabled {
+    background: rgba(255, 255, 255, 0.05) !important;
+    opacity: 0.3;
+  }
+  #rag-chat-trigger:hover {
+    transform: scale(1.1);
+    box-shadow:
+      0 0 20px var(--theme-color-primary, #ef4444),
+      0 0 40px var(--theme-color-glow, rgba(239, 68, 68, 0.25));
+  }
+  #rag-chat-trigger:active {
+    transform: scale(0.95);
+  }
+
+  /* Rotating trigger icon animations */
+  #rag-icon-closed {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+  #rag-chat-trigger.active #rag-icon-closed {
+    transform: scale(0) rotate(90deg);
+    opacity: 0;
+  }
+
+  #rag-icon-opened {
+    transform: scale(0) rotate(-90deg);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+  #rag-chat-trigger.active #rag-icon-opened {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  /* Custom scrollbar for messages container */
+  #rag-chat-messages::-webkit-scrollbar {
+    width: 4px;
+  }
+  #rag-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #rag-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+  }
+  #rag-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Animation for bubble reveal */
+  @keyframes slide-bubble {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .rag-message-bubble {
+    animation: slide-bubble 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>
+
+<script>
+  // DOM Elements
+  const triggerBtn = document.getElementById(
+    "rag-chat-trigger",
+  ) as HTMLButtonElement;
+  const chatWindow = document.getElementById(
+    "rag-chat-window",
+  ) as HTMLDivElement;
+  const messagesContainer = document.getElementById(
+    "rag-chat-messages",
+  ) as HTMLDivElement;
+  const chatForm = document.getElementById("rag-chat-form") as HTMLFormElement;
+  const chatInput = document.getElementById(
+    "rag-chat-input",
+  ) as HTMLInputElement;
+  const chatSubmit = document.getElementById(
+    "rag-chat-submit",
+  ) as HTMLButtonElement;
+  const resetBtn = document.getElementById(
+    "rag-chat-reset",
+  ) as HTMLButtonElement;
+
+  // Types
+  interface Message {
+    sender: "user" | "bot";
+    text: string;
+    timestamp: number;
+  }
+
+  // Initialize Chat State
+  let chatHistory: Message[] = [];
+  let isOpen = false;
+
+  // Render a single message bubble
+  function renderMessageBubble(msg: Message) {
+    const isBot = msg.sender === "bot";
+
+    const messageRow = document.createElement("div");
+    messageRow.className = `flex items-start gap-2.5 rag-message-bubble ${isBot ? "justify-start" : "justify-end"}`;
+
+    let avatarHTML = "";
+    if (isBot) {
+      avatarHTML = `
+        <div class="w-6.5 h-6.5 rounded-full flex items-center justify-center p-[1.2px] shrink-0 shadow-md" style="background: linear-gradient(135deg, var(--theme-color-primary, #ef4444), var(--theme-color-secondary, #f97316))">
+          <img src="/images/logos/Innovabot_logo.png" alt="Innovabot" class="w-full h-full rounded-full bg-[#141219] object-contain" />
+        </div>
+      `;
+    }
+
+    // Direct text formatting (escaped for security)
+    const escapedText = msg.text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+    const bubbleHTML = isBot
+      ? `<div class="bg-white/5 border border-white/10 rounded-2xl rounded-tl-none py-2 px-3 shadow-inner max-w-[85%] text-slate-200 text-xs leading-relaxed font-light">${escapedText}</div>`
+      : `<div class="border border-white/10 rounded-2xl rounded-tr-none py-2 px-3 shadow-md max-w-[85%] text-white text-xs leading-relaxed font-normal" style="background: linear-gradient(135deg, var(--theme-color-primary, #ef4444), var(--theme-color-secondary, #f97316))">${escapedText}</div>`;
+
+    messageRow.innerHTML = isBot ? avatarHTML + bubbleHTML : bubbleHTML;
+    messagesContainer.appendChild(messageRow);
+  }
+
+  // Render whole conversation history
+  function renderHistory() {
+    messagesContainer.innerHTML = "";
+
+    if (chatHistory.length === 0) {
+      // Welcome message (default)
+      const welcomeMsg: Message = {
+        sender: "bot",
+        text: "¿En qué te puedo ayudar?",
+        timestamp: Date.now(),
+      };
+      renderMessageBubble(welcomeMsg);
+    } else {
+      chatHistory.forEach(renderMessageBubble);
+    }
+
+    scrollToBottom();
+  }
+
+  // Scroll messages panel to the bottom
+  function scrollToBottom() {
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Toggle Chat Window visibility
+  function toggleChat(forceState?: boolean) {
+    isOpen = forceState !== undefined ? forceState : !isOpen;
+
+    if (isOpen) {
+      chatWindow.classList.add("open");
+      triggerBtn.classList.add("active");
+      sessionStorage.setItem("rag_chat_open_simple", "true");
+      scrollToBottom();
+      setTimeout(() => chatInput.focus(), 150);
+    } else {
+      chatWindow.classList.remove("open");
+      triggerBtn.classList.remove("active");
+      sessionStorage.setItem("rag_chat_open_simple", "false");
+    }
+  }
+
+  // Handle sending a message
+  function handleSendQuery(text: string) {
+    if (!text.trim()) return;
+
+    // Add user message to history
+    const userMsg: Message = {
+      sender: "user",
+      text: text,
+      timestamp: Date.now(),
+    };
+    chatHistory.push(userMsg);
+    sessionStorage.setItem(
+      "rag_chat_history_simple",
+      JSON.stringify(chatHistory),
+    );
+
+    renderMessageBubble(userMsg);
+    chatInput.value = "";
+    chatSubmit.disabled = true;
+    scrollToBottom();
+  }
+
+  // Setup Event Listeners
+  triggerBtn.addEventListener("click", () => toggleChat());
+
+  resetBtn.addEventListener("click", () => {
+    if (confirm("¿Deseas vaciar los mensajes enviados?")) {
+      chatHistory = [];
+      sessionStorage.removeItem("rag_chat_history_simple");
+      renderHistory();
+    }
+  });
+
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    handleSendQuery(chatInput.value);
+  });
+
+  // Enable/disable submit button state
+  chatInput.addEventListener("input", () => {
+    chatSubmit.disabled = !chatInput.value.trim();
+  });
+
+  // Init logic on page load
+  function init() {
+    // Restore history
+    const savedHistory = sessionStorage.getItem("rag_chat_history_simple");
+    if (savedHistory) {
+      try {
+        chatHistory = JSON.parse(savedHistory);
+      } catch (e) {
+        chatHistory = [];
+      }
+    }
+
+    renderHistory();
+
+    // Restore open state
+    const savedOpen = sessionStorage.getItem("rag_chat_open_simple");
+    if (savedOpen === "true") {
+      toggleChat(true);
+    }
+
+    // Initial submit button state
+    chatSubmit.disabled = !chatInput.value.trim();
+  }
+
+  // Run initial setup
+  init();
+</script>

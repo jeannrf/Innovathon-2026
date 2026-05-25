@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
+import RAGChatWidget from "../components/layout/RAGChatWidget.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -20,7 +21,7 @@ const {
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/images/logos/Icono_logo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | Innovathon 2026</title>
 
@@ -38,6 +39,7 @@ const {
 			<slot />
 		</main>
 		<Footer />
+		<RAGChatWidget />
 
 		<!-- Scroll Reveal Observer -->
 		<script>
