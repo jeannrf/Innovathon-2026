@@ -1,8 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CardRequisitos from '../components/bases/CardRequisitos.astro';
-import CardDesafios from '../components/bases/CardDesafios.astro';
-import CardEntregables from '../components/bases/CardEntregables.astro';
 ---
 
 <Layout title="Bases">
@@ -22,75 +19,48 @@ import CardEntregables from '../components/bases/CardEntregables.astro';
 					Reglamento y <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent">Bases</span>
 				</h1>
 				<p class="text-slate-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-light">
-					Conoce los requisitos, desafíos y entregables obligatorios para asegurar tu participación en la Innovathon.
+					Visualiza y descarga el reglamento oficial completo para conocer en detalle todos los lineamientos y asegurar tu participación en la Innovathon 2026.
 				</p>
 			</div>
 
-			<!-- Contenido de las Bases en 3 Bloques Separados -->
-			<div class="space-y-16 max-w-4xl mx-auto mb-20">
-				
-				<!-- Sección 1: Requisitos -->
-				<div class="reveal">
-					<div class="flex items-center gap-3 mb-6">
-						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Requisitos</h2>
-						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
+			<!-- Visor de PDF Scrollable -->
+			<div class="reveal mb-20">
+				<div class="glow-card max-w-5xl mx-auto overflow-hidden p-[1px] bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] rounded-2xl shadow-[0_0_30px_var(--theme-color-glow)] border border-white/5">
+					<div class="w-full h-[700px] md:h-[900px] rounded-2xl overflow-hidden bg-slate-950/80 backdrop-blur-md">
+						<iframe
+							src="/documents/bases.pdf#toolbar=0&navpanes=0"
+							class="w-full h-full border-none"
+							title="Reglamento e Instructivo Oficial - Innovathon 2026"
+						>
+							<div class="flex flex-col items-center justify-center h-full p-8 text-center bg-slate-950/90">
+								<p class="text-slate-400 mb-4 font-light">Tu navegador no admite la visualización directa de archivos PDF.</p>
+								<a
+									href="/documents/bases.pdf"
+									download="Bases_Innovathon_2026.pdf"
+									class="btn-animate-rgb inline-flex items-center gap-3 px-8 py-4 rounded-xl font-normal text-white text-base"
+								>
+									Descargar Reglamento (PDF)
+								</a>
+							</div>
+						</iframe>
 					</div>
-					<CardRequisitos />
 				</div>
-
-				<!-- Sección 2: Desafíos -->
-				<div class="reveal">
-					<div class="flex items-center gap-3 mb-6">
-						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Desafíos</h2>
-						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
-					</div>
-					<CardDesafios />
-				</div>
-
-				<!-- Sección 3: Entregables -->
-				<div class="reveal">
-					<div class="flex items-center gap-3 mb-6">
-						<h2 class="text-xl md:text-2xl font-medium tracking-wider text-white uppercase" style="font-family: var(--font-display);">Entregables</h2>
-						<div class="flex-grow h-[1px] bg-gradient-to-r from-white/10 to-transparent"></div>
-					</div>
-					<CardEntregables />
-				</div>
-
 			</div>
 
-			<!-- Premium Download Action Card (Maximum Motivation) -->
-			<div class="reveal">
-				<div class="glow-card text-center relative max-w-2xl mx-auto overflow-hidden border border-white/5 hover:border-[var(--theme-color-primary)]/30">
-					<div class="absolute -top-1/2 -left-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"></div>
-					<div class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"></div>
-					
-					<div class="relative z-10 py-10 px-6">
-						<div class="w-12 h-12 rounded-full bg-[var(--theme-color-primary)]/10 border border-[var(--theme-color-primary)]/20 flex items-center justify-center mx-auto mb-4 shadow-[0_0_15px_var(--theme-color-glow)] animate-pulse">
-							<svg class="w-6 h-6 text-[var(--theme-color-primary)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-							</svg>
-						</div>
-						
-						<h3 class="text-2xl md:text-3xl font-light text-white mb-6 tracking-tight" style="font-family: var(--font-display);">
-							¿Listo para <span class="bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] bg-clip-text text-transparent font-normal">competir?</span>
-						</h3>
-						
-						<a
-							href="/documents/bases.pdf"
-							download="Bases_Innovathon_2026.pdf"
-							class="btn-animate-rgb inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-normal text-white text-sm md:text-base cursor-pointer transform hover:scale-105 transition-transform"
-						>
-							<span class="flex items-center gap-2 font-normal">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-								</svg>
-								Descargar Reglamento Oficial (PDF)
-							</span>
-						</a>
-						
-						<span class="block text-slate-500 text-[10px] md:text-xs mt-4">Documento Obligatorio &nbsp;&nbsp;•&nbsp;&nbsp; 1.03 MB &nbsp;&nbsp;•&nbsp;&nbsp; Edición 2026</span>
-					</div>
-				</div>
+			<!-- Premium Download Action Button -->
+			<div class="reveal text-center mt-12">
+				<a
+					href="/documents/bases.pdf"
+					download="Bases_Innovathon_2026.pdf"
+					class="btn-animate-rgb inline-flex items-center gap-3 px-12 py-5 rounded-2xl font-normal text-white text-base md:text-lg cursor-pointer transform hover:scale-105 transition-transform shadow-[0_0_25px_var(--theme-color-glow)]"
+				>
+					<span class="flex items-center gap-3 font-normal">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+						</svg>
+						Descargar Reglamento Oficial (PDF)
+					</span>
+				</a>
 			</div>
 		</div>
 	</section>
