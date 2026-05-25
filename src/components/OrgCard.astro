@@ -18,7 +18,7 @@ const Tag = hasLink ? "a" : "div";
   rel={hasLink ? "noopener noreferrer" : undefined}
   class={`org-card ${hasLink ? "org-card--has-link" : ""} group`}
 >
-  <!-- Borde de resplandor sutil arriba -->
+  <!-- Borde de resplandor gradiente completo -->
   <div class="org-card__glow-border"></div>
 
   <!-- Logo Container -->
@@ -44,7 +44,6 @@ const Tag = hasLink ? "a" : "div";
     border: 1px solid rgba(255, 255, 255, 0);
     aspect-ratio: 16 / 10;
     width: 100%;
-    overflow: hidden;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
@@ -58,19 +57,23 @@ const Tag = hasLink ? "a" : "div";
 
   .org-card__glow-border {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
     background: linear-gradient(
-      90deg,
-      transparent,
+      135deg,
       var(--theme-color-primary),
-      var(--theme-color-secondary),
-      transparent
+      var(--theme-color-secondary)
     );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 2;
   }
 
   .org-card__logo-wrapper {
@@ -101,13 +104,12 @@ const Tag = hasLink ? "a" : "div";
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* HOVER STATES */
-  .org-card--has-link::after {
+  /* Sombra y brillo volumétrico en hover */
+  .org-card::after {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: 0;
     border-radius: inherit;
-    border: 1px solid var(--theme-color-primary);
     box-shadow:
       0 0 30px var(--theme-color-glow),
       0 12px 24px rgba(0, 0, 0, 0.4);
@@ -117,36 +119,85 @@ const Tag = hasLink ? "a" : "div";
     z-index: 1;
   }
 
-  .org-card:hover {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  /* HOVER STATES (Solo para dispositivos con cursor / PC) */
+  @media (hover: hover) {
+    .org-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .org-card:hover .org-card__glow-border {
+      opacity: 1;
+    }
+
+    .org-card:hover::after {
+      opacity: 1;
+    }
+
+    .org-card--has-link:hover {
+      transform: translateY(-4px);
+      border-color: transparent;
+    }
+
+    .org-card--has-link:hover .org-card__logo-wrapper {
+      transform: scale(1.05);
+    }
+
+    .org-card--has-link:hover .org-card__logo {
+      filter: brightness(1.1) contrast(1);
+      opacity: 1;
+    }
+
+    .org-card--has-link:hover .org-card__placeholder {
+      color: white;
+    }
   }
 
-  .org-card--has-link:hover {
-    transform: translateY(-4px);
-    border-color: transparent;
-  }
+  /* OPTIMIZACIÓN MÓVIL & TÁCTIL (Para teléfonos y tablets) */
+  @media (max-width: 640px) {
+    .org-card {
+      padding: 0.85rem;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    
+    /* El borde gradiente queda parcialmente activo por defecto en celular */
+    /* ¡Como los colores ciclan de forma global, los bordes respirarán color continuamente! */
+    .org-card .org-card__glow-border {
+      opacity: 0.25;
+    }
+    
+    .org-card__logo {
+      opacity: 0.85;
+    }
+    
+    .org-card__placeholder {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
 
-  .org-card--has-link:hover::after {
-    opacity: 1;
-  }
+    /* Efecto activo táctil: feedback físico al presionar */
+    .org-card--has-link:active {
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.06);
+      transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .org-card--has-link:active .org-card__glow-border {
+      opacity: 1;
+    }
 
-  .org-card--has-link:hover .org-card__glow-border {
-    opacity: 1;
-  }
-
-  .org-card--has-link:hover .org-card__logo-wrapper {
-    transform: scale(1.05);
-  }
-
-  .org-card--has-link:hover .org-card__logo {
-    filter: brightness(1.1) contrast(1);
-    opacity: 1;
-  }
-
-  .org-card--has-link:hover .org-card__placeholder {
-    color: white;
+    .org-card--has-link:active::after {
+      opacity: 1;
+    }
+    
+    .org-card--has-link:active .org-card__logo {
+      opacity: 1;
+      filter: brightness(1.1) contrast(1);
+    }
   }
 </style>
