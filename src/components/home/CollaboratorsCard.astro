@@ -1,0 +1,20 @@
+---
+// src/components/layout/CollaboratorsCard.astro
+interface Props {
+  src: string;
+  name: string;
+  size: "large" | "small";
+  imageClassName?: string;
+}
+
+const { src, name, size, imageClassName = "" } = Astro.props;
+---
+
+<div class={`collaborator-card collaborator-card--${size}`}>
+  <img 
+    src={src} 
+    alt={name} 
+    class={`collaborator-img collaborator-img--${size} ${imageClassName}`}
+    loading="lazy"
+  />
+</div>
