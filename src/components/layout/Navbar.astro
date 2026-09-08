@@ -318,45 +318,45 @@ const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.sli
 </style>
 
 <script>
-  // Scroll behavior
-  const navbar = document.getElementById('main-navbar');
-  let isScrolled = false;
+  function initNavbar() {
+    const navbar = document.getElementById('main-navbar');
+    let isScrolled = false;
 
-  function handleScroll() {
-    const scrolled = window.scrollY > 30;
-    if (scrolled !== isScrolled) {
-      isScrolled = scrolled;
-      if (isScrolled) {
-        navbar?.classList.add('navbar--scrolled');
-      } else {
-        navbar?.classList.remove('navbar--scrolled');
+    function handleScroll() {
+      const scrolled = window.scrollY > 30;
+      if (scrolled !== isScrolled) {
+        isScrolled = scrolled;
+        if (isScrolled) {
+          navbar?.classList.add('navbar--scrolled');
+        } else {
+          navbar?.classList.remove('navbar--scrolled');
+        }
       }
     }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = menu?.classList.toggle('open');
+      toggle.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      menu?.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    menu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu?.classList.remove('open');
+        toggle?.classList.remove('active');
+        toggle?.setAttribute('aria-expanded', 'false');
+        menu?.setAttribute('aria-hidden', 'true');
+      });
+    });
   }
 
-  // Initial check on load
-  handleScroll();
-
-  // Listen with passive listener for optimal performance
-  window.addEventListener('scroll', handleScroll, { passive: true });
-
-  // Mobile toggle
-  const toggle = document.getElementById('mobile-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle?.addEventListener('click', () => {
-    const isOpen = menu?.classList.toggle('open');
-    toggle.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    menu?.setAttribute('aria-hidden', String(!isOpen));
-  });
-
-  // Close mobile menu on link click
-  menu?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu?.classList.remove('open');
-      toggle?.classList.remove('active');
-      toggle?.setAttribute('aria-expanded', 'false');
-      menu?.setAttribute('aria-hidden', 'true');
-    });
-  });
+  initNavbar();
+  document.addEventListener('astro:page-load', initNavbar);
 </script>

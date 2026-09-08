@@ -25,7 +25,7 @@ const Tag = hasLink ? "a" : "div";
   <div class="org-card__logo-wrapper">
     {
       logo ? (
-        <img src={logo} alt={name} class="org-card__logo" />
+        <img src={logo} alt={name} class="org-card__logo" loading="lazy" decoding="async" />
       ) : (
         <span class="org-card__placeholder">{name}</span>
       )

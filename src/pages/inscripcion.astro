@@ -8,7 +8,7 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 
 <Layout title="Inscripción | Innovathon 2026">
 	<!-- Hero y Formulario -->
-	<section class="relative pt-20 pb-12 min-h-screen">
+	<section class="relative pt-8 sm:pt-12 md:pt-14 lg:pt-16 pb-12 md:pb-20 min-h-screen">
 		<!-- Ambient orbs / Dynamic Gradient Mesh -->
 		<div class="hero-bg-glow hero-bg-glow--1"></div>
 		<div class="hero-bg-glow hero-bg-glow--2"></div>
@@ -34,7 +34,7 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 				<div class="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-[var(--theme-color-glow)] rounded-full blur-[100px] pointer-events-none"></div>
 				
 				<div class="relative z-10">
-					<form id="registration-form" class="space-y-12">
+					<form id="registration-form" novalidate class="space-y-12">
 					
 					<!-- 1. Modalidad -->
 					<div class="space-y-6">
@@ -304,79 +304,74 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			pointer-events: none;
 		}
 
+		/* ===== HERO ===== */
 		.hero-bg-glow {
 			position: absolute;
 			border-radius: 50%;
-			filter: blur(100px);
+			filter: blur(45px);
 			pointer-events: none;
 			mix-blend-mode: screen;
 			will-change: transform;
-			transition:
-				background 0.8s ease,
-				opacity 0.8s ease;
+			transform: translateZ(0);
 		}
 		.hero-bg-glow--1 {
-			width: 800px;
-			height: 800px;
-			top: -300px;
+			width: 700px;
+			height: 700px;
+			top: -250px;
 			left: 10%;
 			background: radial-gradient(
 				circle at center,
-				color-mix(in srgb, var(--theme-color-primary) 22%, transparent) 0%,
-				color-mix(in srgb, var(--theme-color-primary) 14%, transparent) 30%,
-				color-mix(in srgb, var(--theme-color-primary) 6%, transparent) 60%,
-				color-mix(in srgb, var(--theme-color-primary) 1%, transparent) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-primary) 24%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 12%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-primary) 4%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.35;
+			opacity: 0.85;
 			animation: glow-drift-1 30s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--2 {
-			width: 700px;
-			height: 700px;
-			bottom: -200px;
+			width: 600px;
+			height: 600px;
+			bottom: -150px;
 			right: 10%;
 			background: radial-gradient(
 				circle at center,
-				color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%,
-				color-mix(in srgb, var(--theme-color-secondary) 11%, transparent) 35%,
-				color-mix(in srgb, var(--theme-color-secondary) 5%, transparent) 65%,
-				color-mix(in srgb, var(--theme-color-secondary) 1%, transparent) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-secondary) 20%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 10%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 3%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.25;
+			opacity: 0.8;
 			animation: glow-drift-2 35s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--3 {
-			width: 600px;
-			height: 600px;
+			width: 500px;
+			height: 500px;
 			top: 20%;
 			right: 20%;
 			background: radial-gradient(
 				circle at center,
-				rgba(168, 85, 247, 0.18) 0%,
-				rgba(168, 85, 247, 0.11) 30%,
-				rgba(168, 85, 247, 0.05) 60%,
-				rgba(168, 85, 247, 0.01) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 8%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 2%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.3;
+			opacity: 0.75;
 			animation: glow-drift-3 24s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--4 {
-			width: 550px;
-			height: 550px;
+			width: 450px;
+			height: 450px;
 			bottom: 5%;
 			left: 5%;
 			background: radial-gradient(
 				circle at center,
-				rgba(6, 182, 212, 0.18) 0%,
-				rgba(6, 182, 212, 0.11) 30%,
-				rgba(6, 182, 212, 0.05) 60%,
-				rgba(6, 182, 212, 0.01) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-primary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 8%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-primary) 2%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.25;
+			opacity: 0.75;
 			animation: glow-drift-4 32s ease-in-out infinite alternate;
 		}
 		.hero-noise {
@@ -384,10 +379,11 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			inset: 0;
 			width: 100%;
 			height: 100%;
-			opacity: 0.022;
+			opacity: 0.02;
 			pointer-events: none;
 			z-index: 1;
-			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+			background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+			background-size: 24px 24px;
 			mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		}
 		.hero-grid {
@@ -405,27 +401,28 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			);
 			animation: grid-pulse 12s ease-in-out infinite alternate;
 			pointer-events: none;
+			will-change: opacity;
 		}
 		
 		@keyframes glow-drift-1 {
-			0% { transform: translate(0, 0) scale(1); }
-			50% { transform: translate(80px, 50px) scale(1.1); }
-			100% { transform: translate(-40px, 90px) scale(0.95); }
+			0% { transform: translate3d(0, 0, 0) scale(1); }
+			50% { transform: translate3d(60px, 40px, 0) scale(1.08); }
+			100% { transform: translate3d(-30px, 70px, 0) scale(0.96); }
 		}
 		@keyframes glow-drift-2 {
-			0% { transform: translate(0, 0) scale(1); }
-			50% { transform: translate(-100px, -60px) scale(0.9); }
-			100% { transform: translate(60px, -110px) scale(1.15); }
+			0% { transform: translate3d(0, 0, 0) scale(1); }
+			50% { transform: translate3d(-80px, -45px, 0) scale(0.92); }
+			100% { transform: translate3d(45px, -85px, 0) scale(1.12); }
 		}
 		@keyframes glow-drift-3 {
-			0% { transform: translate(0, 0) scale(1); }
-			50% { transform: translate(50px, -90px) scale(1.15); }
-			100% { transform: translate(-80px, 40px) scale(0.85); }
+			0% { transform: translate3d(0, 0, 0) scale(1); }
+			50% { transform: translate3d(40px, -70px, 0) scale(1.12); }
+			100% { transform: translate3d(-60px, 30px, 0) scale(0.88); }
 		}
 		@keyframes glow-drift-4 {
-			0% { transform: translate(0, 0) scale(1); }
-			50% { transform: translate(70px, 80px) scale(0.85); }
-			100% { transform: translate(-50px, -50px) scale(1.1); }
+			0% { transform: translate3d(0, 0, 0) scale(1); }
+			50% { transform: translate3d(55px, 60px, 0) scale(0.88); }
+			100% { transform: translate3d(-40px, -40px, 0) scale(1.08); }
 		}
 		@keyframes grid-pulse {
 			0% { opacity: 0.55; }
@@ -637,23 +634,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			let currentMode = 'individual';
 			let currentCount = 3;
 
-			// Required fields logic mapping (Frontend simulation)
-			const setRequiredFields = (index: number, required: boolean) => {
-				const fieldset = document.getElementById(`member-form-${index}`);
-				if(!fieldset) return;
-				const inputs = fieldset.querySelectorAll('input:not([type="hidden"]), select');
-				inputs.forEach(el => {
-					const input = el as HTMLInputElement | HTMLSelectElement;
-					// 'about' and 'skills' are optional/handled separately if needed
-					if(input.name && input.name.startsWith('about_')) return;
-					if (required) input.setAttribute('required', 'true');
-					else input.removeAttribute('required');
-				});
-			};
-
-			// Initialize Required fields for Member 0
-			setRequiredFields(0, true);
-
 			// Modalidad Toggle
 			modalidadRadios.forEach(radio => {
 				radio.addEventListener('change', (e) => {
@@ -662,31 +642,27 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 						teamSection?.classList.remove('hidden');
 						memberTabs?.classList.remove('hidden');
 						memberTabs?.classList.add('flex');
-						if (stepNumberMembers) { stepNumberMembers.textContent = '3'; stepNumberMembers.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] text-sm font-bold'; }
+						if (stepNumberMembers) { 
+							stepNumberMembers.textContent = '3'; 
+							stepNumberMembers.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] text-sm font-bold'; 
+						}
 						if (membersSectionTitle) membersSectionTitle.textContent = 'Datos de los Integrantes';
 						if (individualSkillsWrapper) individualSkillsWrapper.classList.add('hidden');
-						
-						// Require team fields
-						document.getElementById('teamName')?.setAttribute('required', 'true');
-						document.getElementById('teamIdea')?.setAttribute('required', 'true');
 						
 						updateTabsVisibility();
 					} else {
 						teamSection?.classList.add('hidden');
 						memberTabs?.classList.add('hidden');
 						memberTabs?.classList.remove('flex');
-						if (stepNumberMembers) { stepNumberMembers.textContent = '2'; stepNumberMembers.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] text-sm font-bold'; }
+						if (stepNumberMembers) { 
+							stepNumberMembers.textContent = '2'; 
+							stepNumberMembers.className = 'flex items-center justify-center w-8 h-8 rounded-full bg-[var(--theme-color-glow)] text-[var(--theme-color-primary)] text-sm font-bold'; 
+						}
 						if (membersSectionTitle) membersSectionTitle.textContent = 'Datos Personales';
 						if (individualSkillsWrapper) individualSkillsWrapper.classList.remove('hidden');
 
-						// Unrequire team fields
-						document.getElementById('teamName')?.removeAttribute('required');
-						document.getElementById('teamIdea')?.removeAttribute('required');
-
 						// Reset to tab 0
 						switchTab(0);
-						// Disable required for members 1-4
-						for(let i=1; i<=4; i++) setRequiredFields(i, false);
 					}
 				});
 			});
@@ -704,10 +680,8 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 					const targetIndex = parseInt(tab.getAttribute('data-target') || '0');
 					if (targetIndex < currentCount) {
 						tab.classList.remove('hidden');
-						setRequiredFields(targetIndex, true);
 					} else {
 						tab.classList.add('hidden');
-						setRequiredFields(targetIndex, false);
 					}
 				});
 				// If current tab is hidden, switch to 0
@@ -726,7 +700,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			});
 
 			function switchTab(index: number) {
-				// Update tabs UI
 				tabs.forEach(t => {
 					const tIndex = parseInt(t.getAttribute('data-target') || '0');
 					const isHidden = t.classList.contains('hidden') ? 'hidden' : '';
@@ -737,7 +710,6 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 					}
 				});
 
-				// Update fieldsets
 				fieldsets.forEach(fs => {
 					if (parseInt(fs.getAttribute('id')?.split('-')[2] || '0') === index) {
 						fs.classList.remove('hidden');
@@ -793,12 +765,112 @@ const membersArray = Array.from({ length: maxMembers }, (_, i) => i);
 			setupBadgeSelect('teamToolsSelect', 'teamToolsContainer', 'teamToolsHidden');
 			setupBadgeSelect('individualSkillsSelect', 'individualSkillsContainer', 'individualSkillsHidden');
 
-			// Submit behavior
+			// Helper to highlight invalid elements
+			function markInvalid(element: HTMLElement) {
+				element.classList.add('border-red-500', 'ring-1', 'ring-red-500');
+				const removeErr = () => {
+					element.classList.remove('border-red-500', 'ring-1', 'ring-red-500');
+					element.removeEventListener('input', removeErr);
+					element.removeEventListener('change', removeErr);
+				};
+				element.addEventListener('input', removeErr);
+				element.addEventListener('change', removeErr);
+			}
+
+			// Comprehensive Form Validation and Submission
 			form.addEventListener('submit', (e) => {
 				e.preventDefault();
-				form.classList.add('hidden');
-				document.getElementById('success-message')?.classList.remove('hidden');
-				window.scrollTo({ top: 0, behavior: 'smooth' });
+
+				// 1. Team validation
+				if (currentMode === 'equipo') {
+					const teamName = document.getElementById('teamName') as HTMLInputElement;
+					if (!teamName || !teamName.value.trim()) {
+						markInvalid(teamName);
+						teamName?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						teamName?.focus();
+						return;
+					}
+
+					const teamIdea = document.getElementById('teamIdea') as HTMLTextAreaElement;
+					if (!teamIdea || !teamIdea.value.trim()) {
+						markInvalid(teamIdea);
+						teamIdea?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						teamIdea?.focus();
+						return;
+					}
+				}
+
+				// 2. Members validation
+				const totalMembersToValidate = currentMode === 'equipo' ? currentCount : 1;
+
+				for (let i = 0; i < totalMembersToValidate; i++) {
+					const fieldset = document.getElementById(`member-form-${i}`);
+					if (!fieldset) continue;
+
+					const requiredNames = [
+						`nombres_${i}`,
+						`apellidos_${i}`,
+						`dni_${i}`,
+						`edad_${i}`,
+						`correo_${i}`,
+						`telefono_${i}`,
+						`universidad_${i}`,
+						`especialidad_${i}`
+					];
+
+					for (const name of requiredNames) {
+						const input = fieldset.querySelector(`[name="${name}"]`) as HTMLInputElement | HTMLSelectElement;
+						if (!input || !input.value.trim()) {
+							// If member tab is hidden, switch to it!
+							if (currentMode === 'equipo') {
+								switchTab(i);
+							}
+							
+							// If it's a custom select, highlight the wrapper/trigger
+							const customTrigger = input.parentElement?.querySelector('.form-select') as HTMLElement;
+							if (customTrigger) {
+								markInvalid(customTrigger);
+								customTrigger.scrollIntoView({ behavior: 'smooth', block: 'center' });
+							} else {
+								markInvalid(input);
+								input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+								input.focus();
+							}
+							return;
+						}
+
+						// Basic email validation
+						if (name.startsWith('correo_') && input.value.trim()) {
+							const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+							if (!emailRegex.test(input.value.trim())) {
+								if (currentMode === 'equipo') switchTab(i);
+								markInvalid(input);
+								input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+								input.focus();
+								return;
+							}
+						}
+					}
+				}
+
+				// 3. Success state
+				const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+				if (submitBtn) {
+					submitBtn.disabled = true;
+					submitBtn.innerHTML = `
+						<span class="absolute inset-0 bg-gradient-to-r from-[var(--theme-color-primary)] to-[var(--theme-color-secondary)] opacity-100"></span>
+						<span class="relative z-10 flex items-center justify-center gap-2">
+							<svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+							Procesando...
+						</span>
+					`;
+				}
+
+				setTimeout(() => {
+					form.classList.add('hidden');
+					document.getElementById('success-message')?.classList.remove('hidden');
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				}, 400);
 			});
 		}
 	</script>

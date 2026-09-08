@@ -409,92 +409,70 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 		.hero-bg-glow {
 			position: absolute;
 			border-radius: 50%;
-			filter: blur(100px);
+			filter: blur(45px);
 			pointer-events: none;
 			mix-blend-mode: screen;
 			will-change: transform;
-			transition:
-				background 0.8s ease,
-				opacity 0.8s ease;
+			transform: translateZ(0);
 		}
 		.hero-bg-glow--1 {
-			width: 800px;
-			height: 800px;
-			top: -300px;
+			width: 700px;
+			height: 700px;
+			top: -250px;
 			left: 10%;
 			background: radial-gradient(
 				circle at center,
-				color-mix(in srgb, var(--theme-color-primary) 22%, transparent)
-					0%,
-				color-mix(in srgb, var(--theme-color-primary) 14%, transparent)
-					30%,
-				color-mix(in srgb, var(--theme-color-primary) 6%, transparent)
-					60%,
-				color-mix(in srgb, var(--theme-color-primary) 1%, transparent)
-					85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-primary) 24%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 12%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-primary) 4%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.35;
+			opacity: 0.85;
 			animation: glow-drift-1 30s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--2 {
-			width: 700px;
-			height: 700px;
-			bottom: -200px;
+			width: 600px;
+			height: 600px;
+			bottom: -150px;
 			right: 10%;
 			background: radial-gradient(
 				circle at center,
-				color-mix(
-						in srgb,
-						var(--theme-color-secondary) 18%,
-						transparent
-					)
-					0%,
-				color-mix(
-						in srgb,
-						var(--theme-color-secondary) 11%,
-						transparent
-					)
-					35%,
-				color-mix(in srgb, var(--theme-color-secondary) 5%, transparent)
-					65%,
-				color-mix(in srgb, var(--theme-color-secondary) 1%, transparent)
-					85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-secondary) 20%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 10%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 3%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.25;
+			opacity: 0.8;
 			animation: glow-drift-2 35s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--3 {
-			width: 600px;
-			height: 600px;
+			width: 500px;
+			height: 500px;
 			top: 20%;
 			right: 20%;
 			background: radial-gradient(
 				circle at center,
-				rgba(168, 85, 247, 0.18) 0%,
-				rgba(168, 85, 247, 0.11) 30%,
-				rgba(168, 85, 247, 0.05) 60%,
-				rgba(168, 85, 247, 0.01) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-secondary) 8%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-secondary) 2%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.3;
+			opacity: 0.75;
 			animation: glow-drift-3 24s ease-in-out infinite alternate;
 		}
 		.hero-bg-glow--4 {
-			width: 550px;
-			height: 550px;
+			width: 450px;
+			height: 450px;
 			bottom: 5%;
 			left: 5%;
 			background: radial-gradient(
 				circle at center,
-				rgba(6, 182, 212, 0.18) 0%,
-				rgba(6, 182, 212, 0.11) 30%,
-				rgba(6, 182, 212, 0.05) 60%,
-				rgba(6, 182, 212, 0.01) 85%,
-				transparent 100%
+				color-mix(in srgb, var(--theme-color-primary) 18%, transparent) 0%,
+				color-mix(in srgb, var(--theme-color-primary) 8%, transparent) 35%,
+				color-mix(in srgb, var(--theme-color-primary) 2%, transparent) 65%,
+				transparent 85%
 			);
-			opacity: 0.25;
+			opacity: 0.75;
 			animation: glow-drift-4 32s ease-in-out infinite alternate;
 		}
 		.hero-noise {
@@ -502,16 +480,18 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 			inset: 0;
 			width: 100%;
 			height: 100%;
-			opacity: 0.022;
+			opacity: 0.02;
 			pointer-events: none;
 			z-index: 1;
-			background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+			background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+			background-size: 24px 24px;
 			mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 		}
 		.hero-grid {
 			position: absolute;
 			inset: 0;
 			z-index: 2;
+			pointer-events: none;
 			background-image:
 				linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
 				linear-gradient(
@@ -526,6 +506,7 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 				transparent 60%
 			);
 			animation: grid-pulse 12s ease-in-out infinite alternate;
+			will-change: opacity;
 		}
 		.hero-title {
 			color: white;
@@ -550,8 +531,15 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 			border: 1px solid rgba(255, 255, 255, 0.08);
 			padding: 1.75rem;
 			overflow: hidden;
-			transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-			backdrop-filter: blur(10px);
+			transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+			            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+			            background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+			            border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+			backdrop-filter: blur(8px);
+			-webkit-backdrop-filter: blur(8px);
+			contain: paint;
+			will-change: transform;
+			transform: translateZ(0);
 		}
 		/* Top shimmer line */
 		.glow-card::before {
@@ -569,7 +557,7 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 				transparent
 			);
 			opacity: 0.5;
-			transition: opacity 0.5s ease;
+			transition: opacity 0.35s ease;
 		}
 		/* Inner corner glow */
 		.glow-card::after {
@@ -585,7 +573,7 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 				transparent 50%
 			);
 			opacity: 0;
-			transition: opacity 0.5s ease;
+			transition: opacity 0.35s ease;
 			pointer-events: none;
 		}
 		.glow-card:hover {
@@ -595,7 +583,7 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 				rgba(255, 255, 255, 0.1),
 				rgba(255, 255, 255, 0.04)
 			);
-			transform: translateY(-6px);
+			transform: translateY(-5px) translateZ(0);
 			box-shadow:
 				0 0 30px var(--theme-color-glow),
 				0 20px 40px rgba(0, 0, 0, 0.4);
@@ -669,56 +657,57 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 			align-items: center;
 			justify-content: center;
 			padding: 0.5rem 1rem;
-			transition: all 0.4s ease;
+			transition: transform 0.3s ease, filter 0.3s ease;
+			will-change: transform;
 		}
 		.sponsor-logo:hover {
-			transform: scale(1.15);
+			transform: scale(1.12) translateZ(0);
 			filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.3));
 		}
 
 		/* ===== ANIMATIONS ===== */
 		@keyframes glow-drift-1 {
 			0% {
-				transform: translate(0, 0) scale(1);
+				transform: translate3d(0, 0, 0) scale(1);
 			}
 			50% {
-				transform: translate(80px, 50px) scale(1.1);
+				transform: translate3d(60px, 40px, 0) scale(1.08);
 			}
 			100% {
-				transform: translate(-40px, 90px) scale(0.95);
+				transform: translate3d(-30px, 70px, 0) scale(0.96);
 			}
 		}
 		@keyframes glow-drift-2 {
 			0% {
-				transform: translate(0, 0) scale(1);
+				transform: translate3d(0, 0, 0) scale(1);
 			}
 			50% {
-				transform: translate(-100px, -60px) scale(0.9);
+				transform: translate3d(-80px, -45px, 0) scale(0.92);
 			}
 			100% {
-				transform: translate(60px, -110px) scale(1.15);
+				transform: translate3d(45px, -85px, 0) scale(1.12);
 			}
 		}
 		@keyframes glow-drift-3 {
 			0% {
-				transform: translate(0, 0) scale(1);
+				transform: translate3d(0, 0, 0) scale(1);
 			}
 			50% {
-				transform: translate(50px, -90px) scale(1.15);
+				transform: translate3d(40px, -70px, 0) scale(1.12);
 			}
 			100% {
-				transform: translate(-80px, 40px) scale(0.85);
+				transform: translate3d(-60px, 30px, 0) scale(0.88);
 			}
 		}
 		@keyframes glow-drift-4 {
 			0% {
-				transform: translate(0, 0) scale(1);
+				transform: translate3d(0, 0, 0) scale(1);
 			}
 			50% {
-				transform: translate(70px, 80px) scale(0.85);
+				transform: translate3d(55px, 60px, 0) scale(0.88);
 			}
 			100% {
-				transform: translate(-50px, -50px) scale(1.1);
+				transform: translate3d(-40px, -40px, 0) scale(1.08);
 			}
 		}
 		@keyframes grid-pulse {
@@ -743,18 +732,20 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 
 		.animate-float {
 			animation: float-simple 12s ease-in-out infinite;
+			will-change: transform;
 		}
 		.animate-float-delayed {
 			animation: float-simple 12s ease-in-out infinite;
 			animation-delay: -6s;
+			will-change: transform;
 		}
 		@keyframes float-simple {
 			0%,
 			100% {
-				transform: translateY(0);
+				transform: translateY(0) translateZ(0);
 			}
 			50% {
-				transform: translateY(-30px);
+				transform: translateY(-24px) translateZ(0);
 			}
 		}
 
@@ -766,8 +757,11 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 				var(--theme-color-primary),
 				var(--theme-color-secondary)
 			);
-			transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+			transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+			            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 			z-index: 1;
+			will-change: transform;
+			transform: translateZ(0);
 		}
 
 		/* Volumetric dynamic shadow glow */
@@ -777,23 +771,23 @@ const patrocinadores = collaborators.filter(c => c.category === "patrocinadores"
 			inset: -2px;
 			background: inherit;
 			background-size: inherit;
-			animation: inherit;
 			border-radius: inherit;
-			filter: blur(15px);
+			filter: blur(12px);
 			opacity: 0;
 			z-index: -1;
 			transition:
-				opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-				transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+				opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+				transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+			transform: translateZ(0);
 		}
 
 		.btn-animate-rgb:hover {
-			transform: scale(1.04);
+			transform: scale(1.04) translateZ(0);
 		}
 
 		.btn-animate-rgb:hover::before {
 			opacity: 0.7;
-			transform: scale(1.02);
+			transform: scale(1.02) translateZ(0);
 		}
 	</style>
 </Layout>
