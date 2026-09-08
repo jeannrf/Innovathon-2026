@@ -14,7 +14,7 @@ import { requisitos } from '../data/requisitos';
 		</div>
 
 		<!-- Hero Section -->
-		<section class="relative pt-24 pb-12 overflow-hidden min-h-[40vh] flex items-center justify-center">
+		<section class="relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-12 overflow-hidden">
 			<div class="container-custom relative z-10 max-w-5xl text-center reveal">
 				<h1 
 					class="text-5xl md:text-7xl font-extralight tracking-tight text-white mb-6"
@@ -147,21 +147,23 @@ import { requisitos } from '../data/requisitos';
 <style>
 	/* ===== CSS LOCAL STYLES ===== */
 	
-	/* Hero Orbs (consistent with index.astro) */
+	/* Hero Orbs (optimized GPU compositing) */
 	.hero-orb {
 		position: absolute;
 		border-radius: 50%;
-		filter: blur(120px);
+		filter: blur(50px);
 		pointer-events: none;
+		will-change: transform;
+		transform: translateZ(0);
 	}
 	.hero-orb--primary {
 		width: 600px;
 		height: 600px;
 		top: -250px;
 		left: 50%;
-		transform: translateX(-50%);
-		background: radial-gradient(circle, var(--theme-color-primary), transparent 65%);
-		opacity: 0.2;
+		transform: translateX(-50%) translateZ(0);
+		background: radial-gradient(circle, color-mix(in srgb, var(--theme-color-primary) 22%, transparent) 0%, color-mix(in srgb, var(--theme-color-primary) 8%, transparent) 40%, transparent 70%);
+		opacity: 0.85;
 		animation: orb-float 20s ease-in-out infinite;
 	}
 	.hero-orb--secondary {
@@ -169,15 +171,16 @@ import { requisitos } from '../data/requisitos';
 		height: 400px;
 		bottom: -100px;
 		left: 10%;
-		background: radial-gradient(circle, var(--theme-color-secondary), transparent 65%);
-		opacity: 0.12;
+		transform: translateZ(0);
+		background: radial-gradient(circle, color-mix(in srgb, var(--theme-color-secondary) 18%, transparent) 0%, color-mix(in srgb, var(--theme-color-secondary) 6%, transparent) 40%, transparent 70%);
+		opacity: 0.8;
 		animation: orb-float 24s ease-in-out infinite;
 		animation-delay: -5s;
 	}
 	
 	@keyframes orb-float {
-		0%, 100% { transform: translateY(0px) translateX(0px); }
-		50% { transform: translateY(-20px) translateX(15px); }
+		0%, 100% { transform: translate3d(0, 0, 0); }
+		50% { transform: translate3d(15px, -20px, 0); }
 	}
 
 	.page-grid {
@@ -201,9 +204,14 @@ import { requisitos } from '../data/requisitos';
 		);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		overflow: hidden;
-		transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
+		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+		            box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+		            border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		contain: paint;
+		will-change: transform;
+		transform: translateZ(0);
 	}
 	.glow-card::before {
 		content: "";
@@ -220,7 +228,7 @@ import { requisitos } from '../data/requisitos';
 			transparent
 		);
 		opacity: 0.4;
-		transition: opacity 0.5s ease;
+		transition: opacity 0.35s ease;
 	}
 	.glow-card:hover {
 		border-color: rgba(255, 255, 255, 0.15);
@@ -229,7 +237,7 @@ import { requisitos } from '../data/requisitos';
 			rgba(255, 255, 255, 0.07),
 			rgba(255, 255, 255, 0.02)
 		);
-		transform: translateY(-4px);
+		transform: translateY(-4px) translateZ(0);
 		box-shadow: 
 			0 0 30px var(--theme-color-glow),
 			0 20px 40px rgba(0, 0, 0, 0.3);

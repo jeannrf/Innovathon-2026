@@ -16,5 +16,6 @@ const { src, name, size, imageClassName = "" } = Astro.props;
     alt={name} 
     class={`collaborator-img collaborator-img--${size} ${imageClassName}`}
     loading="lazy"
+    decoding="async"
   />
 </div>
