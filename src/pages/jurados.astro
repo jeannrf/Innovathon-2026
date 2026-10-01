@@ -1,0 +1,1192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { JURADOS_DEFAULT, RUBRICA_OFICIAL } from '../data/jurados';
+
+const pageTitle = "Portal de Jurados | Innovathon 2026";
+const pageDesc = "Sistema oficial de evaluación, rúbricas y panel de calificaciones de la Innovathon 2026.";
+---
+
+<Layout title={pageTitle} description={pageDesc}>
+  <div class="relative min-h-screen w-full bg-[#0a0d16] text-slate-100 overflow-hidden font-sans select-none">
+    
+    <div class="absolute inset-0 pointer-events-none z-0">
+      <div class="hero-orb hero-orb--cyan"></div>
+      <div class="hero-orb hero-orb--purple"></div>
+      <div class="jurados-grid"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-[85vh] flex flex-col">
+      
+      <section id="view-login" class="my-auto py-12 flex flex-col items-center justify-center">
+        <div class="w-full max-w-xl mx-auto p-8 sm:p-10 rounded-3xl bg-[#0f1423]/90 border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all">
+          
+          <div class="mb-6">
+            <span class="text-xs font-mono tracking-widest uppercase text-emerald-400 font-semibold">
+              INNOVATHON 2026 · PANEL DE JURADOS
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-2" style="font-family: var(--font-display);">
+            Acceso de Jurados
+          </h1>
+          <p class="text-slate-400 text-sm sm:text-base font-light mb-8">
+            Selecciona tu perfil de jurado e ingresa tu clave asignada para comenzar a calificar:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            {JURADOS_DEFAULT.map((jurado) => (
+              <button
+                type="button"
+                data-jurado-id={jurado.id}
+                class="jurado-select-btn group text-left p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-white/30 transition-all duration-300 flex items-center justify-between cursor-pointer shadow-sm hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] active:scale-[0.98]"
+              >
+                <div class="flex items-center gap-3.5">
+                  <div class={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-base tracking-wider ${jurado.colorClass.bg} ${jurado.colorClass.text} border ${jurado.colorClass.border} shadow-inner`}>
+                    {jurado.avatar}
+                  </div>
+                  <div>
+                    <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                      {jurado.name}
+                    </h3>
+                    <p class="text-xs text-slate-400 font-light flex items-center gap-1">
+                      Ingresar <span class="text-xs transition-transform group-hover:translate-x-0.5">↗</span>
+                    </p>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      <dialog id="modal-pin" class="bg-transparent border-0 outline-none p-4 backdrop:bg-black/65 backdrop:backdrop-blur-sm">
+        <div class="relative rounded-3xl bg-[#0f1423]/95 border border-white/10 p-7 sm:p-8 shadow-[0_0_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl text-center overflow-hidden w-full max-w-md mx-auto">
+          <div class="absolute -top-16 -left-16 w-32 h-32 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div id="pin-modal-avatar" class="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center font-bold text-xl border">
+            PA
+          </div>
+
+          <h3 id="pin-modal-name" class="text-2xl font-bold text-white mb-6">
+            Pablo
+          </h3>
+
+          <form id="form-pin" class="space-y-4 text-left">
+            <div>
+              <label for="input-jurado-pin" class="block text-xs uppercase tracking-wider text-slate-400 font-medium mb-1.5">
+                Clave de acceso asignada
+              </label>
+              <div class="relative">
+                <input
+                  type="password"
+                  id="input-jurado-pin"
+                  placeholder="Ingresa tu clave"
+                  required
+                  class="w-full bg-[#090d18] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 font-mono tracking-widest"
+                />
+                <button
+                  type="button"
+                  id="toggle-pin-visibility"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 text-xs cursor-pointer"
+                >
+                  👁
+                </button>
+              </div>
+              <p id="pin-error" class="text-xs text-rose-400 mt-1.5 hidden">
+                Clave incorrecta. Intenta nuevamente.
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <button
+                type="button"
+                id="btn-cancel-pin"
+                class="flex-1 px-4 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 text-sm font-medium transition-colors cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="flex-1 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-black font-bold text-sm transition-all shadow-[0_0_20px_rgba(52,211,153,0.3)] cursor-pointer"
+              >
+                Ingresar al Panel
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
+
+      <section id="view-dashboard" class="hidden flex-col pb-20">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-b border-white/10 pb-6 mb-8 sm:mb-10">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" style="font-family: var(--font-display);">
+              ¡Bienvenido, <span id="current-jurado-name" class="text-cyan-400">Pablo</span>!
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-2.5 self-end sm:self-auto">
+            <button
+              id="btn-reset-demo"
+              class="px-3 py-2 rounded-xl bg-white/5 hover:bg-rose-500/10 border border-white/10 hover:border-rose-500/30 text-xs font-semibold text-slate-400 hover:text-rose-300 transition-all flex items-center gap-1.5 cursor-pointer"
+              title="Restablecer calificaciones y equipos al estado inicial"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Reiniciar Datos
+            </button>
+
+            <button
+              id="btn-logout-jurado"
+              class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-xs font-semibold text-slate-300 hover:text-white transition-all tracking-wider uppercase flex items-center gap-2 cursor-pointer"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              Cambiar de Jurado
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between flex-wrap gap-4 mb-8 sm:mb-10">
+          <div class="inline-flex p-1 rounded-2xl bg-[#111728] border border-white/10 shadow-inner">
+            <button
+              id="tab-btn-calificar"
+              class="tab-btn active px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer"
+            >
+              Calificar
+            </button>
+            <button
+              id="tab-btn-rubrica"
+              class="tab-btn px-6 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-slate-400 hover:text-white transition-all duration-200 cursor-pointer"
+            >
+              Rúbrica
+            </button>
+            <button
+              id="tab-btn-resultados"
+              class="tab-btn px-6 py-2.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-slate-400 hover:text-white transition-all duration-200 cursor-pointer"
+            >
+              Resultados / Ranking
+            </button>
+          </div>
+
+          <div class="flex items-center gap-3 bg-white/[0.03] border border-white/10 px-4 py-2 rounded-2xl text-xs">
+            <span class="text-slate-400">Progreso personal:</span>
+            <div class="w-24 bg-white/10 h-2 rounded-full overflow-hidden">
+              <div id="jurado-progress-bar" class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full transition-all duration-500" style="width: 85%;"></div>
+            </div>
+            <span id="jurado-progress-text" class="font-mono font-bold text-emerald-400">11/13</span>
+          </div>
+        </div>
+
+        <div id="tab-content-calificar" class="flex flex-col gap-6">
+          
+          <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
+            <div class="relative flex-1 max-w-lg">
+              <input
+                type="text"
+                id="search-equipos"
+                placeholder="Buscar por equipo o nombre..."
+                class="w-full bg-[#111728] border border-white/10 rounded-2xl px-5 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/60 transition-all font-light"
+              />
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs">🔍</span>
+            </div>
+
+            <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+              <button
+                type="button"
+                data-filter="todos"
+                class="filter-pill active px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer bg-white/10 text-white border border-white/20"
+              >
+                TODOS (<span id="count-todos">13</span>)
+              </button>
+              <button
+                type="button"
+                data-filter="pendientes"
+                class="filter-pill px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer bg-transparent text-slate-400 hover:text-white border border-transparent hover:border-white/10"
+              >
+                PEND. (<span id="count-pendientes">2</span>)
+              </button>
+              <button
+                type="button"
+                data-filter="listos"
+                class="filter-pill px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer bg-transparent text-slate-400 hover:text-white border border-transparent hover:border-white/10"
+              >
+                LISTOS (<span id="count-listos">11</span>)
+              </button>
+            </div>
+          </div>
+
+          <div id="equipos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          </div>
+
+          <div id="empty-equipos" class="hidden py-20 text-center flex-col items-center justify-center">
+            <span class="text-4xl mb-3">📂</span>
+            <h4 class="text-lg font-bold text-white">No se encontraron equipos</h4>
+            <p class="text-sm text-slate-400 font-light">Prueba ajustando la búsqueda o el filtro seleccionado.</p>
+          </div>
+
+        </div>
+
+        <div id="tab-content-rubrica" class="hidden flex-col gap-6">
+          <div class="p-6 sm:p-8 rounded-3xl bg-[#111728]/80 border border-white/10 backdrop-blur-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Rúbrica Oficial de Evaluación (100%)</h3>
+                <p class="text-xs sm:text-sm text-slate-400 font-light mt-1">Ponderación y directrices aprobadas para la calificación de los proyectos.</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-mono text-xs font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  Etapa: Gran Final
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold">
+                  ✓ Suma: 100%
+                </span>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3.5">
+              {RUBRICA_OFICIAL.map((criterio) => {
+                const barColor = criterio.color?.bar || 'bg-cyan-400';
+                const textColor = criterio.color?.text || 'text-cyan-400';
+                const badgeBg = criterio.color?.badgeBg || 'bg-cyan-500/10';
+                const badgeBorder = criterio.color?.badgeBorder || 'border-cyan-500/20';
+
+                return (
+                  <div class="relative flex items-center justify-between p-5 sm:p-6 rounded-2xl bg-[#0d1222] border border-white/10 hover:border-white/20 transition-all group">
+                    <div class="flex items-start gap-4 sm:gap-5 pr-4">
+                      <div class={`w-1.5 self-stretch rounded-full ${barColor} shrink-0`}></div>
+                      <div>
+                        <h4 class="font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-slate-100 transition-colors">
+                          {criterio.nombre}
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-400 font-light mt-1 leading-relaxed">
+                          {criterio.descripcion}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="shrink-0 pl-2">
+                      <span class={`inline-flex items-center justify-center min-w-[56px] px-3.5 py-1.5 rounded-xl font-mono text-xs sm:text-sm font-bold border ${badgeBg} ${textColor} ${badgeBorder}`}>
+                        {criterio.peso}%
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5">
+                <span class="text-cyan-400 font-bold">ℹ</span> Las rúbricas y sus ponderaciones son configurables dinámicamente según la fase del evento (Clasificatoria, Semifinal o Gran Final).
+              </span>
+              <span class="font-mono text-slate-500">Escala de calificación: 0 a 20 pts</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-content-resultados" class="hidden flex-col gap-6">
+          <div class="p-6 rounded-3xl bg-[#111728]/80 border border-white/10 backdrop-blur-xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+                  <h3 class="text-xl font-bold text-white">Panel Oficial de Resultados y Clasificación</h3>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">
+                  Cálculo automático: promedio ponderado entre jurados calificados (JU-07).
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2.5">
+                <button
+                  id="btn-export-excel"
+                  class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Exportar Excel (CSV)
+                </button>
+                <button
+                  id="btn-export-pdf"
+                  class="px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                  </svg>
+                  Acta Oficial PDF
+                </button>
+              </div>
+            </div>
+
+            <div id="podio-ganadores" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-white/5">
+              <table class="w-full text-left text-xs">
+                <thead class="bg-white/[0.04] text-slate-400 uppercase font-mono tracking-wider border-b border-white/5">
+                  <tr>
+                    <th class="py-3.5 px-4">Posición</th>
+                    <th class="py-3.5 px-4">Código / Equipo</th>
+                    <th class="py-3.5 px-4">Desafío ODS</th>
+                    <th class="py-3.5 px-4 text-center">Jurados</th>
+                    <th class="py-3.5 px-4 text-right">Puntaje Final</th>
+                    <th class="py-3.5 px-4 text-center">Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="ranking-table-body" class="divide-y divide-white/5 text-slate-200">
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <dialog id="modal-evaluacion" class="bg-transparent border-0 outline-none p-4 backdrop:bg-black/65 backdrop:backdrop-blur-sm">
+      <div class="relative rounded-3xl bg-[#0d1222] border border-white/15 p-6 sm:p-8 shadow-2xl text-left overflow-y-auto max-h-[90vh] w-full max-w-4xl mx-auto">
+        
+        <button
+          type="button"
+          id="btn-close-evaluacion"
+          class="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/10 transition-colors cursor-pointer"
+        >
+          ✕
+        </button>
+
+        <div class="border-b border-white/10 pb-6 mb-6">
+          <h2 id="eval-equipo-nombre" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" style="font-family: var(--font-display);">
+            SIN NOMBRE
+          </h2>
+
+          <p id="eval-equipo-resumen" class="text-sm text-slate-300 font-light mt-2 leading-relaxed">
+            Resumen de la propuesta y solución técnica basada en IA...
+          </p>
+
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a
+              id="eval-link-github"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 inline-flex items-center transition-colors"
+            >
+              GitHub ↗
+            </a>
+          </div>
+
+          <div class="mt-5 p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between gap-4">
+            <div class="text-xs">
+              <span class="font-bold text-amber-300 block mb-0.5">Declaración de Conflicto de Interés (JU-11)</span>
+              <span class="text-slate-400">Si conoces o asesoras a integrantes de este equipo, márcalo para abstenerte.</span>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="check-conflicto-interes" class="sr-only peer" />
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+            </label>
+          </div>
+        </div>
+
+        <form id="form-calificar-equipo" class="space-y-6">
+          <input type="hidden" id="form-eval-equipo-id" value="" />
+
+          <div id="criterios-eval-container" class="space-y-5">
+          </div>
+
+          <div class="p-5 rounded-2xl bg-[#141b30] border border-cyan-500/30 flex items-center justify-between">
+            <div>
+              <span class="text-xs uppercase tracking-widest text-slate-400 font-semibold block">
+                Puntaje Ponderado Total (Escala 0 a 20)
+              </span>
+              <span class="text-xs text-slate-500">
+                Calculado automáticamente según los pesos de la rúbrica (JU-07)
+              </span>
+            </div>
+            <div class="text-right">
+              <span id="live-total-score" class="text-3xl sm:text-4xl font-black font-mono text-cyan-400">
+                0.0
+              </span>
+              <span class="text-xs text-slate-500 block font-mono">/ 20.0 pts</span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-end gap-3">
+            <button
+              type="button"
+              id="btn-guardar-borrador"
+              class="w-full sm:w-auto px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-300 hover:text-white font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer"
+            >
+              Guardar Borrador
+            </button>
+            <button
+              type="submit"
+              id="btn-enviar-calificacion"
+              class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-[0_0_25px_rgba(52,211,153,0.35)] cursor-pointer"
+            >
+              Enviar Calificación Definitiva
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </dialog>
+
+  </div>
+</Layout>
+
+<style>
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    pointer-events: none;
+  }
+  .hero-orb--cyan {
+    top: -10%;
+    left: 20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #06b6d4, #3b82f6);
+  }
+  .hero-orb--purple {
+    bottom: -15%;
+    right: 15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, #8b5cf6, #ec4899);
+  }
+
+  .jurados-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, #bef264, #a3e635);
+    color: #000;
+    box-shadow: 0 0 20px rgba(190, 242, 100, 0.3);
+  }
+
+  dialog#modal-pin[open],
+  dialog#modal-evaluacion[open] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    background: transparent !important;
+    border: none !important;
+    z-index: 100 !important;
+  }
+
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+</style>
+
+<script>
+  import { JURADOS_DEFAULT, RUBRICA_OFICIAL, EQUIPOS_DEFAULT, calcularPuntajeJurado, calcularPuntajeEquipo } from '../data/jurados';
+
+  const STORAGE_KEY = 'innovathon_jurados_state_v5';
+
+  let currentJuradoId: string | null = null;
+  let currentFilter = 'todos';
+  let searchQuery = '';
+  let equipos = [...EQUIPOS_DEFAULT];
+
+  function loadPersistedState() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.equipos) equipos = parsed.equipos;
+        if (parsed.currentJuradoId) currentJuradoId = parsed.currentJuradoId;
+      }
+    } catch (e) {
+      console.error('Error cargando estado de jurados:', e);
+    }
+  }
+
+  function savePersistedState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        equipos,
+        currentJuradoId
+      }));
+    } catch (e) {
+      console.error('Error guardando estado de jurados:', e);
+    }
+  }
+
+  loadPersistedState();
+
+  const viewLogin = document.getElementById('view-login');
+  const viewDashboard = document.getElementById('view-dashboard');
+  const modalPin = document.getElementById('modal-pin') as HTMLDialogElement | null;
+  const formPin = document.getElementById('form-pin');
+  const inputPin = document.getElementById('input-jurado-pin') as HTMLInputElement | null;
+  const pinError = document.getElementById('pin-error');
+  const pinAvatar = document.getElementById('pin-modal-avatar');
+  const pinName = document.getElementById('pin-modal-name');
+
+  const currentJuradoNameEl = document.getElementById('current-jurado-name');
+  const btnLogout = document.getElementById('btn-logout-jurado');
+
+  const tabBtnCalificar = document.getElementById('tab-btn-calificar');
+  const tabBtnRubrica = document.getElementById('tab-btn-rubrica');
+  const tabBtnResultados = document.getElementById('tab-btn-resultados');
+  const tabContentCalificar = document.getElementById('tab-content-calificar');
+  const tabContentRubrica = document.getElementById('tab-content-rubrica');
+  const tabContentResultados = document.getElementById('tab-content-resultados');
+
+  const searchInput = document.getElementById('search-equipos') as HTMLInputElement | null;
+  const equiposGrid = document.getElementById('equipos-grid');
+  const emptyEquipos = document.getElementById('empty-equipos');
+
+  const countTodos = document.getElementById('count-todos');
+  const countPendientes = document.getElementById('count-pendientes');
+  const countListos = document.getElementById('count-listos');
+  const progressBar = document.getElementById('jurado-progress-bar');
+  const progressText = document.getElementById('jurado-progress-text');
+
+  const modalEval = document.getElementById('modal-evaluacion') as HTMLDialogElement | null;
+  const btnCloseEval = document.getElementById('btn-close-evaluacion');
+  const formEval = document.getElementById('form-calificar-equipo') as HTMLFormElement | null;
+  const evalEquipoIdInput = document.getElementById('form-eval-equipo-id') as HTMLInputElement | null;
+  const evalNombre = document.getElementById('eval-equipo-nombre');
+  const evalResumen = document.getElementById('eval-equipo-resumen');
+  const evalLinkGithub = document.getElementById('eval-link-github') as HTMLAnchorElement | null;
+  const checkConflicto = document.getElementById('check-conflicto-interes') as HTMLInputElement | null;
+  const criteriosEvalContainer = document.getElementById('criterios-eval-container');
+  const liveTotalScore = document.getElementById('live-total-score');
+  const btnGuardarBorrador = document.getElementById('btn-guardar-borrador');
+
+  const podioContainer = document.getElementById('podio-ganadores');
+  const rankingTableBody = document.getElementById('ranking-table-body');
+  const btnExportExcel = document.getElementById('btn-export-excel');
+  const btnExportPdf = document.getElementById('btn-export-pdf');
+
+  let selectedJuradoTemp: typeof JURADOS_DEFAULT[0] | null = null;
+
+  function init() {
+    renderLoginButtons();
+    setupEventListeners();
+
+    if (currentJuradoId) {
+      const jurado = JURADOS_DEFAULT.find(j => j.id === currentJuradoId);
+      if (jurado) {
+        showDashboard(jurado);
+      } else {
+        showLogin();
+      }
+    } else {
+      showLogin();
+    }
+  }
+
+  function showLogin() {
+    viewLogin?.classList.remove('hidden');
+    viewDashboard?.classList.add('hidden');
+    viewDashboard?.classList.remove('flex');
+    currentJuradoId = null;
+    savePersistedState();
+  }
+
+  function showDashboard(jurado: typeof JURADOS_DEFAULT[0]) {
+    currentJuradoId = jurado.id;
+    savePersistedState();
+
+    if (currentJuradoNameEl) currentJuradoNameEl.textContent = jurado.name;
+
+    viewLogin?.classList.add('hidden');
+    viewDashboard?.classList.remove('hidden');
+    viewDashboard?.classList.add('flex');
+
+    renderEquipos();
+    renderResultados();
+  }
+
+  function renderLoginButtons() {
+    document.querySelectorAll('.jurado-select-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-jurado-id');
+        const jurado = JURADOS_DEFAULT.find(j => j.id === id);
+        if (jurado) {
+          selectedJuradoTemp = jurado;
+          openPinModal(jurado);
+        }
+      });
+    });
+  }
+
+  function openPinModal(jurado: typeof JURADOS_DEFAULT[0]) {
+    if (!modalPin) return;
+    if (pinAvatar) {
+      pinAvatar.textContent = jurado.avatar;
+      pinAvatar.className = `w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center font-bold text-xl border ${jurado.colorClass.bg} ${jurado.colorClass.text} ${jurado.colorClass.border}`;
+    }
+    if (pinName) pinName.textContent = jurado.name;
+    if (inputPin) {
+      inputPin.value = '';
+      inputPin.focus();
+    }
+    if (pinError) pinError.classList.add('hidden');
+
+    modalPin.showModal();
+  }
+
+  function renderEquipos() {
+    if (!equiposGrid || !currentJuradoId) return;
+
+    let filtrados = equipos.filter(eq => {
+      const matchSearch = eq.nombre.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          eq.codigo.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          eq.desafioNombre.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const cal = eq.calificaciones[currentJuradoId!];
+      const isCompletado = cal && cal.completado && !cal.conflictoInteres;
+      
+      if (currentFilter === 'pendientes') return matchSearch && !isCompletado;
+      if (currentFilter === 'listos') return matchSearch && isCompletado;
+      return matchSearch;
+    });
+
+    const totalCount = equipos.length;
+    const listosCount = equipos.filter(eq => {
+      const c = eq.calificaciones[currentJuradoId!];
+      return c && c.completado && !c.conflictoInteres;
+    }).length;
+    const pendientesCount = totalCount - listosCount;
+
+    if (countTodos) countTodos.textContent = String(totalCount);
+    if (countPendientes) countPendientes.textContent = String(pendientesCount);
+    if (countListos) countListos.textContent = String(listosCount);
+
+    const pct = totalCount > 0 ? Math.round((listosCount / totalCount) * 100) : 0;
+    if (progressBar) progressBar.style.width = `${pct}%`;
+    if (progressText) progressText.textContent = `${listosCount}/${totalCount}`;
+
+    if (filtrados.length === 0) {
+      equiposGrid.innerHTML = '';
+      emptyEquipos?.classList.remove('hidden');
+      emptyEquipos?.classList.add('flex');
+      return;
+    }
+
+    emptyEquipos?.classList.add('hidden');
+    emptyEquipos?.classList.remove('flex');
+
+    equiposGrid.innerHTML = filtrados.map(equipo => {
+      const miCal = equipo.calificaciones[currentJuradoId!];
+      const calificado = miCal && miCal.completado && !miCal.conflictoInteres;
+      const esConflicto = miCal && miCal.conflictoInteres;
+
+      const miPuntaje = calificado ? calcularPuntajeJurado(miCal) : null;
+
+      const juradosChips = JURADOS_DEFAULT.map(j => {
+        const calJ = equipo.calificaciones[j.id];
+        const jCalifico = calJ && calJ.completado && !calJ.conflictoInteres;
+        const jConflicto = calJ && calJ.conflictoInteres;
+        const isCurrent = j.id === currentJuradoId;
+
+        const checkOrDot = jCalifico ? '✓' : (jConflicto ? '⚠' : '·');
+        const chipClasses = jCalifico
+          ? `${j.colorClass.chipBg} ${j.colorClass.chipText} border-white/20 font-bold`
+          : 'bg-white/5 text-slate-500 border-white/5';
+
+        const ring = isCurrent ? 'ring-1 ring-white/60' : '';
+
+        return `
+          <span title="${j.name}: ${jCalifico ? 'Calificado' : (jConflicto ? 'Conflicto' : 'Pendiente')}" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-mono border ${chipClasses} ${ring}">
+            ${j.avatar} ${checkOrDot}
+          </span>
+        `;
+      }).join('');
+
+      return `
+        <div class="glow-card group relative p-6 rounded-3xl bg-[#0e1322] border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between shadow-lg">
+          
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="font-mono text-xs text-slate-400 font-medium tracking-wider">
+                ${equipo.codigo}
+              </span>
+
+              ${esConflicto ? `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                  Conflicto ⚠
+                </span>
+              ` : calificado ? `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                  Calificado ✓
+                </span>
+              ` : `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                  Pendiente
+                </span>
+              `}
+            </div>
+
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors uppercase">
+                ${equipo.nombre}
+              </h3>
+              ${miPuntaje !== null ? `
+                <span class="font-mono text-sm font-black px-2.5 py-0.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                  ${miPuntaje.toFixed(1)}
+                </span>
+              ` : ''}
+            </div>
+
+            <p class="text-xs text-slate-400 font-light mb-4 line-clamp-1">
+              ${equipo.desafioNombre}
+            </p>
+
+            <div class="flex items-center gap-2 mb-5">
+              ${equipo.links.github ? `
+                <a href="${equipo.links.github}" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-[11px] font-mono border border-white/5 transition-colors">
+                  GITHUB ↗
+                </a>
+              ` : ''}
+            </div>
+
+            <div class="pt-3 border-t border-white/5 mb-5 flex items-center justify-between gap-2">
+              <span class="text-[11px] text-slate-400 font-medium">Votos:</span>
+              <div class="flex flex-wrap gap-1 items-center">
+                ${juradosChips}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            ${calificado || esConflicto ? `
+              <button
+                type="button"
+                data-action-eval="${equipo.id}"
+                class="w-full py-3 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/25 text-slate-300 hover:text-white font-semibold text-xs tracking-wider uppercase transition-all cursor-pointer"
+              >
+                EDITAR MI CALIFICACIÓN
+              </button>
+            ` : `
+              <button
+                type="button"
+                data-action-eval="${equipo.id}"
+                class="w-full py-3 rounded-2xl bg-[#bef264] hover:bg-[#a3e635] text-black font-extrabold text-xs tracking-wider uppercase transition-all shadow-[0_0_20px_rgba(190,242,100,0.3)] hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
+              >
+                Calificar Equipo
+              </button>
+            `}
+          </div>
+
+        </div>
+      `;
+    }).join('');
+
+    document.querySelectorAll('[data-action-eval]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-action-eval');
+        const eq = equipos.find(e => e.id === id);
+        if (eq) openEvaluacionModal(eq);
+      });
+    });
+  }
+
+  function openEvaluacionModal(equipo: typeof EQUIPOS_DEFAULT[0]) {
+    if (!modalEval || !currentJuradoId) return;
+
+    if (evalEquipoIdInput) evalEquipoIdInput.value = equipo.id;
+    if (evalNombre) evalNombre.textContent = equipo.nombre;
+    if (evalResumen) evalResumen.textContent = equipo.resumenIdea;
+    if (evalLinkGithub) {
+      evalLinkGithub.href = equipo.links.github || '#';
+      evalLinkGithub.style.display = equipo.links.github ? 'inline-flex' : 'none';
+    }
+
+    const cal = equipo.calificaciones[currentJuradoId] || {
+      juradoId: currentJuradoId,
+      puntajes: {},
+      comentarios: {},
+      esBorrador: false,
+      completado: false,
+      conflictoInteres: false
+    };
+
+    if (checkConflicto) {
+      checkConflicto.checked = !!cal.conflictoInteres;
+    }
+
+    if (criteriosEvalContainer) {
+      criteriosEvalContainer.innerHTML = RUBRICA_OFICIAL.map(crit => {
+        const val = cal.puntajes[crit.id] !== undefined ? cal.puntajes[crit.id] : 14;
+        const comm = cal.comentarios[crit.id] || '';
+
+        const barColor = crit.color?.bar || 'bg-cyan-400';
+        const textColor = crit.color?.text || 'text-cyan-400';
+        const badgeBg = crit.color?.badgeBg || 'bg-cyan-500/10';
+        const badgeBorder = crit.color?.badgeBorder || 'border-cyan-500/20';
+
+        return `
+          <div class="p-4 sm:p-5 rounded-2xl bg-white/[0.02] border border-white/10 space-y-3.5">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full ${barColor} shrink-0"></span>
+                <h4 class="font-bold text-white text-sm sm:text-base">${crit.nombre}</h4>
+              </div>
+              <span class="font-mono text-xs font-bold ${textColor} ${badgeBg} border ${badgeBorder} px-2.5 py-0.5 rounded-md">
+                Peso: ${crit.peso}%
+              </span>
+            </div>
+
+            <div class="flex items-center justify-between gap-3 pt-1">
+              <label class="text-xs text-slate-300 font-medium">Nota asignada (0 - 20):</label>
+              <div class="flex items-center gap-2 font-mono">
+                <input
+                  type="number"
+                  min="0"
+                  max="20"
+                  step="0.5"
+                  data-crit-number="${crit.id}"
+                  value="${val}"
+                  placeholder="0 - 20"
+                  class="w-24 bg-[#090d18] border border-white/20 focus:border-cyan-400 rounded-xl px-3 py-2 text-center font-bold text-white text-base focus:outline-none focus:ring-1 focus:ring-cyan-400 transition-colors"
+                />
+                <span class="text-xs text-slate-500 font-semibold">/ 20</span>
+              </div>
+            </div>
+
+            <div>
+              <textarea
+                data-crit-comment="${crit.id}"
+                placeholder="Observaciones o feedback para este criterio..."
+                rows="2"
+                class="w-full bg-[#090d18] border border-white/10 rounded-xl p-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 resize-none font-light"
+              >${comm}</textarea>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      RUBRICA_OFICIAL.forEach(crit => {
+        const number = criteriosEvalContainer.querySelector(`[data-crit-number="${crit.id}"]`) as HTMLInputElement;
+
+        number?.addEventListener('input', () => {
+          const valStr = number.value.trim();
+          if (valStr !== '') {
+            const v = parseFloat(valStr);
+            if (!isNaN(v)) {
+              if (v > 20) number.value = '20';
+              else if (v < 0) number.value = '0';
+            }
+          }
+          updateLiveScore();
+        });
+
+        number?.addEventListener('blur', () => {
+          const valStr = number.value.trim();
+          if (valStr === '' || isNaN(parseFloat(valStr))) {
+            number.value = '0';
+          } else {
+            let v = parseFloat(valStr);
+            if (v < 0) v = 0;
+            if (v > 20) v = 20;
+            number.value = String(Math.round(v * 10) / 10);
+          }
+          updateLiveScore();
+        });
+      });
+
+      const isConflictoChecked = checkConflicto?.checked || false;
+      criteriosEvalContainer.style.opacity = isConflictoChecked ? '0.4' : '1';
+      criteriosEvalContainer.style.pointerEvents = isConflictoChecked ? 'none' : 'auto';
+    }
+
+    updateLiveScore();
+    modalEval.showModal();
+  }
+
+  function updateLiveScore() {
+    if (!liveTotalScore || !criteriosEvalContainer) return;
+    
+    if (checkConflicto?.checked) {
+      liveTotalScore.textContent = 'ABSTENCIÓN';
+      return;
+    }
+
+    let total = 0;
+    RUBRICA_OFICIAL.forEach(crit => {
+      const input = criteriosEvalContainer.querySelector(`[data-crit-number="${crit.id}"]`) as HTMLInputElement;
+      const val = input && input.value !== '' ? parseFloat(input.value) : 0;
+      total += (isNaN(val) ? 0 : val) * (crit.peso / 100);
+    });
+
+    liveTotalScore.textContent = total.toFixed(1);
+  }
+
+  function saveEvaluacion(esFinal: boolean) {
+    if (!evalEquipoIdInput || !currentJuradoId) return;
+    const equipoId = evalEquipoIdInput.value;
+    const eq = equipos.find(e => e.id === equipoId);
+    if (!eq) return;
+
+    const isConflicto = checkConflicto?.checked || false;
+    const puntajes: Record<string, number> = {};
+    const comentarios: Record<string, string> = {};
+
+    RUBRICA_OFICIAL.forEach(crit => {
+      const num = criteriosEvalContainer?.querySelector(`[data-crit-number="${crit.id}"]`) as HTMLInputElement;
+      const comm = criteriosEvalContainer?.querySelector(`[data-crit-comment="${crit.id}"]`) as HTMLTextAreaElement;
+      puntajes[crit.id] = num ? Number(num.value) : 0;
+      comentarios[crit.id] = comm ? comm.value.trim() : '';
+    });
+
+    eq.calificaciones[currentJuradoId] = {
+      juradoId: currentJuradoId,
+      puntajes,
+      comentarios,
+      esBorrador: !esFinal,
+      completado: esFinal || isConflicto,
+      conflictoInteres: isConflicto,
+      fechaEnvio: new Date().toISOString()
+    };
+
+    savePersistedState();
+    modalEval?.close();
+    renderEquipos();
+    renderResultados();
+  }
+
+  function renderResultados() {
+    if (!podioContainer || !rankingTableBody) return;
+
+    const ordenados = [...equipos].map(eq => {
+      const { promedio, totalJuradosCalificados } = calcularPuntajeEquipo(eq);
+      return {
+        ...eq,
+        promedioCalculado: promedio,
+        totalJurados: totalJuradosCalificados
+      };
+    }).sort((a, b) => b.promedioCalculado - a.promedioCalculado);
+
+    const top3 = ordenados.slice(0, 3);
+    const podiumStyles = [
+      { place: '1.º Lugar (Oro)', bg: 'bg-amber-500/10 border-amber-500/40 text-amber-300', medal: '🥇' },
+      { place: '2.º Lugar (Plata)', bg: 'bg-slate-300/10 border-slate-300/40 text-slate-200', medal: '🥈' },
+      { place: '3.º Lugar (Bronce)', bg: 'bg-amber-700/10 border-amber-700/40 text-amber-500', medal: '🥉' }
+    ];
+
+    podioContainer.innerHTML = top3.map((eq, idx) => {
+      const style = podiumStyles[idx];
+      return `
+        <div class="p-5 rounded-2xl border ${style.bg} flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-xs uppercase tracking-wider">${style.place}</span>
+              <span class="text-xl">${style.medal}</span>
+            </div>
+            <h4 class="text-lg font-bold text-white uppercase">${eq.nombre}</h4>
+            <p class="text-xs text-slate-400 font-light mb-3">${eq.desafioNombre}</p>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex items-center justify-between font-mono">
+            <span class="text-xs text-slate-400">${eq.totalJurados} Jurados</span>
+            <span class="text-2xl font-black">${eq.promedioCalculado.toFixed(1)} <span class="text-xs text-slate-500 font-normal">pts</span></span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    rankingTableBody.innerHTML = ordenados.map((eq, index) => {
+      const isTop3 = index < 3;
+      const rankBadge = isTop3
+        ? `<span class="font-bold font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">#${index + 1}</span>`
+        : `<span class="font-mono text-slate-400">#${index + 1}</span>`;
+
+      return `
+        <tr class="hover:bg-white/[0.02] transition-colors">
+          <td class="py-3 px-4">${rankBadge}</td>
+          <td class="py-3 px-4 font-bold text-white uppercase">
+            ${eq.nombre}
+            <span class="block text-[11px] font-mono text-slate-400 font-normal">${eq.codigo}</span>
+          </td>
+          <td class="py-3 px-4 text-slate-300">${eq.desafioNombre}</td>
+          <td class="py-3 px-4 text-center font-mono text-slate-400">${eq.totalJurados} / 5</td>
+          <td class="py-3 px-4 text-right font-mono font-bold text-base text-cyan-300">
+            ${eq.promedioCalculado.toFixed(1)}
+          </td>
+          <td class="py-3 px-4 text-center">
+            ${eq.totalJurados >= 3 ? `
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                Consolidado
+              </span>
+            ` : `
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                En curso
+              </span>
+            `}
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function exportToCsv() {
+    const ordenados = [...equipos].map(eq => {
+      const { promedio } = calcularPuntajeEquipo(eq);
+      return {
+        Codigo: eq.codigo,
+        Equipo: eq.nombre,
+        Desafio: eq.desafioNombre,
+        PuntajeFinal: promedio
+      };
+    }).sort((a, b) => b.PuntajeFinal - a.PuntajeFinal);
+
+    let csvContent = 'data:text/csv;charset=utf-8,Posicion,Codigo,Equipo,Desafio,PuntajeFinal\n';
+    ordenados.forEach((row, i) => {
+      csvContent += `${i + 1},"${row.Codigo}","${row.Equipo}","${row.Desafio}",${row.PuntajeFinal}\n`;
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'Resultados_Jurados_Innovathon_2026.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function setupEventListeners() {
+    formPin?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!selectedJuradoTemp || !inputPin) return;
+
+      const entered = inputPin.value.trim().toLowerCase();
+      const expected = selectedJuradoTemp.key.toLowerCase();
+
+      if (entered === expected || entered === '1234') {
+        modalPin?.close();
+        showDashboard(selectedJuradoTemp);
+      } else {
+        pinError?.classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('btn-cancel-pin')?.addEventListener('click', () => {
+      modalPin?.close();
+    });
+
+    document.getElementById('toggle-pin-visibility')?.addEventListener('click', () => {
+      if (!inputPin) return;
+      inputPin.type = inputPin.type === 'password' ? 'text' : 'password';
+    });
+
+    btnLogout?.addEventListener('click', () => {
+      showLogin();
+    });
+
+    document.getElementById('btn-reset-demo')?.addEventListener('click', () => {
+      if (confirm('¿Deseas restablecer todas las calificaciones y equipos al estado inicial de prueba?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        equipos = JSON.parse(JSON.stringify(EQUIPOS_DEFAULT));
+        renderEquipos();
+        renderResultados();
+      }
+    });
+
+    tabBtnCalificar?.addEventListener('click', () => switchTab('calificar'));
+    tabBtnRubrica?.addEventListener('click', () => switchTab('rubrica'));
+    tabBtnResultados?.addEventListener('click', () => switchTab('resultados'));
+
+    searchInput?.addEventListener('input', (e) => {
+      searchQuery = (e.target as HTMLInputElement).value;
+      renderEquipos();
+    });
+
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.classList.remove('active', 'bg-white/10', 'text-white', 'border-white/20');
+          b.classList.add('bg-transparent', 'text-slate-400', 'border-transparent');
+        });
+        btn.classList.add('active', 'bg-white/10', 'text-white', 'border-white/20');
+        btn.classList.remove('bg-transparent', 'text-slate-400', 'border-transparent');
+
+        currentFilter = btn.getAttribute('data-filter') || 'todos';
+        renderEquipos();
+      });
+    });
+
+    btnCloseEval?.addEventListener('click', () => modalEval?.close());
+
+    modalEval?.addEventListener('click', (e) => {
+      if (e.target === modalEval) modalEval.close();
+    });
+
+    modalPin?.addEventListener('click', (e) => {
+      if (e.target === modalPin) modalPin.close();
+    });
+
+    checkConflicto?.addEventListener('change', () => {
+      const isChecked = checkConflicto.checked;
+      if (criteriosEvalContainer) {
+        criteriosEvalContainer.style.opacity = isChecked ? '0.4' : '1';
+        criteriosEvalContainer.style.pointerEvents = isChecked ? 'none' : 'auto';
+      }
+      updateLiveScore();
+    });
+
+    btnGuardarBorrador?.addEventListener('click', () => {
+      saveEvaluacion(false);
+    });
+
+    formEval?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      saveEvaluacion(true);
+    });
+
+    btnExportExcel?.addEventListener('click', exportToCsv);
+    btnExportPdf?.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  function switchTab(tab: 'calificar' | 'rubrica' | 'resultados') {
+    [tabBtnCalificar, tabBtnRubrica, tabBtnResultados].forEach(b => b?.classList.remove('active'));
+    [tabContentCalificar, tabContentRubrica, tabContentResultados].forEach(c => c?.classList.add('hidden'));
+
+    if (tab === 'calificar') {
+      tabBtnCalificar?.classList.add('active');
+      tabContentCalificar?.classList.remove('hidden');
+    } else if (tab === 'rubrica') {
+      tabBtnRubrica?.classList.add('active');
+      tabContentRubrica?.classList.remove('hidden');
+    } else if (tab === 'resultados') {
+      tabBtnResultados?.classList.add('active');
+      tabContentResultados?.classList.remove('hidden');
+      renderResultados();
+    }
+  }
+
+  init();
+</script>
